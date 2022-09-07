@@ -2,23 +2,15 @@
 
 Integration Hub enables execution of third-party APIs as a part of a flow when a specific event occurs in ServiceNow. These integrations, referred to as spokes, are easy to configure and enable you to quickly add powerful actions without the need to write a script. For example, you can post a message and incident details in a Slack channel when a high priority incident is created.
 
-<!--
-
-    1. Create your lab guide starting here.
-
-    2. Use the instructions below as a template
-       to format your guidebook.
-
-    3. When you are done writing your guidebook,
-       remove the template instructions.     
--->
-
-
 # Integration Hub exercice
 
 ## Goal
 
 In this exercice you will learn how to create a Spoke in Integration Hub. You will learn how to connect a ServiceNow Worklow to a remote API. For our use case we want to use Integration Hub to validate some data against an API. In the previous exercice we have seen how to extract data from document using our Intelligent Document Processing capability (**Document Intelligent**). In the previous exercice we see how we can extract Banking informtuon from a VOID Check automatically, in this exercice we see how we can for example validate the **Routing Number** extracted from a VOID Check by building an Integration Hub that is going to take this Routing Number information and pass it to an external API. This 3rd party API returns additional banking information that can be useful to setup the direct deposit for this new employee.  This is just an example to show how easily you can connect ServiceNow to external system by creating your own Spoke. We see how to build an integration to an API with not a single line of code.
+
+
+
+# Getting Familiar with an API
 
 When you need to create an integration from ServiceNow to an external system via API, it is important to familiarize yourself with the API that you are going to call from ServiceNow first.
 
@@ -40,7 +32,7 @@ When you need to create an integration from ServiceNow to an external system via
 
 
 
-## Creating the spoke action
+## Creating the spoke action for that Routing Number API
 
 
 1. Log in to your instance
