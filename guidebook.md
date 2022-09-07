@@ -23,7 +23,32 @@ Click the image below to understand the build process:
 Click image below to get the details and best practices to make your lab guide zing:
 [![Content deep dive video thumbnail](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/Content-Deep-Dive.png)](https://youtu.be/2s_e0zvGoM4)
 
+# Introduction
+
+ServiceNow Automation Center integrates islands of automation and delivers centralized management of cross-enterprise automation across multiple vendors in a single workspace. Automation Center enables Now Platform owners, admins, solution architects, process analysts, and developers to view real-time metrics and analytics to understand automation performance vs. business goals, time and cost savings realized, active automations, automation pipeline, and operational health
+
+# Exercice 1
+## Goal
+
+In this Lab 
+
+## Review Automation Center
+
+1. Log in to your ServiceNow instance
+
+1. Click **All tab** (1) then type **automation center** (2), and finally click the **Automation Center Home** link (3). This will open the Automation Center Workspace.
+
+![Relative](images/2022-09-06_10-04-59.png)
+
+1. Lets review the Automation Center Workspace.
+
+The Automation Center Workspace let you review the automation automation goals: What has already been achieved (1), what is going well (2), what can be improved.(3)
+The progress is shown only for the goals that are associated with a request from the current year.
+
+![Relative](images/2022-09-06_10-27-00.png)
+
 <!--
+
     1. Create your lab guide starting here.
 
     2. Use the instructions below as a template
@@ -32,6 +57,218 @@ Click image below to get the details and best practices to make your lab guide z
     3. When you are done writing your guidebook,
        remove the template instructions.     
 -->
+
+
+# IntegrationHub
+
+## Goal
+
+In this exercice you will learn how to create a Spoke in IntegrationHub. You will learn how toconnect a ServiceNow Worklow to a remote API. For our use case we want to use IntegrationHub to validate the Routing Number extracted from a VOID Check (with Document Intelligence), we are going to pass the routing number to a remote API (routingnumber.info), this allows us to perform some additional Data Validation and gather additional banking information.  This is just an example to show how easily you can connect ServiceNow to external system by creating your own Spoke.
+
+When you need to create an integration from ServiceNow to an external system via API, it is important to familiarize yourself with the API that you are going to call from ServiceNow
+
+1. Inspect the Routing Number API.
+
+    Open a browser and navigate to https://www.routingnumbers.info/api/data.html to test out the API and analyze what this API can return.  
+
+    On the **Routing Number** Type 02000021 (1) then Click **Get Bank Data** (2)
+
+    ![Relative](images/2022-09-06_14-20-47.png) 
+
+    > The number we provide as input to the API must be a valid routing number, typically this routing number is found on a VOID Check 
+
+    Under Results you can see the information that this API returns
+
+    ![Relative](/images/2022-09-06_14-27-17.png) 
+
+    In the next step of this exercice we will leverage that API from ServiceNow, custom IntegrationHub spoke action so we can make those API calls directly from a Workflow in ServiceNow and retrieve the API Response from this third party application.
+
+
+
+## Creating the spoke action
+
+
+1. Log in to your instance
+1. Click the **All** tab (1), then type **Flow Designer** (2), and finally click **Flow Designer** (3)
+
+    ![Relative](images/2022-09-06_13-16-37.png)
+1. Click on **New** (1) then **Action** (2)
+
+     ![Relative](images/2022-09-06_13-22-19.png)
+
+1. Fill in the **Action properties** form with those informations:
+
+   | Field | Value |
+   |-------|-------|
+   | ActionName | Validate Banking Information |
+   | Application | Direct Deposit |
+   | Accessible From | All application scope |
+   | Protection | None |
+   | Category | leave blank |
+   | Description | This Spoke action takes a routing number as an input and query a remote REST API to retrieve additional information for that routing number |
+   | Action annotation | Keep default value |
+
+    ![Relative](images/2022-09-06_13-42-18.png)
+    
+    Then click **Submit**.
+
+1. Add an **Input** to the action. 
+
+    Click **Create Input**
+
+    ![Relative](images/2022-09-06_13-52-19.png)
+
+    Under **Action Input** You should see a new input line as shown in this screenshot below:
+
+    ![Relative](images/2022-09-06_13-58-47.png)
+
+    Under the **Label** column, double-click **variable** to rename the label and type the value **Routing Number** then click **variable** on the next column **Name**, the **Name** should be automatically filled in with **routing_number**.
+
+    Make the input Mandatory (1) and click **Save** (2)
+
+    ![Relative](images/2022-09-06_14-03-23.png)
+
+    > We have created an input for our custom action, when someone uses our action in a workflow they will have to pass a value in that input.
+
+ 1. Under Inputs, click on the **+** sign to add a step to our action:
+
+    ![Relative](images/2022-09-06_14-07-50.png)
+
+1. In the new window, type **REST** in the search box (1), then select the **REST** component (2):
+
+    ![Relative](images/2022-09-06_14-11-28.png)
+
+1. Under **Connection Details** On the **Connection** field, select **Define Connection Inline** (1) then on the **Base URL** field type the url  https://www.routingnumbers.info
+
+    ![Relative](images/2022-09-06_14-32-45.png)
+
+    > For this exercice we do not use any credentials, this third party API doe not require authentication but most 3rd party API would require credentials to authenticate with it.Credentials can be configured in ServiceNow, and you would select the right **Credential Alia** to use under the **Connection Details**
+
+1. Scroll down to show the **Request Details** form
+
+    On the **Resource Path** field type **/api/data.json?rn=**
+    then drag and drop the Routing Number from the Data pile as shown below:
+
+    ![Relative](images/2022-09-06_14-39-01.gif)
+
+    > In that step we are passing dynamically the value from the input we created earlier to the API.
+
+    Api Request often time takes specific  Query Parameters and Headers, usually it the information needed can be found in the API documentation of the third party application. For that particular example we nbeed to pass two Headers parameters.
+
+1. scroll down to show the Headers section, and click the **+** sign as shown below to add a new  Header Name and Value:
+
+    ![Relative](images/2022-09-06_14-48-34.png)
+
+
+
+    | Name| Value |
+   |-------|-------|
+   | Content-Type | application/json |
+
+    Repeat that step to add the folling **Name** and **Value**
+
+    | Name| Value |
+   |-------|-------|
+   | User-Agent | chrome |
+
+    ![Relative](images/2022-09-06_14-54-43.png)
+
+1. On the upper right hand side, click **Save** (1) then **test** (2).
+
+
+    ![Relative](images/2022-09-06_15-51-28.png)
+
+
+1. Enter the **Routing Number**: **021000021** (1) then Click **Run test** (2):
+
+    ![Relative](images/2022-09-06_15-22-26.png)
+
+
+
+    After few second the test has finished running, clean on the text **Your Test has finished running. View the Action execution detail**:
+
+   ![Relative](images/2022-09-06_15-24-53.png)
+
+   We can now inspect the response from the API
+
+1. Expand the **Steps** Section
+
+    ![Relative](images/2022-09-06_15-35-53.png)
+
+1. Scroll down until you see the **Response Body** (1) under the **Step Output Data**, then click on the value (2)
+
+    ![Relative](images/2022-09-06_15-38-02.png)
+
+
+    This will open the content of the **response_body** output, this is the response coming from the API. Most APIs return a response in the same format (JSON Payload), it contains the information that we want to use from our Workflow. The beauty of Flow Designer and IntegrationHub is that we can parse this JSON Payload without having script anything (most solution on the market require some kind of codind to do this)
+
+1. Copy the code from the **Viewing response_body** window: 
+    > Save in a text file or notepad or make sure to keep the content in your clipboard (Copy/paste)
+
+   ![Relative](images/2022-09-06_15-40-15.png)
+
+    > At this stage we have created the REST API Call to the 3rd Party Routing Number API, now we need to add a step to be able to parse the response from the API to retrieve the value we need.
+
+
+1. Under **Rest Step** click the **+** sign to add a new step:
+
+    ![Relative](images/2022-09-06_15-01-46.png)
+
+1. In the search box, type **JSON Parser** (1), then select **JSON Parser** (2) to add that step to your action:
+
+    ![Relative](images/2022-09-06_15-03-23.png)
+
+    You should have the **JSON Parser step** under the **REST step** as shown:
+
+    ![Relative](images/2022-09-06_15-06-08.png)
+    > The first step (**REST Step**) makes the call to the remote REST API, then the second step (**JSON Parser step**) will parse the response from that API and extract the information we need. 
+
+1. Drag and drop the **Response Body** from the Data Pile to the **Source data** field on the **JSON Parser step** as shown below
+
+    ![Relative](images/2022-09-06_15-13-51.gif)
+
+
+1. Past the JSON Payload (1) (from your clipboard or text file) , then click **Generate Target**:
+
+    ![Relative](images/2022-09-06_16-04-30.png)
+
+1. The **JSON Parser** step generates for you the objects (instead of having to script like with most of solution out there) that have the information coming from the API Response. No need to code anything! 
+    Under **Target** (1) expand the **root** object
+
+   ![Relative](images/2022-09-06_16-11-31.png)
+
+
+1. Now we are going create the output variable on our spoke action so anyone who use that spoke action oin their workflow can retrieve the different values from the API.
+   We are going to map those Object from previous step to new Output variable. 
+
+1. Click **Outputs**:
+
+    ![Relative](images/2022-09-06_17-13-13.png)
+
+1. Then click **Create Output**:
+
+    ![Relative](images/2022-09-06_17-14-22.png)
+    
+1. On the Label columb Double click **variable** (1) and type office_code then double click variable on the **Name** column and type office_code:
+    ![Relative](images/2022-09-06_17-16-28.png)
+
+1. Then continue to **Create Output** with the following **Label** and **Name**:
+
+    | Label| Name |
+   |-------|-------|
+   | zip | zip |
+   | customer_name| customer_name |
+   | message | message |
+   | telephone | telephone |
+   | state | state |
+   | address | address |
+   | routing_number | routing_number |
+
+1. Verify that you have created the Ouputs as shown below:
+
+    ![Relative](images/2022-09-06_17-27-41.png)
+
+1. Now that we have created the output we can map the Objects from the JSON Parser step to those Outputs. That way we are taking the data from the API response and assigning the values to our outputs (Variables) so anyone who use that action in a flow can use the data coming from the API to any steps of the flow.
 
 # File Directory Structure
 
@@ -42,6 +279,8 @@ Click image below to get the details and best practices to make your lab guide z
 1. Locate the **Clone or download** (green) dropdown in the GitHub repository created for you and copy the URL.
 
     ![GitHub clone](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-10-09-56-55.png)
+
+
 
 1. Open a command or terminal window on your local machine and clone the repistory with a command similar to this:
 
