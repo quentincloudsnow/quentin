@@ -1,51 +1,6 @@
-# Guidebook Template
-
-## Goal
-
-<!-- Replace this section with the goals of your lab/workshop -->
-
-This document provides you with technical information and best practices to produce a Knowledge or CreatorCon lab guidebook consistent with current standards. The standards documented here must be applied to all guidebooks created or updated from the time you receive this template. In other words, you are not required to apply these to previous guidebooks unless that content is being updated for an upcoming event.
-
-Click image below to watch the overview video:
-[![Overview video thumbnail](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/Overview.png)](https://youtu.be/rXX958QvDgw)
-
-ServiceNow uses GitHub to store/version guidebooks and render them in HTML. For instructions on setting up VS Code and git to author your guidebook, see our [Setup Guide](https://github.com/ServiceNowEvents/Guidebook-Tools-Setup-Guide/blob/master/guidebook.md).  If you are unfamiliar with the basics of Markdown, see [Mastering Markdown](https://guides.github.com/features/mastering-markdown/) for an introduction to standard formatting.
-
-Beyond standard Markdown, we have a few conventions you need to follow for your guidebook to render properly. This document covers the following topics: file directory structure, headings/sections, lists, images, writing style, and grammar & clarity.
-
-Example of finished lab guide on developer.servicenow.com:
-
-![Demo lab guide](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-11-25-09-29-40.png)
-
-Click the image below to understand the build process:
-[![Build process video thumbnail](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/Build-Process.png)](https://youtu.be/uTLiXfMsuvk)
-
-Click image below to get the details and best practices to make your lab guide zing:
-[![Content deep dive video thumbnail](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/Content-Deep-Dive.png)](https://youtu.be/2s_e0zvGoM4)
-
 # Introduction
 
-ServiceNow Automation Center integrates islands of automation and delivers centralized management of cross-enterprise automation across multiple vendors in a single workspace. Automation Center enables Now Platform owners, admins, solution architects, process analysts, and developers to view real-time metrics and analytics to understand automation performance vs. business goals, time and cost savings realized, active automations, automation pipeline, and operational health
-
-# Exercice 1
-## Goal
-
-In this Lab 
-
-## Review Automation Center
-
-1. Log in to your ServiceNow instance
-
-1. Click **All tab** (1) then type **automation center** (2), and finally click the **Automation Center Home** link (3). This will open the Automation Center Workspace.
-
-![Relative](images/2022-09-06_10-04-59.png)
-
-1. Lets review the Automation Center Workspace.
-
-The Automation Center Workspace let you review the automation automation goals: What has already been achieved (1), what is going well (2), what can be improved.(3)
-The progress is shown only for the goals that are associated with a request from the current year.
-
-![Relative](images/2022-09-06_10-27-00.png)
+Integration Hub enables execution of third-party APIs as a part of a flow when a specific event occurs in ServiceNow. These integrations, referred to as spokes, are easy to configure and enable you to quickly add powerful actions without the need to write a script. For example, you can post a message and incident details in a Slack channel when a high priority incident is created.
 
 <!--
 
@@ -59,13 +14,13 @@ The progress is shown only for the goals that are associated with a request from
 -->
 
 
-# IntegrationHub
+# Integration Hub exercice
 
 ## Goal
 
-In this exercice you will learn how to create a Spoke in IntegrationHub. You will learn how toconnect a ServiceNow Worklow to a remote API. For our use case we want to use IntegrationHub to validate the Routing Number extracted from a VOID Check (with Document Intelligence), we are going to pass the routing number to a remote API (routingnumber.info), this allows us to perform some additional Data Validation and gather additional banking information.  This is just an example to show how easily you can connect ServiceNow to external system by creating your own Spoke.
+In this exercice you will learn how to create a Spoke in Integration Hub. You will learn how to connect a ServiceNow Worklow to a remote API. For our use case we want to use Integration Hub to validate some data against an API. In the previous exercice we have seen how to extract data from document using our Intelligent Document Processing capability (**Document Intelligent**). In the previous exercice we see how we can extract Banking informtuon from a VOID Check automatically, in this exercice we see how we can for example validate the **Routing Number** extracted from a VOID Check by building an Integration Hub that is going to take this Routing Number information and pass it to an external API. This 3rd party API returns additional banking information that can be useful to setup the direct deposit for this new employee.  This is just an example to show how easily you can connect ServiceNow to external system by creating your own Spoke. We see how to build an integration to an API with not a single line of code.
 
-When you need to create an integration from ServiceNow to an external system via API, it is important to familiarize yourself with the API that you are going to call from ServiceNow
+When you need to create an integration from ServiceNow to an external system via API, it is important to familiarize yourself with the API that you are going to call from ServiceNow first.
 
 1. Inspect the Routing Number API.
 
@@ -200,7 +155,9 @@ When you need to create an integration from ServiceNow to an external system via
     ![Relative](images/2022-09-06_15-38-02.png)
 
 
-    This will open the content of the **response_body** output, this is the response coming from the API. Most APIs return a response in the same format (JSON Payload), it contains the information that we want to use from our Workflow. The beauty of Flow Designer and IntegrationHub is that we can parse this JSON Payload without having script anything (most solution on the market require some kind of codind to do this)
+    This will open the content of the **response_body** output, this is the response coming from the API. Most APIs return a response in the same format (JSON Payload), it contains the information that we want to use from our Workflow. 
+    
+    > The benefit of Flow Designer and Integration Hub is that we can parse a JSON Payload without having to script anything (most solutions on the market require some kind of codind to do this), before we had Integration Hub on the plateform we had to use some json.parse function in Javascript to be able to extract information from a JSON Payload. We made it easy for anyone to build an intregration with no code.
 
 1. Copy the code from the **Viewing response_body** window: 
     > Save in a text file or notepad or make sure to keep the content in your clipboard (Copy/paste)
@@ -270,444 +227,151 @@ When you need to create an integration from ServiceNow to an external system via
 
 1. Now that we have created the output we can map the Objects from the JSON Parser step to those Outputs. That way we are taking the data from the API response and assigning the values to our outputs (Variables) so anyone who use that action in a flow can use the data coming from the API to any steps of the flow.
 
-# File Directory Structure
+1. Click **Exit Edit Mode**
 
-## Creating your local repository
+    ![Relative](images/2022-09-07_07-29-31.png)
 
-1. On your local machine, create a GitHub folder in an appropriate place (e.g. Users> Your Home> Documents).
+1. Locate on the right hand side (Data pile), the **Jason Parser Step** then under **root**, you see the objects coming from the API Response (Json payload). We need to assign those variable to the **Action Outputs** we just created in the previous step.
 
-1. Locate the **Clone or download** (green) dropdown in the GitHub repository created for you and copy the URL.
+    ![Relative](images/2022-09-07_07-38-36.png)
 
-    ![GitHub clone](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-10-09-56-55.png)
+1. Drag and Drop those variables from the **JSON Parser step** to the **Action Output** variable as shown:
 
+    ![Relative](images/2022-09-07_07-32-41.gif)
 
+    Repeat that step for the following objects:
 
-1. Open a command or terminal window on your local machine and clone the repistory with a command similar to this:
+    | JSON Parser => Root | Action Output |
+   |-------|-------|
+   | zip | zip |
+   | customer_name| customer_name |
+   | message | message |
+   | telephone | telephone |
+   | state | state |
+   | address | address |
+   | routing_number | routing_number |
 
-        git clone (pasted URL)
+1. Once you are done mapping the variables from the **JSON Parser Step** to the Action Outputs, click **Save** and review the Action Output screen to make sure it looks the same as the picture below:
 
-1. You can now edit the files locally and push them to GitHub as needed.
+      ![Relative](images/2022-09-07_07-47-57.png)
 
-## Files and folders
 
-1. Your workshop/lab guide must be named **guidebook.md**.
+1. Now it's time to test our new Action again to make sure the value extracted from the API response are correctly passed to our newly created Action Output. Click **Test**:
 
-1. Place images in a folder named **images** (all lower case) and reference them with a relative pathname in your Markdown reference.
+     ![Relative](images/2022-09-07_07-52-07.png)
 
-        ![alt-text](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-10-11-47.png)
+1. Enter the Routing Number **021000021** (1) then click **Test** (2):
 
-    > Note that this document makes use of absolute URLs to the images because they do not get copied with the template. As a general practice, use relative URLs in your guidebook (see images below).
+    ![Relative](images/2022-09-07_07-53-49.png)
 
-1. Create an optional **files** folder for any files students need to download for the course, such as images, JavaScript, or csv files to import. The *files* directory name is lowercase.
+    After few second you should see the text **Your Test has finished running, View the Action execution details**. click on that text to inspect the execution detail and see if our newly Action Ouputs contain values assigned to them:
 
-        Download the [Sample data](files/sample_data.xlsx)
+    ![Relative](images/2022-09-07_07-55-53.png)
 
-    > Note that file names with spaces will break the publishing process.  Replace spaces with underscores for file and image links.
+1. The Execution Details screen opens, scroll down until you see the **Output Data** section. 
 
-1. Create an **other** folder for any additional files such as PowerPoints used to create complex diagrams, or presenter notes. These are not generally linked from the lab guide nor available to the students.
+    Congratulation! you have created a new API integration, you are capturing data from the API response and assigning those to variables that can be reused from within any workflows that use that new Action! 
 
-![Sample files and folders](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-10-10-24-28.png)
+    ![Relative](images/2022-09-07_07-59-39.png)
 
-# Headings/Sections
+1. We have basically created a reusable building block (Spoke action). For builder to be able to use it from within their worlflows, you need to publish it to make it available. 
+Close the Operation Execution Details tab(s):
 
-## Available headings
+    ![Relative](images/2022-09-07_08-04-57.png)
 
-You can use the following headings in your guidebook.
+1. Click the **Publish** button from your **Validate Banking Information** Action screen:
 
-| Markdown tag | Heading level |
-|----|----|
-| # | Heading 1 |
-| ## | Heading 2 |
-| ### | Heading 3 |
+    ![Relative](images/2022-09-07_08-06-37.png)
 
-> **No other headings are allowed.**
+1. Click **Publish** again from this Validation screen:
 
-## H1 & H2 relationship
+    ![Relative](images/2022-09-07_08-08-09.png)
 
-Always follow your H1 lab title immediately with an H2 section title.  This is a convention allows the import process automatically generate the table of contents and navigation (see the example figure at the top).
+## Creating a subflow and adding the spoke action
 
-Use Heading 1/H1 _only_ for section titles.  All content under H1 will render as a single page when digital guidebooks are published.
+1. Now we are going to create a simple subflow so you can see how builders can use your new spoke action
 
-Example (partial):
+    Click on the Home icon to return to the main screen of Flow Designer
 
-    # Introduction
+    ![Relative](images/2022-09-07_08-14-32.png)
 
-    ## Goal
+1. Click **New** (1) then **Subflow** (2):
 
-    Convert an existing expense report process from spreadsheets to a bespoke application in ServiceNow. You'll leave this lab all without writing a single piece of code!
+    ![Relative](images/2022-09-07_08-17-32.png)
 
-renders this index:
+1. On the **Subflow Properties** screen enter the Subflow Name **Verify Routing Number** (1), then Selection the Application **Direct Deposit** and finally click **Submit** (3)
 
-![Sample live index headings](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-11-26-14-00-30.png)
+    ![Relative](images/2022-09-07_08-19-32.png)
 
-and each heading 1 renders a section this:
+1. We need to create input for our subflow, click on the  **Select to create the inputs & outputs of your subflow**:
 
- ![Sample document headings](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-11-26-14-01-46.png)
+    ![Relative](images/2022-09-07_08-23-07.png)
 
-## Sections
+1. Under the **Inputs** section, click the **+** sign (1), then enter the label **routingnumber** (2) and name **routing number** (3), make the input **Mandatory** (4), and finally click the expand icon (5).
 
-Within each Heading 1/H1 section of your lab guide, use H2 to separate the different topics or exercises.
+    ![Relative](images/2022-09-07_08-26-03.png)
 
-    ## Create User Accounts
+1. on the Default value, type the number **02100021** (1) , then click Save (2)
 
-    In this section you will create users for the upcoming exercises.
+    ![Relative](images/2022-09-07_08-31-59.png)
 
-    1. Navigate to **User Administration > Users**.
+    > We set a default value just so we do not have to type it again and again when we test the subflow.
+1. Scroll down to the **Outputs** section, then click the **+** sign twice (1) to add two new output variables, and replace the variable value (2) and (3) with the value **message**, and the variable (4) and (5) with the value **bankname**, and finally click **Done** (6)
 
-    1. Click **New** at the top of the list.
 
-## Allowing Attendees to Catch Up
+    ![Relative](images/2022-09-07_08-34-26.png)
 
-If your lab/workshop has exercises that depend upon each other, use ServiceNow's source control integration in Studio to allow the attendee to catch up rather than hitting a dead-end.
+1. Now we can add our new spoke action to the subflow. Under Actions click **+ Add an Action, Flow Logic, or Subflow**
 
-1. As you build your lab exercises (and guidebook), create a branch in source control as you complete each exercise. For example, create a branch "Exercise 1", with the completed first exercise. When an attendee switches to that branch, they can begin the second exercise with the first one completely done.
+    ![Relative](images/2022-09-07_08-39-38.png)
 
-    > **Important!** Don't forget demo data!
 
-1. Include the GitHub Companion update set in your CloudLabs ICE Package.
+1. Then click Action
 
-1. Provide instructions at the end of each exercise to allow any attendees who did not successfully complete the lab the ability to use GitHub companion to switch branches and continue learning.
+    ![Relative](images/2022-09-07_08-41-05.png)
 
-# Lists
+1. in the search box type **Validate Banking Information** (1) then click under **Default** on the action **Validate banking Information** (2):
 
-* While Markdown supports nesting ordered and un-ordered lists, please avoid using nested lists in your guide book.  This is to avoid conflicts with how we style (or rather, do not) nested lists on the Developer Portal.
+    ![Relative](images/2022-09-07_08-42-56.png)
 
-    1. Use numbered lists for task steps. All of these steps start with *1.*
+1. From the Data Pile, under **Subflow Inputs**, grab the **routingnumber** variable and drop it to the **Routing Number** field on our **Validate Banking Information** action and click **Done**:
 
-    1. You do not have to manually number each step.
+    ![Relative](images/2022-09-07_08-46-32.gif)
 
-        But sometimes you need paragraphs between steps.  In those cases, indent your paragraphs with a tab.
+    > This is just a simple exampler on how to add a custome spoke action to a subflow, under that step you could add any logic you want based on your use case.
 
-        Multiple paragraphs are OK too.
+1. Notice in the data pile on the right hand side, the variable that we have available to use in our subflow, those are the output variable we have created earlier when we built the Spoke Action. Now we are going to map those to our Subflow Outputs. For this we use a **Flow logic step** that is available to us.
 
-    1. And markdown will pick up numbering where you left off.
+1. Under Under the **Validate Banking Information** action, click **+ Add an Action, Flow Logic, or Subflow**:
 
-    1. Place a blank line between ordered and unordered lists for clarity. 
+    ![Relative](images/2022-09-07_08-57-20.png)
 
-* Indent supporting images and text to allow numbered lists to continue
+1.  Click **Flow Logic** (1) then **Assign Subflow Outputs** (2):
 
-# Images
+    ![Relative](images/2022-09-07_08-54-52.png)
+1. Click the **+** sign (1) twice to add two Subflow output assignments, then expand the list (2) on the first line of the table, and select  **message** (3):
 
-## General Image Information
+    ![Relative](images/2022-09-07_09-00-21.png)
 
-This is the general form of an image tag in Markdown with alt text in [] and the URL to the image. The URL can be absolute or relative. We recommend using relative images for the guidebook (as they may be re-used for other events over the course of the year).
+1. Drag from the Data Pile the **Message** variable and drop it to the **Data field** under the **Assign Subflow outputs** steps. For the second field under **Assign Subflow Outputs**, select the Name **bankname**, then drag the variable **customer_name** from the Data pile and drop it under the Data field and click **Done**as shown:
 
-    ![Absolute](https://www.servicenow.com/content/dam/servicenow-assets/images/meganav/servicenow-header-logo.svg)
+    ![Relative](images/2022-09-07_09-05-26.gif)
 
-    ![Relative](images/2018-now-logo.png)
+    Congratulation, you have now created a reusable Subflow that leverage your custom action, this Subflow returns 2 values. The Message coming    from the API response (return code) and the Bank Name assicated to the routing number provided as an input. This example shows how you can use your custom action in a subflow and how you can select only the information you need from that action and expose the retrieved value as Subflow outputs. This makes those value available for any buikder who will use this subflow in their own Flow.
 
-* Inline images must be smaller than 100 pixels wide.
+1. Click Save and then Click Test.
 
-* All images MUST have alternate text defined for accessibility compliance.  This is the part of the image markdown in the square brackets.  This text should describe the image in a way that allows a screen reader to provide context to someone who cannot see the image.
+1. Click Run Test
+    > Do no put any value in the Routing Number field, remember we have set a default value, so the Subflow will use the default value.
 
-* DO NOT use a screenshot as a replacement for text as this is not usable for people with accessibility requirements.
+   ![Relative](images/2022-09-07_09-13-20.png)
 
-    For example, do not say “configure the record as shown \<insert screenshot\>”.  You can have a screenshot showing the configured record but you must also have text outside of the screenshot to explain what to do.
+1. When the flow has finished runing, click on **Your test has finiesh running. View the Subflow execution details.**:
 
-* Screenshot images should have a border applied in :  1 pt, dark gray (hex #424242, dec 66,66,66) (This should be .75 px, but Snagit only supports integers and points, not pixels).
+    ![Relative](images/2022-09-07_09-15-17.png)
 
-    ![Adding a border](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-10-10-46-35.png)
+1. On the execution detail screen, expand the **Subflow Inputs & Outputs** section (1) and inspect the subflow input **routingnumber** (2) and Subflow outputs **bankname** and **message** (3)
 
-* Avoid entire screenshots when not needed
+    ![Relative](images/2022-09-07_09-19-53.png)
 
-    Keep in mind that many guidebook users may be viewing your content using mobile devices. Full screenshots are difficult to read on a tablet or mobile phone. For example, this image of Studio is difficult to read on a desktop, let alone a small screen.
-
-    **Bad**:
-
-    ![Poor screenshot example](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-11-08-40-50.png)
-
-    Providing instructions to click *Create Application File* are not much help. Instead, take a screenshot of the area of focus *in context* (with some additional elements in the shot or partially in the shot) to help the viewer locate where you want them to focus.
-
-    **Good**:
-
-    ![Good screenshot example](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-11-08-43-59.png)
-
-* If you find you need a full screen shot...
-
-    There will be times when you need an entire screenshot in your lab guide. Use these sparingly - often to show a "finished product" such as a dashboard layout.
-
-    * Make the font as large as possible
-
-        Use your browser's zoom feature to make the font as large as possible without affecting the layout of the screen. This improves the readability.
-
-    * Use arrows to indicate areas of focus
-
-        If you need to draw attention to a screen element in a larger context, use an arrow and label to clearly indicate where the reader should focus.
-
-        ![Simple annotation](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-11-08-53-17.png)
-
-* Do not exceed image width of 1024px
-
-* When you have an image representing multiple steps, provide numeric indicators and reference them in the text
-
-    Example:
-
-    1. In the left column, click **Data Model** (1), then in the middle, click **Table** (2), and finally click **Create** in the lower right (3).
-
-    ![Multiple step annotation](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-11-08-57-24.png)
-
-* Consider using animated GIFs to demonstrate concepts like drag and drop
-
-    Using a tool like SnagIt, you can capture motion and create animations that demonstrate short snippets that maybe difficult to convey with a static image.
-
-    ![Animated GIF](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/drag_and_drop_example.gif)
-
-# Writing Style
-
-## General
-
-* Escape special characters in Markdown. This includes \(\)\[\]\{\}\<\>.
-
-* Identify questions and notes with the Markdown prefix **>**
-
-    > Note: If you get a 403 error, check your headers.
-
-    > Question: Did the list show 5 records?
-
-* As the learner reads your guidebook, provide them fewer details.
-
-    For example, after you have given the six-step instructions to create a user record, you do not provide the same six steps for each additional user record. Simply give instructions such as: *Repeat steps 1-6 to create two additional user accounts for Tom Harrington, and Dory Williams.* Assume the learner is learning! This also makes it easier to maintain the guidebook should any of the details change.
-
-* Use tables when providing repetitive data entry instructions
-
-    Example:
-
-    1. Fill in the New account form with the data from this table:
-
-        | Field | Value |
-        |-------|-------|
-        | Name | Acme Corp |
-        | Location | 333 Cliffside Rd, Tucson AZ |
-        | Contact name | Wile E. Coyote |
-
-* Add a reference section to the docs pages or other helpful material at the end of each lab exercise.
-
-    **Reference**:
-
-    * [Flow Designer](https://docs.servicenow.com/bundle/newyork-servicenow-platform/page/administer/flow-designer/concept/flow-designer.html)
-    * [Community](https://community.servicenow.com)
-
-* Validate all code against [technical best practices](https://developer.servicenow.com/app.do#!/catlist/technical_best_practices?v=newyork).
-
-    Examples include:
-
-    * Avoid dot walking to a sys_id. A reference field value *is* a sys_id, so dot-walking is redundant and costs an extra database query.
-
-        **NO**:
-        ```javascript
-        var id = current.caller_id.sys_id;
-        ```
-
-        **YES**:
-        ```javascript
-        var id = current.getValue('caller_id');
-        ```
-
-    * Use GlideRecord getValue() instead of using dotted-notation. Using dotted-notation can return incorrect values as the dotted field is an object (making work in Service Portal frustrating) and GlideRecord is a pointer (making values in loops troublesome). getValue() also allows you to use variables for field names.
-
-       **NO**:
-        ```javascript
-        var location = userGr.location;
-        ```
-
-       **YES**:
-        ```javascript
-        var location = userGr.getValue('location');
-        ```
-
-    * When you need to dot-walk to a reference value, use toString(). Do not use toString() in place of getValue() in the previous example.
-
-       **NO**:
-        ```javascript
-        var locationID = current.caller_id.location;
-        ```
-
-       **YES**:
-        ```javascript
-        var locationID = current.caller_id.location.toString();
-        ```
-
-    * Use setValue() instead of dotted notation when setting a field value.
-
-        **NO**:
-        ```javascript
-        incGr.state = 5;
-        ```
-
-       **YES**:
-        ```javascript
-        incGr.setValue('state', 5);
-        ```
-
-    * Avoid hard coding sys_ids. Use a property value, or use the setDisplayValue() method (or both) where you can. sys_ids and other hard coded strings are difficult to read and maintain.
-
-       **NO**:
-        ```javascript
-        current.assignment_group = '3176fe10db4e1340cbf6d5b0cf9619cd';
-        ```
-
-       **YES**: Set a system property like:
-
-       | Field | Value |
-       |-------|-------|
-       | Name | my_app.default.assignment_group | 
-       | Value | Help Desk |
-
-        ```javascript
-        current.assignment_group.setDisplayValue(gs.getProperty('my_app.default.assignment_group'));
-        ```
-
-    * Use GlideRecord setLimit(1) when you only need one record to check if a record exists. This can greatly speed up queuries.
-
-       **NO**:
-        ```javascript
-        var incGr = new GlideRecord('incident');
-        incGr.addQuery('active', true);
-        incGr.addQuery('priority', 1);
-        incGr.query();
-
-        if (incGr.next()) {
-            return incGr;
-        }
-        ```
-
-       **YES**:
-        ```javascript
-         var incGr = new GlideRecord('incident');
-        incGr.addQuery('active', true);
-        incGr.addQuery('priority', 1);
-        incGr.setLimit(1);
-        incGr.query();
-
-        if (incGr.next()) {
-            return incGr;
-        }
-       ```
-
-## Emphasis
-
-* Do not use "quotes" for emphasis.
-
-* Use **bold** for:
-
-    * Anything users click, type, or drag
-	    * Example: Click the **Save** button.
-    * Application Navigator paths
-    	* Example: Use the Application Navigator to open **System Applications \> Studio**.
-    * Application Explore paths
-	* Example: To open an applet in Studio, use the Application Explorer to open **Mobile Studio \> Applets \> \<applet name\>**.
-
-* Use *italics* for:
-
-    * Application names
-	    * Open the *NeedIt* application in Studio.
-    * Application file names
-	    * Example: Configure the *Update Record* action.
-    	* Example: The *NeedIt When needed field date* Business Rule prevents creating *NeedIt* records with *When needed* field values in the past. 
-    * Field names and values
-	    * Example: *Name*: **Shopping List**
-	    * Example: In the example, the *Starting Number* field contains a 4-digit number. 
-	    * Example: When the *Active* field is *true*...
-    * Related list names
-	    * Example: Click the **New** button on the *HTTP Methods* related list.
-    * Dialog names
-    	* In the *Select Application* dialog, click the **NeedIt** link to open the *NeedIt* application for editing.
-
-* Use \< \> around variable data or data a user selects. (Do not forget to use backslash before \< and \>.)
-
-    * Example: To open an applet in Studio, use the Application Explorer to open **Mobile Studio \> Applets \> \<applet name\>**.
-    * Example: *When needed*: **\<select any date in the future\>**
-
-* Use ( ) for values that are automatically populated.
-
-    * Example: *Scope*: **(This value is automatically populated)**
-
-* Use (path \> item) for data pills.
-
-    * Example: *Record*: **(Trigger \> NeedIt Record)**
-
-* Use \[ \] to separate components of multi-part fields and conditions.
-
-    * Example: *Fields*: **\[State\] \[Approved\]**
-    * Example: *Condition*: **\[Short description\] \[contains\]\[printer\]**
-
-## Numbering
-
-Numbering renders in the proper sequence regardless of the numbers used in the markdown and restarts at H2s and parent list items. To keep things simple, begin each numbered line with a *1.* to ensure proper numbering.
-
-For example, when adding application files to Studio, always use the same verbiage:
-
-1. Create a UI Policy.
-
-   1. In Studio, click the **Create Application File** button.
-
-   1. In the *Filter...* field enter the text **UI Policy** OR select **Client Development** from the categories in the left hand pane.
-
-   1. Select **UI Policy** in the middle pane as the file type then click the **Create** button.
-
-1. Configure the UI Policy:
-
-    | Field | Value |
-    |-------|-------|
-    | Table | **NeedIt \[x\_\<your\_company\_code\>\_needit\_needit\]** |
-    | Active | **Selected (checked)** |
-    | Short description | **NeedIt show or hide Other field** |
-
-## Code
-
-* Surround code in triple-backtick marks (\`\`\`)
-
-    Surrounding your code in \`\`\` marks formats the code to be easily copied and pasted. Using the language inside the starting ticks makes enables keyword highlighting as well.
-
-    ```javascript
-    var incGr = new GlideRecord('incident');
-    incGr.query();
-    var count = incGr.getRowCount();
-    ```
-
-* If your script exceeds more than 20 lines, link to a repository or downloadable text file in the *files* folder.
-
-# Grammar and Clarity
-
-* For mobile instructions, use "tap" instead of "click"
-    * **NO**: Click the camera icon.
-    * **YES**: Tap the camera icon.
-
-* Use "Click" or "Tap", not "Click on" or "Tap on"
-    * **NO**: At the bottom of the form, click on the **Submit** button.
-    * **YES**: At the bottom of the form, Click the **Submit** button.
-
-* Avoid passive sentences. If you find yourself using words like *should* and *will*, rewrite your instructions to be more active.
-    * **NO**: The form will display the number of records.
-    * **YES**: The form displays the number of records.
-    * **NO**: You should see a screen a list with five rows.
-    * **YES**: A list with five rows is displayed.
-
-* Avoid using *you* and other second-person pronouns in concept pages.
-
-* NEVER use *we*, *our*, and other first-person pronouns.
-
-* Do not use "once" to indicate continuation.
-
-    * **NO**: Once you complete the form, click **Save**.
-    * **YES**: When you have completed the form, click **Save**.
-
-* Do NOT use contractions.
-
-* Use the Oxford comma for this, that, and the other things.
-
-* Log in is a verb and login is an adjective or noun. “Use the login screen to log in to your instance.”  (Notice it is not log into because the verb is ‘log in’)   Same with sign in / signin and log out / logout.
-
-* UTILIZE should NEVER be used in our content as it means to use something not fit for purpose.  As in, “make do with”.
-
-* Give clarity as to where someone should look for something.  
-	* **NO**: Click **Save**.  
-	* **YES**: In the Properties dialog, click the **Save** button.
-* Do not use positional words unless required.  
-	* **NO**: In the screenshot below...  
-	* **YES**: In the example...
-
-# Helpful resources
-
-* [Podcast: Break Point - Effective Presentations with Julian Mills - Part 1 - Preperation](https://omny.fm/shows/break-point/effective-presentations-with-julian-mills-part-1-p)
-* [Podcast: Break Point - Effective Presentations with Julian Mills - Part 2 - Common mistakes](https://omny.fm/shows/break-point/break-point-034)
+You have now completed the Integration Hub exercice. We have seen how to create a new API integration by creating a new Spoke Action and using the REST and JSON Parser steps, then how to publish that spoke action to be able to use it in a subflow.
