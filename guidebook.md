@@ -14,9 +14,9 @@ In this exercice we are going over a use case of a fictitious organization calle
 
 1. Log in to your instance as **Admin**
 
- We are going to Impersonate as **Abel Tuter**, for our use case, **Abel Tuter** is a new hire will submit his VOID Check using a **Record Producer** in ServiceNow. This step will allow you to review the document for which we want to extract information, but also it shows an example of how you can submit document to **Document Intelligence**. 
+     We are going to Impersonate as **Abel Tuter**, for our use case, **Abel Tuter** is a new hire will submit his VOID Check using a **Record Producer** in ServiceNow. This step will allow you to review the document for which we want to extract information, but also it shows an example of how you can submit document to **Document Intelligence**. 
 
-> Document Intelligence can grab documents from attachment on any records. Documents can be submitted via a workflow too.
+    > Document Intelligence can grab documents from attachment on any records. Documents can be submitted via a workflow too.
 
 1. Once logged-in to your instance as **Admin**, click on the **Favorites** (1) then click on **Download the VOID Cheque here** (2) :
 
