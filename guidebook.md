@@ -19,7 +19,6 @@ In this exercice we are going over a use case of a fictitious organization calle
     > Document Intelligence can grab documents from attachment on any records. Documents can be submitted via a workflow too.
 
 1. Once logged-in to your instance as **Admin**, click on the **Favorites** (1) then click on **Download the VOID Cheque here** (2) :
-    ![Relative](images/2022-09-09_09-47-1.png)
     ![Relative](/images/2022-09-09_09-47-1.png)
 
 1. The download of the of file should start automatically. In your Download folder locate the file name **void cheque Abel Tuer.jpg** and open it so we can review the information we want to extract from it.
