@@ -46,7 +46,6 @@ In this exercice we are going over a use case of a fictitious organization calle
 1.  In the **Impersonate user** screen, type **Abel Tuter** in search box (1), then click on **Abel Tuter** (2)  and finally click **Impersonate user** (3)
 
     ![Relative](/images/2022-09-09_10-03-48.png)
-)
 
 1. Once impersonated as **Abel Tuter**, click **Favorites** (1) then click **Setup Direct Deposit** (2)
 
@@ -72,7 +71,9 @@ In this exercice we are going over a use case of a fictitious organization calle
 
     >Note: This is where you can see Document Intelligence sending job to our Machine Learning shared infrastructure (Nagini) to process the file (OCR Task, Training the model and retreive the predicted values). this is not something an end-user will see, we just want to show here where to see what is happening in the back-end. It can be useful for the ServiceNow Admin or Document Intelligence admin to look at this table to see how long it takes to process the Document intelligence tasks. Since Doccument Intelligence uses a shared Machine Learning infrastructure, it can takes from few seconds to minutes to process depending of the workload on the Nagini cluster.
 
-1. You should see a table and records as shown in the example below. Other ServiceNow products write on that table, for example **Predictive Intelligence**.![Relative](images/2022-09-09_10-28-02.png)
+1. You should see a table and records as shown in the example below. Other ServiceNow products write on that table, for example **Predictive Intelligence**.
+
+    ![Relative](images/2022-09-09_10-28-02.png)
 
 1. We are going to view what we have configured on the instance so Document Intelligence can extract the information we need from that VOID Check. Click on **All** (1) then type **Document intelligence** in the filter navigator (2) and finally click **Task Definititions**:
 
