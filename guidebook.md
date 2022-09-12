@@ -20,13 +20,13 @@ In this exercice we are going over a use case of a fictitious organization calle
 
 1. Once logged-in to your instance as **Admin**, click on the **Favorites** (1) then click on **Download the VOID Cheque here** (2) :
 
-    ![Relative](/images/2022-09-09_09-47-1.png) 
+    ![Relative](/images/2022-09-09_09-47-1.png)
 
 1. The download of the of file should start automatically. In your Download folder locate the file name **void cheque Abel Tuer.jpg** and open it so we can review the information we want to extract from it.
 
     This this an example of VOID Check that payroll will use to extract the banking information of the new hire. There are meaningful information that hey usually extract manually:
 
-    ![Relative](/images/2022-09-09_09-51-53.png) 
+    ![Relative](/images/2022-09-09_09-51-53.png)
 
     | Text Element| Value |
    |-------|-------|
@@ -41,11 +41,11 @@ In this exercice we are going over a use case of a fictitious organization calle
 
     > We are going to submit the VOID Check in ServiceNow as **Abel Tuter**
 
-    ![Relative](/images/2022-09-09_10-00-29.png) 
+    ![Relative](/images/2022-09-09_10-00-29.png)
 
 1.  In the **Impersonate user** screen, type **Abel Tuter** in search box (1), then click on **Abel Tuter** (2)  and finally click **Impersonate user** (3)
 
-    ![Relative](/images/2022-09-09_10-03-48.png) 
+    ![Relative](/images/2022-09-09_10-03-48.png)
 )
 
 1. Once impersonated as **Abel Tuter**, click **Favorites** (1) then click **Setup Direct Deposit** (2)
