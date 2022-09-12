@@ -26,7 +26,7 @@ In this exercice we are going over a use case of a fictitious organization calle
 
     This this an example of VOID Check that payroll will use to extract the banking information of the new hire. There are meaningful information that hey usually extract manually:
 
-    ![Relative](/images/2022-09-09_09-51-53.png)
+    ![Relative](images/2022-09-09_09-51-53.png)
 
     | Text Element| Value |
    |-------|-------|
@@ -41,21 +41,21 @@ In this exercice we are going over a use case of a fictitious organization calle
 
     > We are going to submit the VOID Check in ServiceNow as **Abel Tuter**
 
-    ![Relative](/images/2022-09-09_10-00-29.png)
+    ![Relative](images/2022-09-09_10-00-29.png)
 
 1.  In the **Impersonate user** screen, type **Abel Tuter** in search box (1), then click on **Abel Tuter** (2)  and finally click **Impersonate user** (3)
 
-    ![Relative](/images/2022-09-09_10-03-48.png)
+    ![Relative](images/2022-09-09_10-03-48.png)
 
 1. Once impersonated as **Abel Tuter**, click **Favorites** (1) then click **Setup Direct Deposit** (2)
 
 
-    ![Relative](/images/2022-09-09_10-06-14.png)
+    ![Relative](images/2022-09-09_10-06-14.png)
 
     > This is just a shortcut to open the Recored Producer that we have created for new hires to submit their VOID Check.
 1. Once the **Setup Direct Deposit** is opened, click **Add attachments** (1), select the file **void cheque Abel Tuter.jpg** from your download folder then click **submit** (2)
 
-    ![Relative](/images/2022-09-09_10-10-23.png)
+    ![Relative](images/2022-09-09_10-10-23.png)
 
 1. Notice a banking record was created, record number **BAN0001001**. this in use case would trigger **Document Intelligence** to process the file attached to perform the data extraction.
 
@@ -63,11 +63,11 @@ In this exercice we are going over a use case of a fictitious organization calle
 
 1. Click on **Abel Tuter**'s profile picture (1) then click **End  impersonation** (2)
 
-    ![Relative](/images/2022-09-09_10-17-48.png)
+    ![Relative](images/2022-09-09_10-17-48.png)
 
 1. Click **All** (1) then type **ml_solution.list** (2) then press **Enter**:
     
-    ![Relative](/images/2022-09-09_13-36-53.png)
+    ![Relative](images/2022-09-09_13-36-53.png)
 
     >Note: This is where you can see Document Intelligence sending job to our Machine Learning shared infrastructure (Nagini) to process the file (OCR Task, Training the model and retreive the predicted values). this is not something an end-user will see, we just want to show here where to see what is happening in the back-end. It can be useful for the ServiceNow Admin or Document Intelligence admin to look at this table to see how long it takes to process the Document intelligence tasks. Since Doccument Intelligence uses a shared Machine Learning infrastructure, it can takes from few seconds to minutes to process depending of the workload on the Nagini cluster.
 
