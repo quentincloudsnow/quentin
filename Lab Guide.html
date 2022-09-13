@@ -355,12 +355,12 @@ kbd {
 </blockquote></li>
 <li><p>Once logged-in to your instance as <strong>Admin</strong>, click on the <strong>Favorites</strong> (1) then click on <strong>Download the VOID Cheque here</strong> (2) :</p>
 
-<p><img src="/images/2022-09-09_09-47-1.png" alt="Relative"></p></li>
+<p><img src="images/2022-09-09_09-47-1.png" alt="Relative"></p></li>
 <li><p>The download of the of file should start automatically. In your Download folder locate the file name <strong>void cheque Abel Tuer.jpg</strong> and open it so we can review the information we want to extract from it.</p>
 
 <p>This this an example of VOID Check that payroll will use to extract the banking information of the new hire. There are meaningful information that hey usually extract manually:</p>
 
-<p><img src="/images/2022-09-09_09-51-53.png" alt="Relative"></p>
+<p><img src="images/2022-09-09_09-51-53.png" alt="Relative"></p>
 
 <table>
 <thead>
@@ -399,34 +399,35 @@ kbd {
 <p>We are going to submit the VOID Check in ServiceNow as <strong>Abel Tuter</strong></p>
 </blockquote>
 
-<p><img src="/images/2022-09-09_10-00-29.png" alt="Relative"></p></li>
+<p><img src="images/2022-09-09_10-00-29.png" alt="Relative"></p></li>
 <li><p>In the <strong>Impersonate user</strong> screen, type <strong>Abel Tuter</strong> in search box (1), then click on <strong>Abel Tuter</strong> (2)  and finally click <strong>Impersonate user</strong> (3)</p>
 
-<p><img src="/images/2022-09-09_10-03-48.png" alt="Relative">
-)</p></li>
+<p><img src="images/2022-09-09_10-03-48.png" alt="Relative"></p></li>
 <li><p>Once impersonated as <strong>Abel Tuter</strong>, click <strong>Favorites</strong> (1) then click <strong>Setup Direct Deposit</strong> (2)</p>
 
-<p><img src="/images/2022-09-09_10-06-14.png" alt="Relative"></p>
+<p><img src="images/2022-09-09_10-06-14.png" alt="Relative"></p>
 
 <blockquote>
 <p>This is just a shortcut to open the Recored Producer that we have created for new hires to submit their VOID Check.</p>
 </blockquote></li>
 <li><p>Once the <strong>Setup Direct Deposit</strong> is opened, click <strong>Add attachments</strong> (1), select the file <strong>void cheque Abel Tuter.jpg</strong> from your download folder then click <strong>submit</strong> (2)</p>
 
-<p><img src="/images/2022-09-09_10-10-23.png" alt="Relative"></p></li>
+<p><img src="images/2022-09-09_10-10-23.png" alt="Relative"></p></li>
 <li><p>Notice a banking record was created, record number <strong>BAN0001001</strong>. this in use case would trigger <strong>Document Intelligence</strong> to process the file attached to perform the data extraction.</p></li>
 <li><p>Now we are going to end the impersonation for <strong>Abel Tuter</strong> and inspect what is happening in the back-end and how <strong>Document Intelligence</strong> was configured.</p></li>
 <li><p>Click on <strong>Abel Tuter</strong>&#39;s profile picture (1) then click <strong>End  impersonation</strong> (2)</p>
 
-<p><img src="/images/2022-09-09_10-17-48.png" alt="Relative"></p></li>
+<p><img src="images/2022-09-09_10-17-48.png" alt="Relative"></p></li>
 <li><p>Click <strong>All</strong> (1) then type <strong>ml_solution.list</strong> (2) then press <strong>Enter</strong>:</p>
 
-<p><img src="/images/2022-09-09_13-36-53.png" alt="Relative"></p>
+<p><img src="images/2022-09-09_13-36-53.png" alt="Relative"></p>
 
 <blockquote>
 <p>Note: This is where you can see Document Intelligence sending job to our Machine Learning shared infrastructure (Nagini) to process the file (OCR Task, Training the model and retreive the predicted values). this is not something an end-user will see, we just want to show here where to see what is happening in the back-end. It can be useful for the ServiceNow Admin or Document Intelligence admin to look at this table to see how long it takes to process the Document intelligence tasks. Since Doccument Intelligence uses a shared Machine Learning infrastructure, it can takes from few seconds to minutes to process depending of the workload on the Nagini cluster.</p>
 </blockquote></li>
-<li><p>You should see a table and records as shown in the example below. Other ServiceNow products write on that table, for example <strong>Predictive Intelligence</strong>.<img src="images/2022-09-09_10-28-02.png" alt="Relative"></p></li>
+<li><p>You should see a table and records as shown in the example below. Other ServiceNow products write on that table, for example <strong>Predictive Intelligence</strong>.</p>
+
+<p><img src="images/2022-09-09_10-28-02.png" alt="Relative"></p></li>
 <li><p>We are going to view what we have configured on the instance so Document Intelligence can extract the information we need from that VOID Check. Click on <strong>All</strong> (1) then type <strong>Document intelligence</strong> in the filter navigator (2) and finally click <strong>Task Definititions</strong>:</p>
 
 <p><img src="images/2022-09-09_10-35-25.png" alt="Relative"></p>
