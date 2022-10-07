@@ -129,7 +129,7 @@ Click on the **Show In Doctintel** button (2) to open the file in DocIntel:
 
     Notice the percentage number (73%) next to **Abel Tuter** under the **Account Holder** field (1). This is the confidence score for the prediction. The confidence score increases as you train the model with more document (usually 4 to 5 documents is enough to reach high number).  On the Task definition you can configure the **Straight Through processing threshold**. this correspond to the predicition confidence score value for which you want to extract the values and map them to the fields without a manual review from an agent.
 
-    Click the **Submit** button.  By clicking the submit button the model is trained with those new inputs. In this Lab environment we do not have access to our Machine Learning component it won't do anything.
+    Click the **Submit** button.  By clicking the submit button the model is trained with those new inputs. In this Lab environment we do not have access to our Machine Learning component it won't do anything. You can now close that Tab.
 
 1. Remember, we have submitted a VOID Check as **Abel Tuter**, you might wonder how the Bank Record with the attachment was picked up automtically by DocIntel. Let's review what was configured to do this. 
 
@@ -200,7 +200,7 @@ When you need to create an integration from ServiceNow to an external system via
 
     Open a browser and navigate to https://www.routingnumbers.info/api/data.html to test out the API and analyze what this API can return.  
 
-    On the **Routing Number** Type 02000021 (1) then Click **Get Bank Data** (2)
+    On the **Routing Number** Type 021000021 (1) then Click **Get Bank Data** (2)
 
     ![Relative](images/2022-09-06_14-20-47.png) 
 
@@ -387,7 +387,7 @@ When you need to create an integration from ServiceNow to an external system via
 
     ![Relative](images/2022-09-06_17-14-22.png)
     
-1. On the Label columb Double click **variable** (1) and type office_code then double click variable on the **Name** column and type office_code:
+1. On the Label column Double click **variable** (1) and type office_code then double click variable on the **Name** column and type office_code:
     ![Relative](images/2022-09-06_17-16-28.png)
 
 1. Then continue to **Create Output** with the following **Label** and **Name**:
@@ -492,7 +492,7 @@ Close the Operation Execution Details tab(s):
 
     ![Relative](images/2022-09-07_08-26-03.png)
 
-1. on the **Default value** field, type the number **02100021** (1) , then click Save (2)
+1. on the **Default value** field, type the number **021000021** (1) , then click Save (2)
 
     ![Relative](images/2022-09-07_08-31-59.png)
 
@@ -519,7 +519,7 @@ Close the Operation Execution Details tab(s):
 
     ![Relative](images/2022-09-07_08-46-32.gif)
 
-    > This is just a simple example on how to add a custome spoke action to a subflow, under that step you could add any logic you want based on your use case.
+    > This is just a simple example on how to add a custom spoke action to a subflow, under that step you could add any logic you want based on your use case.
 
 1. Notice in the data pill on the right hand side, the variable that we have available to use in our subflow, those are the output variable we have created earlier when we built the Spoke Action. Now we are going to map those to our Subflow Outputs. For this we use a **Flow logic step** that is available to us.
 
