@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>guidebook2</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+  body {
+    padding: 2cm; 
+  }
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">RPA Exercise</h1>
+
+<h2 id="toc_1">Introduction</h2>
+
+<p><strong>Robotic Process Automation (RPA)</strong> is a form of Business Process Automation where ”bots” or “digital workers” are deployed as a substitute for Humans in routine, error-prone, and high-volume manual processes.</p>
+
+<p>These two types of automations can be created with RPA Desktop Design Studio and run them with Unattended Robot or Attended Robot:</p>
+
+<p><strong>Unattended automation</strong>: This type of automation is used to automate highly repetitive tasks. For example, in a CRM system, the copy and paste tasks can be performed by the unattended robot to an excel file without any human intervention. These automations can be triggered via API or can be scheduled to run at any time.</p>
+
+<p><strong>Attended automation</strong>: You can use this type of automation with human supervision. For example, in a contact center, robots are used as user assistants. They’re installed on operator’s workstations and are triggered by human operators on demand.</p>
+
+<p><strong>RPA Hub</strong> is a ServiceNow application used to manage attended and unattended automations in your enterprise. RPA Hub simplifies the governing and managing of automations within a centralized location. It uses multi-tenancy to create logical partitions so that robots for different customers (internal or external) can be managed from a single instance. Each logical instance has its own access control list (ACL), robots, licenses, and execution logs.</p>
+
+<h2 id="toc_2">Goal</h2>
+
+<p>The goal of this exercise is to automate a repetitive, error-prone process that involves manually entering in data into a legacy HR system. Because this application does not have APIs, RPA can be utilized to automate through the user interface (UI) of the application. This exercise will show how to create an unattended robot package in the RPA Desktop Design Studio. It will teach how to retrieve the pending work queue item in the RPA Hub Queue (extracted data from DocIntel) and parse the JSON content. Additionally, it will show how to use the Windows connector to interact with the UI of a .Net application. Finally, the lab will show how to use the Invoke SubFlow component to trigger a SubFlow on the ServiceNow instance.</p>
+
+<h2 id="toc_3">Reviewing RPA Hub</h2>
+
+<p>Before opening RPA Desktop Design Studio, let&#39;s look at RPA Hub and some of the core components.</p>
+
+<ol>
+<li><p>Click on the provided instance URL to open the login page and then type the provided <strong>username</strong> (1) and <strong>password</strong> (2) and click <strong>Log in</strong> (3).</p>
+
+<p><img src="images/RPA-Images/Login1.png" alt="Relative"> </p></li>
+<li><p>To open RPA Hub, click <strong>All</strong> (1), type <strong>RPA Hub</strong> into the Filter Navigator (2), and then click <strong>RPA Hub</strong> (3). This opens RPA Hub in a new tab.</p>
+
+<p><img src="images/RPA-Images/Open-RPA-Hub-2.gif" alt="Relative"> </p>
+
+<blockquote>
+<p>When RPA Hub opens, there is a pop-up that says, &quot;Robots are connected using basic authentication.&quot; This is expected and the pop-up can be closed.</p>
+</blockquote></li>
+<li><p>Take a quick look at the <strong>RPA Hub Home Dashboard</strong>. At a glance, RPA Hub provides insights into incidents, robot utilization, process job summaries, queue summaries, related business applications, and license utilization.</p>
+
+<p><img src="images/RPA-Images/RPA-Hub-Scroll.gif" alt="Relative"> </p></li>
+<li><p>Click on the list view to see additional details.</p>
+
+<p><img src="images/RPA-Images/Click-List.png" alt="Relative"> </p></li>
+<li><p>The list view is divided into three sections: Build, Administration, and Monitor. Below is a description of what each of these sections are used for.</p>
+
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Purpose</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Bot Process</td>
+<td>Configuration of the robot that includes the package, package version, credentials, and assigned robot.</td>
+</tr>
+<tr>
+<td>Packages</td>
+<td>Set of resource files that include the bot files and versions that are required for an automation execution.</td>
+</tr>
+<tr>
+<td>Shared Parameters</td>
+<td>Global variables or configurable items that are stored in one place. These variables and terms are used across bot processes.</td>
+</tr>
+<tr>
+<td>Queues</td>
+<td>Repository that can hold an unlimited number of work queue items that can be processed by a robot.</td>
+</tr>
+<tr>
+<td>Robots</td>
+<td>Software agent that runs a bot process that is built in the RPA Desktop Design Studio.</td>
+</tr>
+<tr>
+<td>Installed RPA Plugins</td>
+<td>The installed software components that add specific features for an interaction with third- party applications such as Microsoft Office 365Google Chrome, Windows, and so on.</td>
+</tr>
+<tr>
+<td>Alerts</td>
+<td>Custom notifications that are generated for robots, schedules, process jobs, and other RPA Hub-related tables.</td>
+</tr>
+<tr>
+<td>Process Jobs</td>
+<td>Execution of a process on a robot.</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="images/RPA-Images/List-View.png" alt="Relative"> </p></li>
+<li><p>Under Bot Processes, notice that a Bot Process titled <strong>Data Entry in Legacy HR System</strong> has already been created. This is where the package will need to be assigned to run the automation from the ServiceNow instance.</p>
+
+<p><img src="images/RPA-Images/Click-Bot-Process.png" alt="Relative"></p></li>
+<li><p>In the list view, click <strong>Queues</strong>. This is where a pre-created work item has been added that will be used for the exercise. </p>
+
+<p><img src="images/RPA-Images/Click-Queues.png" alt="Relative"></p></li>
+<li><p>Click on the Queue titled <strong>Direct Deposit</strong>.</p>
+
+<p><img src="images/RPA-Images/Open-Queue.png" alt="Relative"></p></li>
+<li><p>The <strong>Details</strong> view includes information about the queue. Click <strong>Work Queue Items</strong> to view the work items in the queue.</p>
+
+<p><img src="images/RPA-Images/Click-Work-Item.png" alt="Relative"></p></li>
+<li><p>There is one item in the work item queue. Click <strong>BAN0001032</strong> to view the content that it contains.</p>
+
+<p><img src="images/RPA-Images/Open-Work-Item.png" alt="Relative"></p></li>
+<li><p>Scroll to the bottom to view the Request Content in JSON format. This information is the data that DocIntel extracted from the void check. The robot will retrieve this content and enter the data into a legacy HR system.</p>
+
+<p><img src="images/RPA-Images/Request-Content.png" alt="Relative"></p></li>
+<li><p>Because the automation will be built to pick work items only in the pending state, this work item must be converted back to <strong>Pending</strong> any time the automation is ran. This can be done from this work item view by clicking the <strong>Status</strong> value and selecting <strong>Pending</strong> (1) and then clicking <strong>Save</strong> (2).</p>
+
+<p><img src="images/RPA-Images/Pending-2.png" alt="Relative"></p></li>
+<li><p>This work item can also easily be accessed from the Favorites list by clicking <strong>Favorites</strong> (1) and then clicking <strong>Work Queue Item - BAN0001032</strong> (2) as seen below.</p>
+
+<p><img src="images/RPA-Images/Favorites-2.png" alt="Relative"></p></li>
+</ol>
+
+<h2 id="toc_4">Connecting to the lab VM</h2>
+
+<p>A Windows Virtual Machine (VM) will be needed to complete this lab. The IP address and login credentials were provided when registering for the lab. If using a Mac laptop, the Microsoft Remote Desktop App should have already been installed as a pre-requisite to this lab. </p>
+
+<ol>
+<li><p>If using a Mac, connect to the lab VM by opening Microsoft Remote Desktop and clicking on the <strong>plus sign</strong> and then clicking <strong>Add PC</strong>. If using a Windows laptop, skip to <strong>Step 6</strong> to connect to the VM using Windows RDP.</p>
+
+<p><img src="images/RPA-Images/Add-PC-2.png" alt="Relative"></p></li>
+<li><p>Copy the <strong>IP address</strong> from the registration page and enter it under <strong>PC Name</strong> (1) and enter <strong>Lab VM</strong> under <strong>Friendly Name</strong> (2). Then click <strong>Add</strong> (3).</p>
+
+<p><img src="images/RPA-Images/IP-Address.png" alt="Relative"></p>
+
+<p><img src="images/RPA-Images/Add-PC-Name-2.png" alt="Relative"></p>
+
+<blockquote>
+<p>The <strong>IP Address</strong> is only the value within the <strong>[]</strong> brackets on the Windows Server line.</p>
+</blockquote></li>
+<li><p>Double click on the new VM that was added to RDP.</p>
+
+<p><img src="images/RPA-Images/Lab-VM.png" alt="Relative"></p>
+
+<p>Then click <strong>Continue</strong>.</p></li>
+<li><p>Enter the Windows Server login credentials provided during registration under <strong>Username</strong> (1) and <strong>Password</strong> (2) and then click <strong>Continue</strong> (3).</p>
+
+<p><img src="images/RPA-Images/Enter-User-Account-2.png" alt="Relative"></p>
+
+<blockquote>
+<p>Click <strong>Show Password</strong> to ensure the entered password is correct.</p>
+</blockquote></li>
+<li><p>Click <strong>Continue</strong> once again to connect to the VM. After connecting to the VM, skip to <strong>Step 11</strong> to finish the initial set up.</p>
+
+<p><img src="images/RPA-Images/Continue-to-Connect-2.png" alt="Relative"></p></li>
+<li><p>If using a Windows laptop, open Remote Desktop Protocol (RDP). Then copy the <strong>IP address</strong> from the registration page and enter it for <strong>Computer</strong> (1) and click <strong>Connect</strong> (2).</p>
+
+<p><img src="images/RPA-Images/IP-Address.png" alt="Relative"></p>
+
+<p><img src="images/RPA-Images/Windows-RDP.png" alt="Relative"></p>
+
+<blockquote>
+<p>The <strong>IP Address</strong> is only the value within the <strong>[]</strong> brackets on the Windows Server line.</p>
+</blockquote></li>
+<li><p>Click <strong>More choices</strong>.</p>
+
+<p><img src="images/RPA-Images/Windows-RDP2.png" alt="Relative"></p></li>
+<li><p>Click <strong>Use a different account</strong>.</p>
+
+<p><img src="images/RPA-Images/Windows-RDP3.png" alt="Relative"></p></li>
+<li><p>Type <strong>Administrator</strong> for Username (1) and the <strong>lab password</strong> for Password (2). Then click <strong>OK</strong> (3).</p>
+
+<p><img src="images/RPA-Images/Windows-RDP4.png" alt="Relative"></p></li>
+<li><p>Click <strong>Yes</strong> to confirm connectivity to the VM.</p>
+
+<p><img src="images/RPA-Images/Windows-RDP5.png" alt="Relative"></p></li>
+<li><p>Once connected to the lab VM, notice that the RPA software is already pre-installed and accessible from the Desktop. The legacy HR app is also pre-installed under the SupplementalMaterials folder.</p>
+
+<p><img src="images/RPA-Images/Installed-Software.png" alt="Relative"></p>
+
+<blockquote>
+<p>If at any point throughout the lab a pop up appears saying that updates are available, this window can be closed by clicking &quot;View Details&quot; and then clicking the X icon.</p>
+</blockquote></li>
+<li><p>Before getting started, it is recommended to change the default browser to Chrome. This can be done by typing <strong>Default Browser</strong> (1) in the Windows Search Bar and clicking <strong>Choose a default web browser</strong> (2).</p>
+
+<p><img src="images/RPA-Images/Choose-Browser.png" alt="Relative"></p></li>
+<li><p>Click <strong>Internet Explorer</strong> under <strong>Web browser</strong> and select <strong>Google Chrome</strong>. Then X out of the window.</p>
+
+<p><img src="images/RPA-Images/chrome.gif" alt="Relative"></p></li>
+</ol>
+
+<h2 id="toc_5">Designing a Package in RPA Studio</h2>
+
+<p>The goal of this exercise is to design an automation that enters data into a legacy .NET application. The completed package utilizes the RPA Queue and the Windows Connector to automate through the user interface of the application.</p>
+
+<ol>
+<li><p>Open RPA Desktop Design Studio.</p>
+
+<p><img src="images/RPA-Images/Open-Studio.png" alt="Relative"></p></li>
+<li><p>Before opening RPA Desktop Design Studio, connection will need to be made to the ServiceNow instance. In the Connection Manager window, enter <strong>Lab Instance</strong> under <strong>Name</strong> (1) and enter the instance URL under <strong>URL</strong> (2). Then click <strong>Launch in default browser</strong> (3) and click <strong>Save</strong> (4).</p>
+
+<p><img src="images/RPA-Images/Connection-Manager.png" alt="Relative"></p>
+
+<blockquote>
+<p>The instance URL is provided on the registration page.</p>
+</blockquote></li>
+<li><p>After clicking <strong>Save</strong>, the RPA Desktop Design Studio finishes installing.</p>
+
+<p><img src="images/RPA-Images/Finish-Installing.png" alt="Relative"></p>
+
+<blockquote>
+<p>This will take some time, but only needs to be completed the first time RPA Desktop Design Studio is opened.</p>
+</blockquote></li>
+<li><p>Wait for RPA Desktop Design Studio to open and then click <strong>Unattended Automation</strong>.</p>
+
+<p><img src="images/RPA-Images/Click-Unattended-Automation.png" alt="Relative"></p></li>
+<li><p>Enter the <strong>Name</strong> (1) and <strong>Description</strong> (2) and click <strong>OK</strong> (3).</p>
+
+<p><img src="images/RPA-Images/New-Project.png" alt="Relative"></p></li>
+<li><p>Now, let&#39;s look at the RPA Desktop Design Studio. Below are the key sections and their purposes.</p>
+
+<p><img src="images/RPA-Images/Studio-Layout.png" alt="Relative"></p>
+
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Purpose</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Toolbars</td>
+<td>Provides access to important functionalities like Run, Debug, or upload packages to RPA Hub.</td>
+</tr>
+<tr>
+<td>Toolbox</td>
+<td>Provides access to components to build an automation. Components are bespoke actions like opening or closing a file, starting or stopping an application, and much more.</td>
+</tr>
+<tr>
+<td>Main Canvas</td>
+<td>The canvas shows a workflow like diagram which is used to connect components to a sequence. It allows to define the process steps as well as data flows from one component to another component.</td>
+</tr>
+<tr>
+<td>Project Explorer</td>
+<td>This section is used for management of installed plugins, activities, and global objects.</td>
+</tr>
+<tr>
+<td>Properties</td>
+<td>Used to configure the properties of components, connectors, activities, and global objects.</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Because the PayDay application is a .Net app, the Windows Connector is the appropriate connector to use. It can detect the windows, elements, and properties of .Net applications. Navigate to the Toolbox Search bar and type <strong>Windows</strong>. Then click the <strong>Windows Connector</strong> and drag and drop it onto <strong>Global Objects</strong>.</p>
+
+<p><img src="images/RPA-Images/Drag-Windows-2.gif" alt="Relative"></p>
+
+<blockquote>
+<p>All connectors must be added to the Global Objects section before they can be used.</p>
+</blockquote></li>
+<li><p>Under Global Objects in the Project Explorer, double Click the newly added Windows Connector.</p>
+
+<p><img src="images/RPA-Images/Click-App.png" alt="Relative"></p></li>
+<li><p>In the Properties section, directly under the Project Explorer, edit the name field so that it says <strong>PayDay App</strong> and then press <strong>Enter</strong>.</p>
+
+<p><img src="images/RPA-Images/Name-App.png" alt="Relative"></p></li>
+<li><p>Next, double click the PayDay App in the Project Explorer and navigate to the Toolbox on the left side of the screen. Because a global object has been selected, the Toolbox has been replaced with the Object Explorer, which shows methods specific to that object. In this case, the methods are related to .Net applications. Drag and drop the method that says <strong>Start</strong> onto the canvas.</p>
+
+<p><img src="images/RPA-Images/Drag-Start-App.gif" alt="Relative"></p></li>
+<li><p>To connect this step to the previous step of the process, simply drag the gray Control Out port from the <strong>Start</strong> Component to the Control In port of the <strong>PayDay App</strong> component. These arrows tell the robot which steps to follow, in which order.</p>
+
+<p><img src="images/RPA-Images/Connect-Ports.gif" alt="Relative"></p></li>
+<li><p>The orange ports on the left side of the component indicate that the system is expecting input data to complete this step. In this case, it needs the path of the application that it is opening. Any orange ports on the right side of the component indicate the output of that step of the process. Double click on <strong>Path</strong> and type <strong>C:\SupplementalMaterials\ACME PayDay 2001 v.60.exe</strong>, which is the path of the installed application. Then press <strong>Enter</strong>.</p>
+
+<p><img src="images/RPA-Images/Enter-Path2.gif" alt="Relative"></p></li>
+<li><p>To test this step, click <strong>Run</strong> on the left side of the Toolbar. This opens the PayDay app.</p>
+
+<p><img src="images/RPA-Images/Click-Run.png" alt="Relative"></p></li>
+<li><p><strong>Minimize</strong> this app because it will be needed later when configuring the Windows Connector.</p>
+
+<p><img src="images/RPA-Images/Minimize.png" alt="Relative"></p></li>
+<li><p>The next step of the process is to retrieve the pending work items from the queue on RPA Hub. To use the Queue connector, click <strong>Toolbox</strong> on the bottom left of the screen.</p>
+
+<p><img src="images/RPA-Images/Click-Toolbox.png" alt="Relative"></p></li>
+<li><p>Next, search <strong>Queue</strong> in the Search Bar.</p>
+
+<p><img src="images/RPA-Images/Type-Queue.png" alt="Relative"></p></li>
+<li><p>Queue is another connector, so it must first be dragged and dropped onto the Global Objects section before it can be used.</p>
+
+<p><img src="images/RPA-Images/Drag-Queue.gif" alt="Relative"></p></li>
+<li><p>As done previously with the Windows Connector, double click on the Queue object in the Project Explorer to change its properties.</p>
+
+<p><img src="images/RPA-Images/Click-Queue.png" alt="Relative"></p></li>
+<li><p>Under the Properties section, leave the <strong>Name</strong> field as <strong>Queue</strong>. In the <strong>Queue Name</strong> field, type <strong>Direct Deposit</strong> and then press <strong>Enter</strong>. This is the name of the queue on RPA Hub and is required to tell the robot which queue to interact with.</p>
+
+<p><img src="images/RPA-Images/Name-Queue.png" alt="Relative"></p></li>
+<li><p>Because the robot is accessing a queue on a ServiceNow instance, it must also be told which instance and bot process to connect to. This can be done by clicking <strong>Assign Bot Process</strong> in the Toolbar.</p>
+
+<p><img src="images/RPA-Images/Assign-Bot-Process.png" alt="Relative"></p></li>
+<li><p>In the Connection Manager window, click <strong>Connect</strong> to connect to the lab instance provided during registration.</p>
+
+<p><img src="images/RPA-Images/Connection-Manager-2.png" alt="Relative"></p></li>
+<li><p>This opens a ServiceNow login page in Chrome. Type the <strong>instance username</strong> (1) and <strong>password</strong> (2) and click <strong>Log in</strong>.</p>
+
+<p><img src="images/RPA-Images/Login.png" alt="Relative"></p>
+
+<blockquote>
+<p>These credentials are provided on the registration page.</p>
+</blockquote></li>
+<li><p>To confirm connectivity, click <strong>Allow</strong> on the following screen.</p>
+
+<p><img src="images/RPA-Images/Click-Allow.png" alt="Relative"></p></li>
+<li><p>Click <strong>Open UTL.RPA.HOST</strong> to open the UTL.RPA.HOST application.</p>
+
+<p><img src="images/RPA-Images/Open-Host.png" alt="Relative"></p></li>
+<li><p>Now that connectivity to the instance has been established, select <strong>Data Entry in Legacy HR System</strong> as the Bot Process (1) and <strong>MyRobot</strong> as the Robot (2). Then click <strong>OK</strong> (3).</p>
+
+<p><img src="images/RPA-Images/Assign-Process.png" alt="Relative"></p></li>
+<li><p>Once the instance is connected, there will be green markers at the bottom of RPA Desktop Design Studio indicating what bot process has been assigned (1) and what instance it is connected to (2).</p>
+
+<p><img src="images/RPA-Images/Process-Assigned.png" alt="Relative"></p></li>
+<li><p>Double Click <strong>Queue</strong> under Global Objects to view the methods related to Queue.</p>
+
+<p><img src="images/RPA-Images/Click-Queue.png" alt="Relative"></p></li>
+<li><p>Click <strong>PickWorkItem</strong> and drag and drop it onto the canvas, on the right of the previous step. Then connect the Control out port of the PayDay App step to the Control In port of the PickWorkItem step.</p>
+
+<p><img src="images/RPA-Images/Drag-Pick-Item.gif" alt="Relative"></p></li>
+<li><p>To change the step so that only Pending work items are selected, double click on the <strong>Status</strong> input field.</p>
+
+<p><img src="images/RPA-Images/Click-Status.png" alt="Relative"></p></li>
+<li><p>Click <strong>Static</strong> to change how the status field is determined. Static means that it is not dynamic and will not change based on any conditions.</p>
+
+<p><img src="images/RPA-Images/Click-Static.png" alt="Relative"></p></li>
+<li><p>Next, click the drop-down menu and select <strong>Pending</strong>. Then click <strong>OK</strong>.</p>
+
+<p><img src="images/RPA-Images/Select-Pending-And-Ok.gif" alt="Relative"></p></li>
+<li><p>Click on Settings at the top of the PickWorkItem step. This is indicated by a gear icon.</p>
+
+<p><img src="images/RPA-Images/Click-Settings.png" alt="Relative"></p>
+
+<blockquote>
+<p>The settings can also be changed by double clicking on the gray title bar at the top of the step.</p>
+</blockquote></li>
+<li><p>The response from the Queue will be in JSON format but this can easily be parsed by the robot using the <strong>JSON Properties</strong> section. Double click on JSON properties to configure the key-value pairs.</p>
+
+<p><img src="images/RPA-Images/Click-JSON.png" alt="Relative"></p></li>
+<li><p>First, click on the green plus sign <strong>8 times</strong> because there are 8 values being passed to the robot in the Request Content (1). Next, enter the JSON Path Notations as seen below so the robot can retrieve the corresponding values (2). Then click <strong>OK</strong> (3). The spelling needs to be exactly as shown in the image below because this is how the properties are spelled in the JSON content.</p>
+
+<table>
+<thead>
+<tr>
+<th>JSON Path Notation Name</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Firstname</td>
+</tr>
+<tr>
+<td>Lastname</td>
+</tr>
+<tr>
+<td>Routing</td>
+</tr>
+<tr>
+<td>AccountNumber</td>
+</tr>
+<tr>
+<td>BankName</td>
+</tr>
+<tr>
+<td>EmployeeNumber</td>
+</tr>
+<tr>
+<td>AccountType</td>
+</tr>
+<tr>
+<td>BankRecordSysid</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="images/RPA-Images/Enter-JSON-Properties.png" alt="Relative"></p></li>
+<li><p>Now that data is being received by the robot, the next step is to use the Windows Connector to tell the robot where to enter the data. To configure the Windows Connector, right click on <strong>PayDay App</strong> and click <strong>Configure</strong>.</p>
+
+<p><img src="images/RPA-Images/Click-Configure2.gif" alt="Relative"></p></li>
+<li><p>Click the drop-down window and check to see which applications are available. The PayDay App is not included because it has not yet been opened. </p>
+
+<p><img src="images/RPA-Images/Check-Windows.png" alt="Relative"></p></li>
+<li><p>Minimize the RPA Desktop Design Studio and click on the PayDay App which should have been minimized earlier.</p>
+
+<p><img src="images/RPA-Images/Open-App.png" alt="Relative"></p>
+
+<blockquote>
+<p>If the PayDay App was closed, it can be found by navigating to the following path: <strong>C:\SupplementalMaterials\ACME PayDay 2001 v.60.exe</strong></p>
+</blockquote></li>
+<li><p>Now the PayDay App can be selected when clicking on the drop-down window. </p>
+
+<p><img src="images/RPA-Images/Select-PayDay-App.png" alt="Relative"></p>
+
+<blockquote>
+<p>If the PayDay App is still not there, try clicking on the green marker on the right side of the drop down to refresh the list.</p>
+</blockquote></li>
+<li><p>Click <strong>Add Window</strong>.</p>
+
+<p><img src="images/RPA-Images/Add-Window.png" alt="Relative"></p></li>
+<li><p>Right click on the added window and click <strong>Add Element</strong>.</p>
+
+<p><img src="images/RPA-Images/Add-Element.gif" alt="Relative"></p></li>
+<li><p>The elements that need to be selected are the ones that the robot will need to interact with. The first one to select is the input field for <strong>First Name</strong>. To select it, simply hover over the text box until you see a red line highlighting it. Then, without clicking on anything, move your mouse to the name field and type <strong>First</strong>. The red box should still be highlighting the text box and the Tag field should say <strong>edit</strong>. If all of this has been done correctly, click on the green plus sign to finish adding the element. </p>
+
+<p><img src="images/RPA-Images/Add-First-Element.gif" alt="Relative"></p>
+
+<blockquote>
+<p>To make it easier to enter the name of the element, try holding down the control key. This prevents the Add Element window from moving.</p>
+</blockquote></li>
+<li><p>Next, repeat this step for the text boxes for <strong>Last Name, Emp Number, Bank Name, Account Number, and Routing Number</strong>. The <strong>Names</strong> that are entered should match the Name field in the second column of the table below.</p>
+
+<table>
+<thead>
+<tr>
+<th>Text Box</th>
+<th>Name</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>First Name</td>
+<td><strong>First</strong></td>
+</tr>
+<tr>
+<td>Last Name</td>
+<td><strong>Last</strong></td>
+</tr>
+<tr>
+<td>Emp Number</td>
+<td><strong>Emp</strong></td>
+</tr>
+<tr>
+<td>Bank Name</td>
+<td><strong>Bank</strong></td>
+</tr>
+<tr>
+<td>Account Number</td>
+<td><strong>Account Number</strong></td>
+</tr>
+<tr>
+<td>Routing Number</td>
+<td><strong>Routing Number</strong></td>
+</tr>
+</tbody>
+</table></li>
+<li><p>The Account Type element uses a list to allow the user to select a list item. Ensure that the whole list is highlighted, not just the list item. If done correctly, it will say <strong>List</strong> in the TAG field. If the <strong>list item</strong> is accidentally selected, it will say <strong>list item</strong> in the TAG field. If this happens, click the <strong>Blue Arrow</strong> to the right of the TAG field. This changes the element to its parent element, which in this case is the list. It should now say <strong>list</strong> in the TAG field. See the second gif for an example of how change to the parent element.</p>
+
+<p><img src="images/RPA-Images/Account-Type.gif" alt="Relative"></p>
+
+<p><img src="images/RPA-Images/Blue-Arrow.gif" alt="Relative"></p></li>
+<li><p>Last, the <strong>Enter</strong> button needs to be added so the robot can submit the data. Highlight the Enter button, type <strong>Enter</strong>, and click the green plus symbol. This is the last element that needs to be added, so click the <strong>Red X</strong> to end the Add Element process.</p>
+
+<p><img src="images/RPA-Images/Select-Enter.gif" alt="Relative"></p></li>
+<li><p>Check the added elements. They should look like the ones seen below. If everything looks correct, close the Windows Connector window by pressing <strong>OK</strong>.</p>
+
+<p><img src="images/RPA-Images/Check-Configuration.png" alt="Relative"></p></li>
+<li><p>In the Project Explorer, double click <strong>PayDay App</strong> and then double click <strong>ACME PayDay Management 2001 .v60</strong>. This shows the methods available at the Screen level, rather than at the application level, which was used to open the application.</p>
+
+<p><img src="images/RPA-Images/Click-Window.png" alt="Relative"></p>
+
+<blockquote>
+<p>The methods can be seen in the Object Explorer on the left side of the RPA Desktop Design Studio.</p>
+</blockquote></li>
+<li><p>Under Methods, drag <strong>SetFields</strong> onto the canvas on the right of the Queue step. Then connect the control out and control in ports as shown. </p>
+
+<p><img src="images/RPA-Images/Drag-Set-Fields.gif" alt="Relative"></p></li>
+<li><p>Click the <strong>Settings icon</strong> and select all the available elements so the robot can enter data into the input fields. Then click <strong>OK</strong>.</p>
+
+<p><img src="images/RPA-Images/Add-Set-Fields.gif" alt="Relative"></p></li>
+<li><p>Connect each output port from the previous step to the corresponding input port of the SetFields step. It should look like the screenshot below.</p>
+
+<p><img src="images/RPA-Images/Connect-Ports-2.png" alt="Relative"></p>
+
+<blockquote>
+<p>To confirm that that data is mapped correctly, try clicking on each of the orange lines. This highlights the line to show what output data it uses and what input data it is mapped to.</p>
+</blockquote></li>
+<li><p>Click <strong>Account Type</strong> to access the methods available at the element level. </p>
+
+<p><img src="images/RPA-Images/Click-Account-Type.png" alt="Relative"></p></li>
+<li><p>For this element, an item needs to be selected from a list of options. Drag and drop the <strong>SelectListItem</strong> method onto the canvas and connect the control in and control out ports as shown.</p>
+
+<p><img src="images/RPA-Images/Select-List-Item.gif" alt="Relative"></p></li>
+<li><p>Drag and drop the <strong>AccountType</strong> output from the Queue step and connect it to the <strong>itemText</strong> input port of the SelectListItem method.</p>
+
+<p><img src="images/RPA-Images/Select-Account-Type.gif" alt="Relative"></p></li>
+<li><p>Click on the Enter element to display the methods available for the Enter button.</p>
+
+<p><img src="images/RPA-Images/Click-Enter.png" alt="Relative"></p></li>
+<li><p>Drag and drop the method <strong>Click</strong> onto the canvas on the right of the previous step and connect the control in an control out ports.</p>
+
+<p><img src="images/RPA-Images/Click-Enter.gif" alt="Relative"></p></li>
+<li><p>Now that the data has been entered into the application, the queue needs to be told that it was successful, so the work queue item is not processed a second time. This can be done using the UpdateWorkItem method. To view the Queue methods, double click <strong>Queue</strong> under Global Objects in the Project Explorer.</p>
+
+<p><img src="images/RPA-Images/Click-Queue-2.png" alt="Relative"></p></li>
+<li><p>Drag and drop the UpdateWorkItem method onto the canvas on the right of the previous step and connect the control in and control out ports.</p>
+
+<p><img src="images/RPA-Images/Update-Work-Item.gif" alt="Relative"></p></li>
+<li><p>To tell the queue which work item to update, drag and drop the WorkItemId data out port from the PickWorkItem step to the WorkItemId data in port on the UpdateWorkItem step.</p>
+
+<p><img src="images/RPA-Images/Connect-Workitem-ID.gif" alt="Relative"></p></li>
+<li><p>Double click the input field that says <strong>In Progress</strong>.</p>
+
+<p><img src="images/RPA-Images/Click-In-Progress.png" alt="Relative"></p></li>
+<li><p>Click the drop down and select <strong>Success</strong>. Then click <strong>OK</strong>.</p>
+
+<p><img src="images/RPA-Images/Mark-Success.gif" alt="Relative"></p></li>
+<li><p>The last step of the process is to invoke a previously created SubFlow to update the Bank Account record on ServiceNow. This can be done easily using the InvokeSubFlow component. To use this component, first click <strong>Toolbox</strong> at the bottom left of the RPA Desktop Design Studio.</p>
+
+<p><img src="images/RPA-Images/Click-Toolbox-2.png" alt="Relative"></p></li>
+<li><p>Type <strong>Flow Designer</strong> into the search bar to find the components related to Flow Designer.</p>
+
+<p><img src="images/RPA-Images/Type-Flow-Designer.png" alt="Relative"></p></li>
+<li><p>Drag and drop the InvokeSubFlow component onto the canvas on the right of the previous step and connect the control in and control out ports as shown.</p>
+
+<p><img src="images/RPA-Images/Invoke-Subflow.gif" alt="Relative"></p></li>
+<li><p>This component requires the internal name of the SubFlow to be entered as data in. Additionally, if the flow requires any inputs it will need to be added here. To see the SubFlow that will need to be triggered by the robot, navigate back to RPA Hub and type <strong>Flow Designer</strong> (1) into the filter navigator and click <strong>Flow Designer</strong> (2). This opens Flow Designer in a new tab.</p>
+
+<p><img src="images/RPA-Images/Click-Flow-Designer.png" alt="Relative"></p></li>
+<li><p>Click <strong>Subflows</strong>.</p>
+
+<p><img src="images/RPA-Images/Click-Subflows.png" alt="Relative"></p></li>
+<li><p>Click the SubFlow titled <strong>Update HR Sync Field</strong>.</p>
+
+<p><img src="images/RPA-Images/Open-Flow.png" alt="Relative"></p>
+
+<blockquote>
+<p>If this SubFlow is difficult to find, try changing the search field to <strong>Name</strong>, typing the name of the SubFlow, and then pressing enter. The SubFlow should show up first in the results.</p>
+</blockquote></li>
+<li><p>This is a simple flow that looks up a bank account record and marks the HR Sync checkbox as complete. If checked, it means that the data has been successfully entered into the legacy HR app. Click <strong>SubFlow Inputs &amp; Outputs</strong> to see if the SubFlow requires any inputs.</p>
+
+<p><img src="images/RPA-Images/Update-HR-Sync.png" alt="Relative"></p></li>
+<li><p>This SubFlow is being passed the SysID of the bank account record that needs to be updated. Make note of the <strong>name</strong> of the input field (1) and then click <strong>Done</strong> (2). The name is what needs to be entered into the Invoke SubFlow step as data in.</p>
+
+<p><img src="images/RPA-Images/sysID.png" alt="Relative"></p></li>
+<li><p>Navigate back to the RPA Desktop Design Studio and double click <strong>Name</strong> in the InvokeSubFlow step.</p>
+
+<p><img src="images/RPA-Images/Enter-Flow-Name.png" alt="Relative"> </p></li>
+<li><p>Paste <strong>”global.update<em>hr</em>sync_field”</strong> into the name field and press <strong>Enter</strong>. This value is the internal name of the SubFlow that needs to be invoked. It includes “global.” in front of the internal name to indicate which application scope it is in. The value should be spelled exactly as shown in the image below or the SubFlow will not be triggered.</p>
+
+<p><img src="images/RPA-Images/Enter-Flow-Name-2.png" alt="Relative"></p></li>
+<li><p>To pass the input to the SubFlow, click the *<strong>Settings Icon</strong> above the step or double click on the title of the step that says <strong>Flow Designer</strong>.</p>
+
+<p><img src="images/RPA-Images/Click-Settings2.png" alt="Relative"></p></li>
+<li><p>In the resulting window, click the <strong>Green Plus Symbol</strong>, type <strong>sysid</strong>, and change the input type to <strong>string</strong>. Then click <strong>OK</strong>.</p>
+
+<p><img src="images/RPA-Images/Create-Input.gif" alt="Relative"></p></li>
+<li><p>Drag the <strong>BankRecordSysid</strong> value from the PickWorkItem step and drop it onto the <strong>sysid</strong> input on the InvokeSubFlow step.</p>
+
+<p><img src="images/RPA-Images/Drag-Sysid.gif" alt="Relative"></p></li>
+<li><p>Connect the <strong>End Port</strong> after the InvokeSubFlow step as shown.</p>
+
+<p><img src="images/RPA-Images/End.png" alt="Relative"></p></li>
+<li><p>The final automation should look like the image below.</p>
+
+<p><img src="images/RPA-Images/Results2.png" alt="Relative"></p></li>
+<li><p>Once complete, the automation can be run by clicking <strong>Run</strong> on the left side of the Toolbar. </p>
+
+<p><img src="images/RPA-Images/Click-Run2.png" alt="Relative"></p></li>
+<li><p>Confirm that the HR Sync was completed by going back to the instance and clicking <strong>Favorites</strong> (1) and then clicking <strong>bank accounts table</strong> (2).</p>
+
+<p><img src="images/RPA-Images/Bank-Table.png" alt="Relative"></p></li>
+<li><p>There is one record in this table, the bank account that was created for this lab. Click <strong>BAN0001032</strong> to open this record.</p>
+
+<p><img src="images/RPA-Images/Bank-Record.png" alt="Relative"></p></li>
+<li><p>The HR Sync checkbox is checked to show that the sync is complete. The SubFlow was successfully triggered to change this field.</p>
+
+<p><img src="images/RPA-Images/Sync-True.png" alt="Relative"></p>
+
+<blockquote>
+<p>If the <strong>Validated</strong> checkbox is not checked, this means that the previous exercise titled <strong>IntegrationHub Exercise</strong> was not completed.</p>
+</blockquote></li>
+</ol>
+
+<p>Congratulations! This concludes the RPA Desktop Design studio portion of the lab. The result is a simple automation that takes input from the RPA Hub Queue and enters the data into a legacy HR application.</p>
+
+<h2 id="toc_6">Creating a Bot Process (Optional Exercise)</h2>
+
+<p>Now that the automation is complete, a bot process needs to be created so the bot can be triggered from the ServiceNow instance. This section will cover publishing the package to the instance, creating a robot, and assigning a package and robot to a bot process.</p>
+
+<ol>
+<li><p>To publish the automation package to the lab instance, click <strong>Publish</strong> in the Design Studio toolbar.</p>
+
+<p><img src="images/RPA-Images/Publish.png" alt="Relative"> </p></li>
+<li><p>Make sure the lab instance is selected (1) and click <strong>Publish</strong> (2).</p>
+
+<p><img src="images/RPA-Images/Connect-Instance.png" alt="Relative"> </p></li>
+<li><p>On the next window, type the provided instance username (1) and password (2) and click <strong>Log in</strong>.</p>
+
+<p><img src="images/RPA-Images/Login.png" alt="Relative"></p></li>
+<li><p>To confirm connectivity, click <strong>Allow</strong> on the following screen.</p>
+
+<p><img src="images/RPA-Images/Click-Allow.png" alt="Relative"></p></li>
+<li><p>Click <strong>Open UTL.RPA.HOST</strong> to open the UTL.RPA.HOST application.</p>
+
+<p><img src="images/RPA-Images/Open-Host.png" alt="Relative"></p></li>
+<li><p>A package can either be published as a new package or as a new version to an existing package. Because a Data Entry in HR System package already exists, click <strong>New Version (to existing package)</strong>.</p>
+
+<p><img src="images/RPA-Images/New-Version-Package.png" alt="Relative"></p></li>
+<li><p>Select <strong>Data Entry in HR System</strong> as the package name (1), type <strong>Lab Package</strong> under Comments (2) and click <strong>Publish</strong> (3).</p>
+
+<p><img src="images/RPA-Images/Publish-Project2.png" alt="Relative"></p></li>
+<li><p>Click <strong>OK</strong>.</p>
+
+<p><img src="images/RPA-Images/Click-OK.png" alt="Relative"></p></li>
+<li><p>Navigate back to RPA Hub on the ServiceNow instance. A Bot Process has already been created for this automation, but it does not have the right robot or package assigned to it. First, let&#39;s add the lab robot to RPA Hub. On the RPA Hub list view, click <strong>Robots</strong>.</p>
+
+<p><img src="images/RPA-Images/Click-Robots2.png" alt="Relative"></p></li>
+<li><p>At the top right side of the page, click <strong>New</strong>.</p>
+
+<p><img src="images/RPA-Images/Click-New-Robot.png" alt="Relative"></p></li>
+<li><p>Type <strong>Lab Robot</strong> under Name (1), type the <strong>lab VM machine name</strong> under Machine Name (2), and click <strong>Save</strong> (3). The machine name or hostname can be found on the lab VM desktop background. It can also be found by clicking <strong>MID Servers</strong> in the Favorites list (1) and copying the value for <strong>Host name</strong> (2), as seen in the second and third images below.</p>
+
+<p><img src="images/RPA-Images/Create-Robot.png" alt="Relative"></p>
+
+<p><img src="images/RPA-Images/mid.png" alt="Relative"></p>
+
+<p><img src="images/RPA-Images/hostname2.png" alt="Relative"></p></li>
+<li><p>The system creates a robot and assigns it the <strong>New</strong> state. Next, the Unattended Robot agent needs to be connected from the lab VM. On the lab VM, double click <strong>Unattended Robot</strong> on the Desktop.</p>
+
+<p><img src="images/RPA-Images/Unattended-Robot.png" alt="Relative"></p></li>
+<li><p>Unattended Robot opens in the Windows System Tray. Click the <strong>System Tray arrow</strong> (1), right click the <strong>Unattended Robot icon</strong> (2) and click <strong>Settings</strong> (3).</p>
+
+<p><img src="images/RPA-Images/System-Tray2.png" alt="Relative"></p></li>
+<li><p>Click <strong>Basic</strong> under Authentication (1). Then type the <strong>instance URL</strong> under RPA Hub (2), the <strong>instance username</strong> under Username (3), and the <strong>instance password</strong> under Password(4). Click <strong>Connect</strong> (5) to connect to the instance.</p>
+
+<p><img src="images/RPA-Images/Connect-Robot.png" alt="Relative"></p></li>
+<li><p>If the unattended robot is successfully connected, it will say so on the Unattended Robot window and a notification will appear saying that the robot is connected using basic authentication.</p>
+
+<p><img src="images/RPA-Images/Connected1.png" alt="Relative"></p>
+
+<p><img src="images/RPA-Images/Connected2.png" alt="Relative"></p></li>
+<li><p>Now, close the Unattended Robot window and navigate back to RPA Hub. The state of the Lab Robot has now been changed to <strong>Available</strong>.</p>
+
+<p><img src="images/RPA-Images/Available-Robot.png" alt="Relative"></p></li>
+<li><p>Now that the robot has been added to RPA Hub, let&#39;s modify the Bot Process. Navigate back to the RPA Hub list view and click <strong>Bot Process</strong>.</p>
+
+<p><img src="images/RPA-Images/Click-Process.png" alt="Relative"></p></li>
+<li><p>Click <strong>Data Entry in Legacy HR System</strong> to open the Bot Process.</p>
+
+<p><img src="images/RPA-Images/Click-Bot-Process.png" alt="Relative"></p></li>
+<li><p>Click <strong>Details</strong> to select the correct package.</p>
+
+<p><img src="images/RPA-Images/Click-Details.png" alt="Relative"></p></li>
+<li><p>Select <strong>Data Entry in HR System</strong> under Package (1) and <strong>10002</strong> under Package Version (2).</p>
+
+<p><img src="images/RPA-Images/Set-Package.png" alt="Relative"></p></li>
+<li><p>Click <strong>Save</strong>.</p>
+
+<p><img src="images/RPA-Images/Click-Save2.png" alt="Relative"></p></li>
+<li><p>Click <strong>Credential Sets</strong>.</p>
+
+<p><img src="images/RPA-Images/Click-Credentials.png" alt="Relative"></p></li>
+<li><p>Click <strong>New</strong>.</p>
+
+<p><img src="images/RPA-Images/New-Cred.png" alt="Relative"></p></li>
+<li><p>Type <strong>Lab VM Credentials</strong> under Name (1), <strong>”Your_Hostname”\Administrator</strong> under Windows Username (2), and the <strong>lab password</strong> under Password (3). Then click <strong>Save</strong> (4). Make sure to use the hostname of the lab VM for step 2.</p>
+
+<p><img src="images/RPA-Images/Create-Cred.png" alt="Relative"></p></li>
+<li><p>Navigate back to the bot process and click <strong>Assigned Robots</strong>.</p>
+
+<p><img src="images/RPA-Images/Assigned-Robot.png" alt="Relative"></p></li>
+<li><p>Click <strong>Add</strong>.</p>
+
+<p><img src="images/RPA-Images/Add.png" alt="Relative"></p></li>
+<li><p>In the list of available robots, select <strong>Lab Robot</strong> (1) and click <strong>Add</strong> (2).</p>
+
+<p><img src="images/RPA-Images/Select-Robot.png" alt="Relative"></p></li>
+<li><p>Click <strong>Process Robot Credentials</strong>.</p>
+
+<p><img src="images/RPA-Images/Process-Creds.png" alt="Relative"></p></li>
+<li><p>Click <strong>New</strong>.</p>
+
+<p><img src="images/RPA-Images/New-Cred.png" alt="Relative"></p></li>
+<li><p>Select <strong>Lab VM Credentials</strong> under Credential Set (1) and <strong>Lab Robot</strong> under Robot (2). Then click <strong>Save</strong> (3).</p>
+
+<p><img src="images/RPA-Images/Save-Creds.png" alt="Relative"></p></li>
+<li><p>Now that the robot and VM credentials have been added to the bot process, the process can be started from the instance. To do this, navigate back to the bot process and click <strong>Start Process</strong>.</p>
+
+<p><img src="images/RPA-Images/Start-Process2.png" alt="Relative"></p></li>
+<li><p>Finally, select <strong>Lab Robot</strong> (1) and click <strong>Start Process</strong> (2).</p>
+
+<p><img src="images/RPA-Images/Select-Robot2.png" alt="Relative"></p></li>
+<li><p>This triggers the Unattended Robot and starts the bot process on the lab VM.</p>
+
+<p><img src="images/RPA-Images/Starting.png" alt="Relative"></p>
+
+<blockquote>
+<p>The bot process will not enter data into the application if the work queue item has already been processed and there are no work items in the pending state. To re-run the process, the work queue item needs to be returned to the pending state.</p>
+</blockquote></li>
+<li><p>To reassign the work queue item, first click <strong>Queues</strong> in the RPA Hub list view and open the <strong>Direct Deposit</strong> queue.</p>
+
+<p><img src="images/RPA-Images/Pending.png" alt="Relative"></p></li>
+<li><p>Click <strong>Work Queue Items</strong>.</p>
+
+<p><img src="images/RPA-Images/Pending1.png" alt="Relative"></p></li>
+<li><p>Click the <strong>BAN0001032</strong> work queue item.</p>
+
+<p><img src="images/RPA-Images/Pending2.png" alt="Relative"></p></li>
+<li><p>Change the status to <strong>Pending</strong> (1) and click <strong>Save</strong> (2). Now the bot process will complete when ran from RPA Hub.</p>
+
+<p><img src="images/RPA-Images/Pending3.png" alt="Relative"></p></li>
+</ol>
+
+<p>Congratulations! This concludes this RPA exercise. Now bot processes can be triggered from the ServiceNow instance. They can be triggered manually and can even be triggered via a workflow using the RPA Hub spoke.</p>
+
+
+
+
+</body>
+
+</html>
