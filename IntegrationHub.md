@@ -29,7 +29,7 @@ When you need to create an integration from ServiceNow to an external system via
 
     > From a workflow in ServiceNow, you might want to make a call to this API to collect additional information from the Routing Number. For this you can create your own spoke.
 
-    ![Relative](/images/2022-09-06_14-27-17.png) 
+    ![Relative](images/2022-09-06_14-27-17.png) 
 
     In the next step of this exercice we will leverage that API from ServiceNow, custom IntegrationHub spoke action so we can make those API calls directly from a Workflow in ServiceNow and retrieve the API Response from this third party application.
 
