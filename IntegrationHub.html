@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>guidebook</title>
+<title>IntegrationHub</title>
 
 
 <style type="text/css">
@@ -331,17 +331,17 @@ kbd {
 
 <body>
 
-<h1 id="toc_0">Introduction</h1>
+<h1 id="toc_0">Integration Hub exercice</h1>
+
+<h2 id="toc_1">Introduction</h2>
 
 <p>Integration Hub enables execution of third-party APIs as a part of a flow when a specific event occurs in ServiceNow. These integrations, referred to as spokes, are easy to configure and enable you to quickly add powerful actions without the need to write a script. For example, you can post a message and incident details in a Slack channel when a high priority incident is created.</p>
 
-<h1 id="toc_1">Integration Hub exercice</h1>
-
 <h2 id="toc_2">Goal</h2>
 
-<p>In this exercice you will learn how to create a Spoke in Integration Hub. You will learn how to connect a ServiceNow Worklow to a remote API. For our use case we want to use Integration Hub to validate some data against an API. In the previous exercice we have seen how to extract data from document using our Intelligent Document Processing capability (<strong>Document Intelligent</strong>). In the previous exercice we see how we can extract Banking information from a VOID Check automatically using DocIntel. In this exercice we see how we validate the <strong>Routing Number</strong> extracted from a VOID Check by building an Integration Hub spoke action that is going to take this Routing Number information and pass it to an external API. This 3rd party API returns additional banking information that can be useful to setup the direct deposit for this new employee, or simply validate that the data extracted is correct.  This is just an example to show how easily you can connect ServiceNow to external system via API by creating your own Spoke. We see how to build an integration to an API with having to write a single line of code.</p>
+<p>In this exercice you will learn how to create a Spoke in Integration Hub. You will learn how to connect a ServiceNow Worklow to a remote API. For our use case we want to use Integration Hub to validate some data against an API. In the previous exercice we have seen how to extract data from document using our Intelligent Document Processing capability (<strong>Document Intelligence</strong>). In the previous exercice we see how we can extract Banking information from a VOID Check automatically using DocIntel. In this exercice we see how we validate the <strong>Routing Number</strong> extracted from a VOID Check by building an Integration Hub spoke action that is going to take this Routing Number information and pass it to an external API. This 3rd party API returns additional banking information that can be useful to setup the direct deposit for this new employee, or simply validate that the data extracted is correct.  This is just an example to show how easily you can connect ServiceNow to external system via API by creating your own Spoke. We see how to build an integration to an API with having to write a single line of code.</p>
 
-<h1 id="toc_3">Getting Familiar with an API</h1>
+<h2 id="toc_3">Getting Familiar with an API</h2>
 
 <p>When you need to create an integration from ServiceNow to an external system via API, it is important to familiarize yourself with the API that you are going to call from ServiceNow first. In the following steps we are going to take a look at that API so we can understand how it works and create our own spoke for it:</p>
 
@@ -350,7 +350,7 @@ kbd {
 
 <p>Open a browser and navigate to https://www.routingnumbers.info/api/data.html to test out the API and analyze what this API can return.  </p>
 
-<p>On the <strong>Routing Number</strong> Type 02000021 (1) then Click <strong>Get Bank Data</strong> (2)</p>
+<p>On the <strong>Routing Number</strong> Type 021000021 (1) then Click <strong>Get Bank Data</strong> (2)</p>
 
 <p><img src="images/2022-09-06_14-20-47.png" alt="Relative"> </p>
 
@@ -364,7 +364,7 @@ kbd {
 <p>From a workflow in ServiceNow, you might want to make a call to this API to collect additional information from the Routing Number. For this you can create your own spoke.</p>
 </blockquote>
 
-<p><img src="/images/2022-09-06_14-27-17.png" alt="Relative"> </p>
+<p><img src="images/2022-09-06_14-27-17.png" alt="Relative"> </p>
 
 <p>In the next step of this exercice we will leverage that API from ServiceNow, custom IntegrationHub spoke action so we can make those API calls directly from a Workflow in ServiceNow and retrieve the API Response from this third party application.</p></li>
 </ol>
@@ -584,7 +584,7 @@ We are going to map those Object from previous step to new Output variable. </p>
 <li><p>Then click <strong>Create Output</strong>:</p>
 
 <p><img src="images/2022-09-06_17-14-22.png" alt="Relative"></p></li>
-<li><p>On the Label columb Double click <strong>variable</strong> (1) and type office<em>code then double click variable on the <strong>Name</strong> column and type office</em>code:
+<li><p>On the Label column Double click <strong>variable</strong> (1) and type office<em>code then double click variable on the <strong>Name</strong> column and type office</em>code:
 <img src="images/2022-09-06_17-16-28.png" alt="Relative"></p></li>
 <li><p>Then continue to <strong>Create Output</strong> with the following <strong>Label</strong> and <strong>Name</strong>:</p>
 
@@ -732,7 +732,7 @@ Close the Operation Execution Details tab(s):</p>
 <li><p>Under the <strong>Inputs</strong> section, click the <strong>+</strong> sign (1), then enter the label <strong>routingnumber</strong> (2) and name <strong>routing number</strong> (3), make the input <strong>Mandatory</strong> (4), and finally click the expand icon (5).</p>
 
 <p><img src="images/2022-09-07_08-26-03.png" alt="Relative"></p></li>
-<li><p>on the <strong>Default value</strong> field, type the number <strong>02100021</strong> (1) , then click Save (2)</p>
+<li><p>on the <strong>Default value</strong> field, type the number <strong>021000021</strong> (1) , then click Save (2)</p>
 
 <p><img src="images/2022-09-07_08-31-59.png" alt="Relative"></p>
 
@@ -748,15 +748,15 @@ Close the Operation Execution Details tab(s):</p>
 <li><p>Then click Action</p>
 
 <p><img src="images/2022-09-07_08-41-05.png" alt="Relative"></p></li>
-<li><p>in the search box type <strong>Validate Banking Information</strong> (1) then click under <strong>Default</strong> on the action <strong>Validate banking Information</strong> (2):</p>
+<li><p>in the search box type <strong>Direct Deposit</strong> (1) then under <strong>Installed Spokes</strong> click  <strong>Direct Deposit</strong>  (2) then click the action <strong>Validate banking Information</strong> (3) to add it to your subflow:</p>
 
-<p><img src="images/2022-09-07_08-42-56.png" alt="Relative"></p></li>
+<p><img src="images/2022-10-07_08-39-39.png" alt="Relative"></p></li>
 <li><p>From the Data Pill, under <strong>Subflow Inputs</strong>, grab the <strong>routingnumber</strong> variable and drop it to the <strong>Routing Number</strong> field on our <strong>Validate Banking Information</strong> action and click <strong>Done</strong>:</p>
 
 <p><img src="images/2022-09-07_08-46-32.gif" alt="Relative"></p>
 
 <blockquote>
-<p>This is just a simple example on how to add a custome spoke action to a subflow, under that step you could add any logic you want based on your use case.</p>
+<p>This is just a simple example on how to add a custom spoke action to a subflow, under that step you could add any logic you want based on your use case.</p>
 </blockquote></li>
 <li><p>Notice in the data pill on the right hand side, the variable that we have available to use in our subflow, those are the output variable we have created earlier when we built the Spoke Action. Now we are going to map those to our Subflow Outputs. For this we use a <strong>Flow logic step</strong> that is available to us.</p></li>
 <li><p>Under Under the <strong>Validate Banking Information</strong> action, click <strong>+ Add an Action, Flow Logic, or Subflow</strong>:</p>
