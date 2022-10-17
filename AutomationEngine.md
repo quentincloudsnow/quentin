@@ -6,4 +6,4 @@
 
 ## [Exercice 3 Integration Hub](https://htmlpreview.github.io/?https://github.com/quentincloudsnow/quentin/main/blob/IntegrationHub.html)
 
-## [Exercice 4 RPA Hub](https://www.google.com)
+## [Exercice 4 RPA Hub](https://htmlpreview.github.io/?https://github.com/quentincloudsnow/Robert/master/blob/RPA%20Exercise.html)
