@@ -1,6 +1,6 @@
 # Automation Engine - Workshop in a box
 
-## [Exercice 1 Automation Center](https://www.google.com)
+## [Exercice 1 Automation Center](https://htmlpreview.github.io/?https://github.com/quentincloudsnow/dib/main/blob/guidebook.html)
 
 ## [Exercice 2 Document Intelligence](https://htmlpreview.github.io/?https://github.com/quentincloudsnow/quentin/main/blob/DocIntel.html)
 
