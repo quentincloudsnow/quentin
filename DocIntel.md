@@ -133,7 +133,7 @@ Click on the **Show In Doctintel** button (2) to open the file in DocIntel:
 
     Click the **Submit** button.  By clicking the submit button the model is trained with those new inputs. In this Lab environment we do not have access to our Machine Learning component it won't do anything. You can now close that Tab.
 
-1. Remember, we have submitted a VOID Check as **Abel Tuter**, you might wonder how the Bank Record with the attachment was picked up automtically by DocIntel. Let's review what was configured to do this. 
+1. Remember, we have submitted a VOID Check as **Abel Tuter**, you might wonder how the Bank Record with the attachment was picked up automatically by DocIntel. Let's review what was configured to do this. 
 
 1. Return to the Task Definition that was created for that use case. Click on **All** (1) then type **Document intelligence** in the filter navigator (2) and finally click **Task Definititions**:
 
