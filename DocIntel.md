@@ -6,11 +6,11 @@ Document Intelligence is a machine learning (ML) solution that provides assistan
 
 Many organizations today use simple optical character recognition (OCR) solutions to extract data from documents that requires significant manual configuration, and also often requires manual changes as the documents evolve. Document Intelligence extends beyond the simple OCR by using ML to identify, understand, and extract text and data from documents. This enables you to accurately automate document processing and accurately extract information from documents, even when the documents have varied text, data, and templates. 
 
-We added this capability on the platform so the data extraction from documents can easily be done but also for our customer to be able to do this from within their own Workflows on the plateform. A lot of processes still involve digital documents, this can be a useful capability as organisation are progressing on their hyperautomation journey.
+We added this capability on the platform so the data extraction from documents can easily be done but also for our customer to be able to do this from within their own Workflows on the platform. A lot of processes still involve digital documents, this can be a useful capability as organisation are progressing on their hyperautomation journey.
 
 ## Goal
 
-In this exercice we are going over a use case of a fictitious organization called **ACME**. ACME is growing very fast and hiring a lot of new employees. The HR team has submitted an Automation Idea in Automation Center to automate the Onboarding process of new hire. ACME's Automation COE has agreed to automate that process and use Document Intelligence to help with automate. One step of this process is called **Setup Direct Deposit**. We are going to focus for this exercice on this part. The current process is manual and done via email. Payroll Operation team request the employee to submit a **VOID Check** via email, then upon reception of that email Payroll manually extracts the banking information from the VOID Check and has to perform data entry operations with that data to setup the direct deposit for the new employee. In this exercice we are going to review how this the data extraction can be automated, and in the following exercice we will see how we can automate the Data Validation and Data Entry for this data using Integration Hub and RPA Hub.
+In this exercise we are going over a use case of a fictitious organization called **ACME**. ACME is growing very fast and hiring a lot of new employees. The HR team has submitted an Automation request in Automation Center to automate the Onboarding process of new hire. ACME's Automation COE has agreed to automate that process and use Document Intelligence to  add some automation. One step of this process is called **Setup Direct Deposit**. We are going to focus for this exercise on this part. The current process is manual and done via email. Payroll Operation team request the employee to submit a **VOID Check** via email, then upon reception of that email Payroll manually extracts the banking information from the VOID Check and has to perform data entry operations with that data to setup the direct deposit for the new employee. In this exercise we are going to review how this the data extraction can be automated, and in the following exercise we will see how we can automate the Data Validation and Data Entry for this data using Integration Hub and RPA Hub.
 
 1. Log in to your instance as **Admin**
 
@@ -35,7 +35,7 @@ In this exercice we are going over a use case of a fictitious organization calle
    | 3. Account holder | Abel Tuter |
    | 4. Bank Name | JPMorgan |
 
-    > Later in the exercice we will review how we have configured and trained **Document Intelligence** to extract those informations.
+    > Later in the exercise we will review how we have configured and trained **Document Intelligence** to extract those informations.
 
 1. In order to show you how we can submit documents to DocIntel we are going to impersonate as *****Abel Tuter** and submit the VOID Check like an new hire would do. 
 
@@ -53,11 +53,11 @@ In this exercice we are going over a use case of a fictitious organization calle
     ![Relative](images/2022-09-09_10-06-14.png)
 
     > This is just a shortcut to open the Recored Producer that we have created for new hires to submit their VOID Check.
-1. Once the **Setup Direct Deposit** is opened, click **Add attachments** (1), select the file **void cheque Abel Tuter.jpg** from your download folder then click **submit** (2)
+1. Once the **Setup Direct Deposit** record producer is opened, click **Add attachments** (1), select the file **void cheque Abel Tuter.jpg** from your download folder then click **submit** (2)
 
     ![Relative](images/2022-09-09_10-10-23.png)
 
-1. Notice a banking record was created, record number **BAN0001001**. this in use case would trigger **Document Intelligence** to process the file attached to perform the data extraction.
+1. Notice a banking record was created, record number **BAN0001001**. For our use case this would trigger **Document Intelligence** to process the file that is attached to the record to perform the data extraction.
 
 1. Now we are going to end the impersonation for **Abel Tuter** and inspect what is happening in the back-end and how **Document Intelligence** was configured.
 
@@ -69,7 +69,7 @@ In this exercice we are going over a use case of a fictitious organization calle
     
     ![Relative](images/2022-09-09_13-36-53.png)
 
-    >Note: This is where you can see Document Intelligence sending job to our Machine Learning shared infrastructure (Nagini) to process the file (OCR Task, Training the model and retreive the predicted values). this is not something an end-user will see, we just want to show here where to see what is happening in the back-end. It can be useful for the ServiceNow Admin or Document Intelligence admin to look at this table to see how long it takes to process the Document intelligence tasks. Since Document Intelligence uses a shared Machine Learning infrastructure, it can takes from few seconds to minutes to process depending of the workload on the Nagini cluster.
+    >Note: This is where you can see Document Intelligence sending jobs to our Machine Learning shared infrastructure (Nagini) to process documents (OCR Task, Training the model and retreive the predicted values). We just want to show here what is happening in the back-end. It can be useful for the ServiceNow Admin or Document Intelligence admin to look at this table to see how long it takes to process the Document intelligence tasks. Since Document Intelligence uses a shared Machine Learning infrastructure, it can takes from few seconds to minutes to process depending of the workload on the Nagini cluster.
 
 1. You should see a table and records as shown in the example below. Other ServiceNow products write on that table, for example **Predictive Intelligence**.
 
@@ -85,7 +85,7 @@ In this exercice we are going over a use case of a fictitious organization calle
 
      ![Relative](images/2022-09-09_10-40-22.png)
 
-1. Lets review the **Task Definition** for our use case (Extracting data from VOID checks), Document Intelligence is a very easy product to use, that screen **Task Definition** is basically the only configuration screen needed to get started the product. DocIntel application has a short time to value.
+1. Lets review the **Task Definition** for our use case (Extracting data from VOID checks), that screen **Task Definition** is basically the only configuration screen needed to get started with the product. 
 
     >Notice the field **Target table** (1) . this is where we tell Document Intelligence for which table we are going to use the values extracted from the document.
 
@@ -119,13 +119,15 @@ In this exercice we are going over a use case of a fictitious organization calle
 
     ![Relative](images/2022-09-09_12-26-01.png)
 
-1. Once the task screen is open, notice the **Extracted Values** (1), this are the values that Document Intelligence has extracted from the VOID Check automatically.
+1. Once the task screen is open, notice the **Extracted Values** (1), those are the values that Document Intelligence has extracted from the VOID Check automatically.
 Click on the **Show In Doctintel** button (2) to open the file in DocIntel:
 
     ![Relative](images/2022-09-09_12-35-30.png)
 
 
 1. Agents usually open a document in Document Intelligence to review and validate the extracted value or to map extracted values to the keys (to train the model). The first time you submit a task associated to a new **Task Definition**, DocIntel won't know which values go to which key. The Machine Learning model needs to be trained. We do this by clicking on the key field (1) and selecting the correct value. The sytem indicates on the screen from where the value is coming from in the document (2). 
+
+    ![Relative](images/2022-09-09_12-39-30.png)
 
     Notice the percentage number (73%) next to **Abel Tuter** under the **Account Holder** field (1). This is the confidence score for the prediction. The confidence score increases as you train the model with more document (usually 4 to 5 documents is enough to reach high number).  On the Task definition you can configure the **Straight Through processing threshold**. this correspond to the predicition confidence score value for which you want to extract the values and map them to the fields without a manual review from an agent.
 
@@ -141,11 +143,11 @@ Click on the **Show In Doctintel** button (2) to open the file in DocIntel:
 
      ![Relative](images/2022-09-09_10-40-22.png)
 
-1. Once the **Task definition** is opened, Click on the **Integration Setups** Tab.  
-    > This is where you go to configure DocIntel to Process tasks automatically when records are created or submitted with attachment on the defined **Target Table**.
+1. Once the **Task definition** is opened, Click on the **Integration Setups** Tab and open the record **Void check - Process task** (1) 
+    > This is where you go to configure DocIntel to Process tasks automatically when records are created or updated with attachment on the defined **Target Table**.
     The first record **Void Check - Process task** (1), is where we have configured DocIntel to process a task based on our own condition (It uses a workflow). the second record **void check- extract values** is where we enable the workflow that is going to take the extracted values and assign them to the target fields that we have mapped when we have defined the **Keys**. Both of those workflows are created automatically by DocIntel but you can create your own if you need to perform additional steps.
 
-1. Open the record **Void check - Process task** (1) 
+
 
     ![Relative](images/2022-09-09_12-58-50.png)
 
@@ -164,9 +166,11 @@ Click on the **Show In Doctintel** button (2) to open the file in DocIntel:
 
     ![Relative](images/2022-09-09_13-15-45.png)
 
-    When we origninally submitted the VOID Check as **Abel Tuter** a bank record was automatically created. Then based on the configuration of DocIntel, a DocIntel task was created automatically to process the attachment (VOID Check), extract the data then update the field Account Number, Bank Name, Routing Number, Account Holder.  In this Lab we have cannot process documents since we do not have access to our shared ML Infrastructure so we are showing on this screen the end result with data we have preloaded on the lab instance so you can see what it would look like.
+    When we origininally submitted the VOID Check as **Abel Tuter** a bank record was automatically created. Then based on the configuration of DocIntel, a DocIntel task was created automatically to process the attachment (VOID Check), extract the data then update the field Account Number, Bank Name, Routing Number, Account Holder.  In this Lab environment we cannot process documents since we do not have access to our shared ML Infrastructure from those instances but we are showing on this screen below the end result with data we have preloaded on the lab instance so you can see what it would look like in real life...
 
     ![Relative](images/2022-09-09_13-20-03.png)
+
+    > This is a lab exercise, in real life we would not show any sensitive information like those banking information. We have created a custom table just for that exercise and securing the data is not the focus of that lab. We have different encryptions capabilities on the platform if we wanted to secure that data :-) 
 
 In the following  exercice (IntegrationHub we see how to build a spoke to integrate ServiceNow to an external API that will use those extracted information from DocIntel.
 
