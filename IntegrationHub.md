@@ -1,4 +1,4 @@
-# Integration Hub exercice
+# Integration Hub exercise
 
 ## Introduction
 
@@ -7,7 +7,7 @@ Integration Hub enables execution of third-party APIs as a part of a flow when a
 
 ## Goal
 
-In this exercice you will learn how to create a Spoke in Integration Hub. You will learn how to connect a ServiceNow Worklow to a remote API. For our use case we want to use Integration Hub to validate some data against an API. In the previous exercice we have seen how to extract data from document using our Intelligent Document Processing capability (**Document Intelligence**). In the previous exercice we see how we can extract Banking information from a VOID Check automatically using DocIntel. In this exercice we see how we validate the **Routing Number** extracted from a VOID Check by building an Integration Hub spoke action that is going to take this Routing Number information and pass it to an external API. This 3rd party API returns additional banking information that can be useful to setup the direct deposit for this new employee, or simply validate that the data extracted is correct.  This is just an example to show how easily you can connect ServiceNow to external system via API by creating your own Spoke. We see how to build an integration to an API with having to write a single line of code.
+In this exercise you will learn how to create a Spoke in Integration Hub. You will learn how to connect a ServiceNow Workflow to a remote API. For our use case we want to use Integration Hub to validate some data against an API. In the previous exercise we have seen how to extract data from document using our Intelligent Document Processing capability (**Document Intelligence**). In the previous exercise we see how we can extract Banking information from a VOID Check automatically using DocIntel. In this exercise we see how we validate the **Routing Number** extracted from a VOID Check by building an Integration Hub spoke action that is going to take this Routing Number information and pass it to an external API. This 3rd party API returns additional banking information that can be useful to setup the direct deposit for this new employee, or simply validate that the data extracted is correct.  This is just an example to show how easily you can connect ServiceNow to external system via API by creating your own Spoke. We see how to build an integration to an API with having to write a single line of code.
 
 
 
@@ -31,7 +31,7 @@ When you need to create an integration from ServiceNow to an external system via
 
     ![Relative](images/2022-09-06_14-27-17.png) 
 
-    In the next step of this exercice we will leverage that API from ServiceNow, custom IntegrationHub spoke action so we can make those API calls directly from a Workflow in ServiceNow and retrieve the API Response from this third party application.
+    In the next step of this exercise we will leverage that API from ServiceNow, custom IntegrationHub spoke action so we can make those API calls directly from a Workflow in ServiceNow and retrieve the API Response from this third party application.
 
 
 
@@ -94,7 +94,7 @@ When you need to create an integration from ServiceNow to an external system via
 
     ![Relative](images/2022-09-06_14-32-45.png)
 
-    > For this exercice we do not use any credentials, this third party API doe not require authentication but most 3rd party API would require credentials to authenticate with it.Credentials can be configured in ServiceNow, and you would select the right **Credential Alia** to use under the **Connection Details**
+    > For this exercise we do not use any credentials, this third party API doe not require authentication but most 3rd party API would require credentials to authenticate with it.Credentials can be configured in ServiceNow, and you would select the right **Credential Alia** to use under the **Connection Details**
     In production scenario, information such as **Base URL** (End point)c and **Credentials** would be configured on the instance under **Connections & Credentials**.
 
 1. Scroll down to show the **Request Details** form
@@ -157,7 +157,7 @@ When you need to create an integration from ServiceNow to an external system via
 
     This will open the content of the **response_body** output, this is the response coming from the API. Most APIs return a response in the same format (JSON Payload), it contains the information that we want to use from our Workflow. 
     
-    > The benefit of Flow Designer and Integration Hub is that we can parse a JSON Payload without having to script anything (most solutions on the market require some kind of codind to do this), before we had Integration Hub on the plateform we had to use some json.parse function in Javascript to be able to extract information from a JSON Payload. We made it easy for anyone to build an integration with no code.
+    > The benefit of Flow Designer and Integration Hub is that we can parse a JSON Payload without having to script anything (most solutions on the market require some kind of codind to do this), before we had Integration Hub on the platform we had to use some json.parse function in Javascript to be able to extract information from a JSON Payload. We made it easy for anyone to build an integration with no code.
 
 1. Copy the code from the **Viewing response_body** window: 
     > Save in a text file or notepad or make sure to keep the content in your clipboard (Copy/paste) as we are going to need it when we configure the JSON Parse step, we will use this content.
@@ -206,7 +206,7 @@ When you need to create an integration from ServiceNow to an external system via
 
     ![Relative](images/2022-09-06_17-14-22.png)
     
-1. On the Label column Double click **variable** (1) and type office_code then double click variable on the **Name** column and type office_code:
+1. On the Label column Double click **variable** (1) and type office\_code then double click variable on the **Name** column and type office\_code:
     ![Relative](images/2022-09-06_17-16-28.png)
 
 1. Then continue to **Create Output** with the following **Label** and **Name**:
@@ -274,7 +274,7 @@ When you need to create an integration from ServiceNow to an external system via
 
     ![Relative](images/2022-09-07_07-59-39.png)
 
-1. We have basically created a reusable building block (Spoke action). For builders to be able to use it from within their worlflows, you need to publish it to make it available. 
+1. We have basically created a reusable building block (Spoke action). For builders to be able to use it from within their workflows, you need to publish it to make it available. 
 Close the Operation Execution Details tab(s):
 
     ![Relative](images/2022-09-07_08-04-57.png)
@@ -376,4 +376,4 @@ Close the Operation Execution Details tab(s):
 
 
 # Conclusion
-You have now completed the Integration Hub exercice. We have seen how to create a new API integration by creating a new Spoke Action and using the REST and JSON Parser steps, then how to publish that spoke action to be able to use it in a subflow.
+You have now completed the Integration Hub exercise. We have seen how to create a new API integration by creating a new Spoke Action and using the REST and JSON Parser steps, then how to publish that spoke action to be able to use it in a subflow.
