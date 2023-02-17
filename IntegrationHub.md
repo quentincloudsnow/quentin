@@ -1,3 +1,5 @@
+**Special note**: Please do not use Google Chrome to do this lab. MAC users please use Safari, Windows users please use Firefox if possible (or Edge). Certain recent versions of Chrome cause unexpected behaviors due to unwanted characters that represent Byte order mark (BOM) in Flow Designer. This is a known issue and was fixed by a patch that is not installed on those lab instances, sorry for the inconvenience), for reference  [KB1182247](https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB1182247)
+
 # Integration Hub exercise
 
 ## Introduction
