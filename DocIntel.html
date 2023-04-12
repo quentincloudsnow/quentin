@@ -1,367 +1,292 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html><head>
+      <title>DocIntel</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
 
-<head>
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>DocIntel</title>
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
 
 
-<style type="text/css">
-body {
-  font-family: Helvetica, arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;
-  padding: 30px; }
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
 
-body > *:first-child {
-  margin-top: 0 !important; }
-body > *:last-child {
-  margin-bottom: 0 !important; }
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
 
-a {
-  color: #4183C4; }
-a.absent {
-  color: #cc0000; }
-a.anchor {
-  display: block;
-  padding-left: 30px;
-  margin-left: -30px;
-  cursor: pointer;
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0; }
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
-  padding: 0;
-  font-weight: bold;
-  -webkit-font-smoothing: antialiased;
-  cursor: text;
-  position: relative; }
-
-h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
-  text-decoration: none; }
-
-h1 tt, h1 code {
-  font-size: inherit; }
-
-h2 tt, h2 code {
-  font-size: inherit; }
-
-h3 tt, h3 code {
-  font-size: inherit; }
-
-h4 tt, h4 code {
-  font-size: inherit; }
-
-h5 tt, h5 code {
-  font-size: inherit; }
-
-h6 tt, h6 code {
-  font-size: inherit; }
-
-h1 {
-  font-size: 28px;
-  color: black; }
-
-h2 {
-  font-size: 24px;
-  border-bottom: 1px solid #cccccc;
-  color: black; }
-
-h3 {
-  font-size: 18px; }
-
-h4 {
-  font-size: 16px; }
-
-h5 {
-  font-size: 14px; }
-
-h6 {
-  color: #777777;
-  font-size: 14px; }
-
-p, blockquote, ul, ol, dl, li, table, pre {
-  margin: 15px 0; }
-
-hr {
-  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
-  border: 0 none;
-  color: #cccccc;
-  height: 4px;
-  padding: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
 }
 
-body > h2:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-body > h1:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-  body > h1:first-child + h2 {
-    margin-top: 0;
-    padding-top: 0; }
-body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-  margin-top: 0;
-  padding-top: 0; }
-
-h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
-  margin-top: 0; }
-
-li p.first {
-  display: inline-block; }
-li {
-  margin: 0; }
-ul, ol {
-  padding-left: 30px; }
-
-ul :first-child, ol :first-child {
-  margin-top: 0; }
-
-dl {
-  padding: 0; }
-  dl dt {
-    font-size: 14px;
-    font-weight: bold;
-    font-style: italic;
-    padding: 0;
-    margin: 15px 0 5px; }
-    dl dt:first-child {
-      padding: 0; }
-    dl dt > :first-child {
-      margin-top: 0; }
-    dl dt > :last-child {
-      margin-bottom: 0; }
-  dl dd {
-    margin: 0 0 15px;
-    padding: 0 15px; }
-    dl dd > :first-child {
-      margin-top: 0; }
-    dl dd > :last-child {
-      margin-bottom: 0; }
-
-blockquote {
-  border-left: 4px solid #dddddd;
-  padding: 0 15px;
-  color: #777777; }
-  blockquote > :first-child {
-    margin-top: 0; }
-  blockquote > :last-child {
-    margin-bottom: 0; }
-
-table {
-  padding: 0;border-collapse: collapse; }
-  table tr {
-    border-top: 1px solid #cccccc;
-    background-color: white;
-    margin: 0;
-    padding: 0; }
-    table tr:nth-child(2n) {
-      background-color: #f8f8f8; }
-    table tr th {
-      font-weight: bold;
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr td {
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr th :first-child, table tr td :first-child {
-      margin-top: 0; }
-    table tr th :last-child, table tr td :last-child {
-      margin-bottom: 0; }
-
-img {
-  max-width: 100%; }
-
-span.frame {
-  display: block;
-  overflow: hidden; }
-  span.frame > span {
-    border: 1px solid #dddddd;
-    display: block;
-    float: left;
-    overflow: hidden;
-    margin: 13px 0 0;
-    padding: 7px;
-    width: auto; }
-  span.frame span img {
-    display: block;
-    float: left; }
-  span.frame span span {
-    clear: both;
-    color: #333333;
-    display: block;
-    padding: 5px 0 0; }
-span.align-center {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-center > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: center; }
-  span.align-center span img {
-    margin: 0 auto;
-    text-align: center; }
-span.align-right {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px 0 0;
-    text-align: right; }
-  span.align-right span img {
-    margin: 0;
-    text-align: right; }
-span.float-left {
-  display: block;
-  margin-right: 13px;
-  overflow: hidden;
-  float: left; }
-  span.float-left span {
-    margin: 13px 0 0; }
-span.float-right {
-  display: block;
-  margin-left: 13px;
-  overflow: hidden;
-  float: right; }
-  span.float-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: right; }
-
-code, tt {
-  margin: 0 2px;
-  padding: 0 5px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px; }
-
-pre code {
-  margin: 0;
-  padding: 0;
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
   white-space: pre;
-  border: none;
-  background: transparent; }
-
-.highlight pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-
-pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-  pre code, pre tt {
-    background-color: transparent;
-    border: none; }
-
-sup {
-    font-size: 0.83em;
-    vertical-align: super;
-    line-height: 0;
 }
 
-kbd {
-  display: inline-block;
-  padding: 3px 5px;
-  font-size: 11px;
-  line-height: 10px;
-  color: #555;
-  vertical-align: middle;
-  background-color: #fcfcfc;
-  border: solid 1px #ccc;
-  border-bottom-color: #bbb;
-  border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #bbb
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
 }
 
-* {
-	-webkit-print-color-adjust: exact;
-}
-@media screen and (min-width: 914px) {
-    body {
-        width: 854px;
-        margin:0 auto;
-    }
-}
-@media print {
-	table, pre {
-		page-break-inside: avoid;
-	}
-	pre {
-		word-wrap: break-word;
-	}
-  body {
-    padding: 2cm; 
-  }
-}
-</style>
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p,html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="document-intelligence">Document Intelligence</h1>
 
-</head>
+<h2 class="mume-header" id="introduction">Introduction</h2>
 
-<body>
-
-<h1 id="toc_0">Document Intelligence</h1>
-
-<h2 id="toc_1">Introduction</h2>
-
-<p>Document Intelligence is a machine learning (ML) solution that provides assistance to quickly and accurately extract information from documents to the Now Platform® enabling you to quickly process highly variable documents that change over time.</p>
-
-<p>Many organizations today use simple optical character recognition (OCR) solutions to extract data from documents that requires significant manual configuration, and also often requires manual changes as the documents evolve. Document Intelligence extends beyond the simple OCR by using ML to identify, understand, and extract text and data from documents. This enables you to accurately automate document processing and accurately extract information from documents, even when the documents have varied text, data, and templates. </p>
-
+<p>Document Intelligence is a machine learning (ML) solution that provides assistance to quickly and accurately extract information from documents to the Now Platform&#xAE; enabling you to quickly process highly variable documents that change over time.</p>
+<p>Many organizations today use simple optical character recognition (OCR) solutions to extract data from documents that requires significant manual configuration, and also often requires manual changes as the documents evolve. Document Intelligence extends beyond the simple OCR by using ML to identify, understand, and extract text and data from documents. This enables you to accurately automate document processing and accurately extract information from documents, even when the documents have varied text, data, and templates.</p>
 <p>We added this capability on the platform so the data extraction from documents can easily be done but also for our customer to be able to do this from within their own Workflows on the platform. A lot of processes still involve digital documents, this can be a useful capability as organisation are progressing on their hyperautomation journey.</p>
+<h2 class="mume-header" id="goal">Goal</h2>
 
-<h2 id="toc_2">Goal</h2>
-
-<p>In this exercise we are going over a use case of a fictitious organization called <strong>ACME</strong>. ACME is growing very fast and hiring a lot of new employees. The HR team has submitted an Automation request in Automation Center to automate the Onboarding process of new hire. ACME&#39;s Automation COE has agreed to automate that process and use Document Intelligence to  add some automation. One step of this process is called <strong>Setup Direct Deposit</strong>. We are going to focus for this exercise on this part. The current process is manual and done via email. Payroll Operation team request the employee to submit a <strong>VOID Check</strong> via email, then upon reception of that email Payroll manually extracts the banking information from the VOID Check and has to perform data entry operations with that data to setup the direct deposit for the new employee. In this exercise we are going to review how this the data extraction can be automated, and in the following exercise we will see how we can automate the Data Validation and Data Entry for this data using Integration Hub and RPA Hub.</p>
-
+<p>In this exercise we are going over a use case of a fictitious organization called <strong>ACME</strong>. ACME is growing very fast and hiring a lot of new employees. The HR team has submitted an Automation request in Automation Center to automate the Onboarding process of new hire. ACME&apos;s Automation COE has agreed to automate that process and use Document Intelligence to  add some automation. One step of this process is called <strong>Setup Direct Deposit</strong>. We are going to focus for this exercise on this part. The current process is manual and done via email. Payroll Operation team request the employee to submit a <strong>VOID Check</strong> via email, then upon reception of that email Payroll manually extracts the banking information from the VOID Check and has to perform data entry operations with that data to setup the direct deposit for the new employee. In this exercise we are going to review how this the data extraction can be automated, and in the following exercise we will see how we can automate the Data Validation and Data Entry for this data using Integration Hub and RPA Hub.</p>
 <ol>
-<li><p>Log in to your instance as <strong>Admin</strong></p>
-
-<p>We are going to Impersonate as <strong>Abel Tuter</strong>, for our use case, <strong>Abel Tuter</strong> is a new hire will submit his VOID Check using a <strong>Record Producer</strong> in ServiceNow. This step will allow you to review the document for which we want to extract information, but also it shows an example of how you can submit document to <strong>Document Intelligence</strong>. </p>
-
+<li>
+<p>Log in to your instance as <strong>Admin</strong></p>
+<p>We are going to Impersonate as <strong>Abel Tuter</strong>, for our use case, <strong>Abel Tuter</strong> is a new hire will submit his VOID Check using a <strong>Record Producer</strong> in ServiceNow. This step will allow you to review the document for which we want to extract information, but also it shows an example of how you can submit document to <strong>Document Intelligence</strong>.</p>
 <blockquote>
 <p>Document Intelligence can grab documents from attachment on any records. Documents can be submitted to DocIntel via a workflow too.</p>
-</blockquote></li>
-<li><p>Once logged-in to your instance as <strong>Admin</strong>, click on the <strong>Favorites</strong> (1) then click on <strong>Download the VOID Cheque here</strong> (2) :</p>
-
-<p><img src="images/2022-09-09_09-47-1.png" alt="Relative"></p></li>
-<li><p>The download of the of file should start automatically. In your Download folder locate the file name <strong>void cheque Abel Tuer.jpg</strong> and open it so we can review the information we want to extract from it.</p>
-
+</blockquote>
+</li>
+<li>
+<p>Once logged-in to your instance as <strong>Admin</strong>, click on the <strong>Favorites</strong> (1) then click on <strong>Download the VOID Cheque here</strong> (2) :</p>
+<p><img src="images/2022-09-09_09-47-1.png" alt="Relative"></p>
+</li>
+<li>
+<p>The download of the of file should start automatically. In your Download folder locate the file name <strong>void cheque Abel Tuer.jpg</strong> and open it so we can review the information we want to extract from it.</p>
 <p>This this an example of VOID Check that payroll will use to extract the banking information of the new hire. On the VOID Check there are meaningful information that they usually extract manually:</p>
-
 <p><img src="images/2022-09-09_09-51-53.png" alt="Relative"></p>
-
 <table>
 <thead>
 <tr>
@@ -369,7 +294,6 @@ kbd {
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>1. Routing Number</td>
@@ -389,144 +313,163 @@ kbd {
 </tr>
 </tbody>
 </table>
-
 <blockquote>
 <p>Later in the exercise we will review how we have configured and trained <strong>Document Intelligence</strong> to extract those informations.</p>
-</blockquote></li>
-<li><p>In order to show you how we can submit documents to DocIntel we are going to impersonate as ***<strong>Abel Tuter</strong> and submit the VOID Check like an new hire would do. </p></li>
-<li><p>Click on the profile picture on the top right corner (1), then click <strong>Impersonate user</strong>:</p>
-
-<p><img src="images/2022-09-09_10-00-29.png" alt="Relative"></p></li>
-<li><p>In the <strong>Impersonate user</strong> screen, type <strong>Abel Tuter</strong> in search box (1), then click on <strong>Abel Tuter</strong> (2)  and finally click <strong>Impersonate user</strong> (3)</p>
-
-<p><img src="images/2022-09-09_10-03-48.png" alt="Relative"></p></li>
-<li><p>Once impersonated as <strong>Abel Tuter</strong>, click <strong>Favorites</strong> (1) then click <strong>Setup Direct Deposit</strong> (2)</p>
-
+</blockquote>
+</li>
+<li>
+<p>In order to show you how we can submit documents to DocIntel we are going to impersonate as ***<strong>Abel Tuter</strong> and submit the VOID Check like an new hire would do.</p>
+</li>
+<li>
+<p>Click on the profile picture on the top right corner (1), then click <strong>Impersonate user</strong>:</p>
+<p><img src="images/2022-09-09_10-00-29.png" alt="Relative"></p>
+</li>
+<li>
+<p>In the <strong>Impersonate user</strong> screen, type <strong>Abel Tuter</strong> in search box (1), then click on <strong>Abel Tuter</strong> (2)  and finally click <strong>Impersonate user</strong> (3)</p>
+<p><img src="images/2022-09-09_10-03-48.png" alt="Relative"></p>
+</li>
+<li>
+<p>Once impersonated as <strong>Abel Tuter</strong>, click <strong>Favorites</strong> (1) then click <strong>Setup Direct Deposit</strong> (2)</p>
 <p><img src="images/2022-09-09_10-06-14.png" alt="Relative"></p>
-
 <blockquote>
 <p>This is just a shortcut to open the Recored Producer that we have created for new hires to submit their VOID Check.</p>
-</blockquote></li>
-<li><p>Once the <strong>Setup Direct Deposit</strong> record producer is opened, click <strong>Add attachments</strong> (1), select the file <strong>void cheque Abel Tuter.jpg</strong> from your download folder then click <strong>submit</strong> (2)</p>
-
-<p><img src="images/2022-09-09_10-10-23.png" alt="Relative"></p></li>
-<li><p>Notice a banking record was created, record number <strong>BAN0001001</strong>. For our use case this would trigger <strong>Document Intelligence</strong> to process the file that is attached to the record to perform the data extraction.</p></li>
-<li><p>Now we are going to end the impersonation for <strong>Abel Tuter</strong> and inspect what is happening in the back-end and how <strong>Document Intelligence</strong> was configured.</p></li>
-<li><p>Click on <strong>Abel Tuter</strong>&#39;s profile picture (1) then click <strong>End  impersonation</strong> (2)</p>
-
-<p><img src="images/2022-09-09_10-17-48.png" alt="Relative"></p></li>
-<li><p>Click <strong>All</strong> (1) then type <strong>ml_solution.list</strong> (2) then press <strong>Enter</strong>:</p>
-
+</blockquote>
+</li>
+<li>
+<p>Once the <strong>Setup Direct Deposit</strong> record producer is opened, click <strong>Add attachments</strong> (1), select the file <strong>void cheque Abel Tuter.jpg</strong> from your download folder then click <strong>submit</strong> (2)</p>
+<p><img src="images/2022-09-09_10-10-23.png" alt="Relative"></p>
+</li>
+<li>
+<p>Notice a banking record was created, record number <strong>BAN0001001</strong>. For our use case this would trigger <strong>Document Intelligence</strong> to process the file that is attached to the record to perform the data extraction.</p>
+</li>
+<li>
+<p>Now we are going to end the impersonation for <strong>Abel Tuter</strong> and inspect what is happening in the back-end and how <strong>Document Intelligence</strong> was configured.</p>
+</li>
+<li>
+<p>Click on <strong>Abel Tuter</strong>&apos;s profile picture (1) then click <strong>End  impersonation</strong> (2)</p>
+<p><img src="images/2022-09-09_10-17-48.png" alt="Relative"></p>
+</li>
+<li>
+<p>Click <strong>All</strong> (1) then type <strong>ml_solution.list</strong> (2) then press <strong>Enter</strong>:</p>
 <p><img src="images/2022-09-09_13-36-53.png" alt="Relative"></p>
-
 <blockquote>
 <p>Note: This is where you can see Document Intelligence sending jobs to our Machine Learning shared infrastructure (Nagini) to process documents (OCR Task, Training the model and retreive the predicted values). We just want to show here what is happening in the back-end. It can be useful for the ServiceNow Admin or Document Intelligence admin to look at this table to see how long it takes to process the Document intelligence tasks. Since Document Intelligence uses a shared Machine Learning infrastructure, it can takes from few seconds to minutes to process depending of the workload on the Nagini cluster.</p>
-</blockquote></li>
-<li><p>You should see a table and records as shown in the example below. Other ServiceNow products write on that table, for example <strong>Predictive Intelligence</strong>.</p>
-
-<p><img src="images/2022-09-09_10-28-02.png" alt="Relative"></p></li>
-<li><p>We are going to view what we have configured on the instance in order for Document Intelligence to extract the information we need from that VOID Check. Click on <strong>All</strong> (1) then type <strong>Document intelligence</strong> in the filter navigator (2) and finally click <strong>Task Definititions</strong>:</p>
-
+</blockquote>
+</li>
+<li>
+<p>You should see a table and records as shown in the example below. Other ServiceNow products write on that table, for example <strong>Predictive Intelligence</strong>.</p>
+<p><img src="images/2022-09-09_10-28-02.png" alt="Relative"></p>
+</li>
+<li>
+<p>We are going to view what we have configured on the instance in order for Document Intelligence to extract the information we need from that VOID Check. Click on <strong>All</strong> (1) then type <strong>Document intelligence</strong> in the filter navigator (2) and finally click <strong>Task Definititions</strong>:</p>
 <p><img src="images/2022-09-09_10-35-25.png" alt="Relative"></p>
-
 <blockquote>
 <p>The task definition is where you tell to Document Intelligence about a new type of document you need to process.</p>
-</blockquote></li>
-<li><p>Click on the <strong>Void check - Task Definition</strong> record to open it:</p>
-
-<p><img src="images/2022-09-09_10-40-22.png" alt="Relative"></p></li>
-<li><p>Lets review the <strong>Task Definition</strong> for our use case (Extracting data from VOID checks), that screen <strong>Task Definition</strong> is basically the only configuration screen needed to get started with the product. </p>
-
+</blockquote>
+</li>
+<li>
+<p>Click on the <strong>Void check - Task Definition</strong> record to open it:</p>
+<p><img src="images/2022-09-09_10-40-22.png" alt="Relative"></p>
+</li>
+<li>
+<p>Lets review the <strong>Task Definition</strong> for our use case (Extracting data from VOID checks), that screen <strong>Task Definition</strong> is basically the only configuration screen needed to get started with the product.</p>
 <blockquote>
 <p>Notice the field <strong>Target table</strong> (1) . this is where we tell Document Intelligence for which table we are going to use the values extracted from the document.</p>
-
-<p>Notice the option <strong>Enable Straight Through Processing</strong> (2), you can enable that option so AI automatically extracts the data for all fields, if the confidence threshold for all fields is above the Straight Through Processing Threshold defined in the task definition. Fields do not need to be reviewed, otherwise you can have an agent that would review the values extracted, after values are reviewed the Machine Learning model associated to that Task Definition is re-trained automatically. DocIntel becomes more confident over time, as it processes more and more documents. </p>
-
+</blockquote>
+<blockquote>
+<p>Notice the option <strong>Enable Straight Through Processing</strong> (2), you can enable that option so AI automatically extracts the data for all fields, if the confidence threshold for all fields is above the Straight Through Processing Threshold defined in the task definition. Fields do not need to be reviewed, otherwise you can have an agent that would review the values extracted, after values are reviewed the Machine Learning model associated to that Task Definition is re-trained automatically. DocIntel becomes more confident over time, as it processes more and more documents.</p>
+</blockquote>
+<blockquote>
 <p>Notice the tab <strong>Keys</strong> (3), this is where we have defined the elements we want to extract the document.</p>
 </blockquote>
-
-<p><img src="images/2022-09-09_10-46-00.png" alt="Relative"></p></li>
-<li><p>Under the <strong>Keys</strong> tab, click <strong>Account Holder</strong> (2) to open that <strong>Key</strong>:</p>
-
+<p><img src="images/2022-09-09_10-46-00.png" alt="Relative"></p>
+</li>
+<li>
+<p>Under the <strong>Keys</strong> tab, click <strong>Account Holder</strong> (2) to open that <strong>Key</strong>:</p>
 <p><img src="images/2022-09-09_12-12-38.png" alt="Relative"></p>
-
 <blockquote>
 <p>When you need Document Intelligence to extract certain elements from a document, you create new keys on the Task Definition.</p>
-</blockquote></li>
-<li><p>Notice the <strong>Display Name</strong> field (1), this is the name for the new key, then the <strong>Type</strong> field (2), it can be Text or True/Fasle (for check box on forms for example). What you define on the <strong>Target Field</strong> field (3) is the field on which you want to store the value extracted by <strong>Document Intelligence</strong> on a record. <strong>Target Table</strong> (4) is the name of the table that contain the records you need to update with the value extracted (It&#39;s also the table that contains the records with the document attached that Document Intelligence will process):</p>
-
-<p><img src="images/2022-09-09_12-14-51.png" alt="Relative"></p></li>
-<li><p>Click the back button on the Key record to return to the <strong>task definition</strong> screen</p>
-
-<p><img src="images/2022-09-09_12-23-47.png" alt="Relative"></p></li>
-<li><p>From the <strong>Task Definition</strong> screen, click on the <strong>Tasks</strong> tab (1).</p>
-
+</blockquote>
+</li>
+<li>
+<p>Notice the <strong>Display Name</strong> field (1), this is the name for the new key, then the <strong>Type</strong> field (2), it can be Text or True/Fasle (for check box on forms for example). What you define on the <strong>Target Field</strong> field (3) is the field on which you want to store the value extracted by <strong>Document Intelligence</strong> on a record. <strong>Target Table</strong> (4) is the name of the table that contain the records you need to update with the value extracted (It&apos;s also the table that contains the records with the document attached that Document Intelligence will process):</p>
+<p><img src="images/2022-09-09_12-14-51.png" alt="Relative"></p>
+</li>
+<li>
+<p>Click the back button on the Key record to return to the <strong>task definition</strong> screen</p>
+<p><img src="images/2022-09-09_12-23-47.png" alt="Relative"></p>
+</li>
+<li>
+<p>From the <strong>Task Definition</strong> screen, click on the <strong>Tasks</strong> tab (1).</p>
 <blockquote>
 <p>Every time you need DocIntel to process a document, you need to create a task. And request to DocIntel to process that task.  The creation of the task (and trigger) can be automated via workflow. we will cover that shortly.</p>
 </blockquote>
-
 <p>Locate the Task named <strong>Void check - Process task</strong> (2), then notice the value <strong>true</strong> (3) on the <strong>Is Straight Through Processed</strong> column. It means that automatically extracted the data for all fields (without any human intervention). Notice on the column <strong>Source Record</strong> (4). For that task Document Intelligent has processed the attachment from that banking record <strong>BAN0001032</strong> and has populated the fields defined with the keys we have reviewed in the previous step.</p>
-
 <p>Click on the <strong>Void check - Process task</strong> task (2) to open it</p>
-
-<p><img src="images/2022-09-09_12-26-01.png" alt="Relative"></p></li>
-<li><p>Once the task screen is open, notice the <strong>Extracted Values</strong> (1), those are the values that Document Intelligence has extracted from the VOID Check automatically.
+<p><img src="images/2022-09-09_12-26-01.png" alt="Relative"></p>
+</li>
+<li>
+<p>Once the task screen is open, notice the <strong>Extracted Values</strong> (1), those are the values that Document Intelligence has extracted from the VOID Check automatically.<br>
 Click on the <strong>Show In Doctintel</strong> button (2) to open the file in DocIntel:</p>
-
-<p><img src="images/2022-09-09_12-35-30.png" alt="Relative"></p></li>
-<li><p>Agents usually open a document in Document Intelligence to review and validate the extracted value or to map extracted values to the keys (to train the model). The first time you submit a task associated to a new <strong>Task Definition</strong>, DocIntel won&#39;t know which values go to which key. The Machine Learning model needs to be trained. We do this by clicking on the key field (1) and selecting the correct value. The sytem indicates on the screen from where the value is coming from in the document (2). </p>
-
+<p><img src="images/2022-09-09_12-35-30.png" alt="Relative"></p>
+</li>
+<li>
+<p>Agents usually open a document in Document Intelligence to review and validate the extracted value or to map extracted values to the keys (to train the model). The first time you submit a task associated to a new <strong>Task Definition</strong>, DocIntel won&apos;t know which values go to which key. The Machine Learning model needs to be trained. We do this by clicking on the key field (1) and selecting the correct value. The sytem indicates on the screen from where the value is coming from in the document (2).</p>
 <p><img src="images/2022-09-09_12-39-30.png" alt="Relative"></p>
-
 <p>Notice the percentage number (73%) next to <strong>Abel Tuter</strong> under the <strong>Account Holder</strong> field (1). This is the confidence score for the prediction. The confidence score increases as you train the model with more document (usually 4 to 5 documents is enough to reach high number).  On the Task definition you can configure the <strong>Straight Through processing threshold</strong>. this correspond to the predicition confidence score value for which you want to extract the values and map them to the fields without a manual review from an agent.</p>
-
-<p>Click the <strong>Submit</strong> button.  By clicking the submit button the model is trained with those new inputs. In this Lab environment we do not have access to our Machine Learning component it won&#39;t do anything. You can now close that Tab.</p></li>
-<li><p>Remember, we have submitted a VOID Check as <strong>Abel Tuter</strong>, you might wonder how the Bank Record with the attachment was picked up automatically by DocIntel. Let&#39;s review what was configured to do this. </p></li>
-<li><p>Return to the Task Definition that was created for that use case. Click on <strong>All</strong> (1) then type <strong>Document intelligence</strong> in the filter navigator (2) and finally click <strong>Task Definititions</strong>:</p>
-
-<p><img src="images/2022-09-09_10-35-25.png" alt="Relative"></p></li>
-<li><p>Click on the <strong>Void check - Task Definition</strong> record to open it:</p>
-
-<p><img src="images/2022-09-09_10-40-22.png" alt="Relative"></p></li>
-<li><p>Once the <strong>Task definition</strong> is opened, Click on the <strong>Integration Setups</strong> Tab and open the record <strong>Void check - Process task</strong> (1) </p>
-
+<p>Click the <strong>Submit</strong> button.  By clicking the submit button the model is trained with those new inputs. In this Lab environment we do not have access to our Machine Learning component it won&apos;t do anything. You can now close that Tab.</p>
+</li>
+<li>
+<p>Remember, we have submitted a VOID Check as <strong>Abel Tuter</strong>, you might wonder how the Bank Record with the attachment was picked up automatically by DocIntel. Let&apos;s review what was configured to do this.</p>
+</li>
+<li>
+<p>Return to the Task Definition that was created for that use case. Click on <strong>All</strong> (1) then type <strong>Document intelligence</strong> in the filter navigator (2) and finally click <strong>Task Definititions</strong>:</p>
+<p><img src="images/2022-09-09_10-35-25.png" alt="Relative"></p>
+</li>
+<li>
+<p>Click on the <strong>Void check - Task Definition</strong> record to open it:</p>
+<p><img src="images/2022-09-09_10-40-22.png" alt="Relative"></p>
+</li>
+<li>
+<p>Once the <strong>Task definition</strong> is opened, Click on the <strong>Integration Setups</strong> Tab and open the record <strong>Void check - Process task</strong> (1)</p>
 <blockquote>
-<p>This is where you go to configure DocIntel to Process tasks automatically when records are created or updated with attachment on the defined <strong>Target Table</strong>.
+<p>This is where you go to configure DocIntel to Process tasks automatically when records are created or updated with attachment on the defined <strong>Target Table</strong>.<br>
 The first record <strong>Void Check - Process task</strong> (1), is where we have configured DocIntel to process a task based on our own condition (It uses a workflow). the second record <strong>void check- extract values</strong> is where we enable the workflow that is going to take the extracted values and assign them to the target fields that we have mapped when we have defined the <strong>Keys</strong>. Both of those workflows are created automatically by DocIntel but you can create your own if you need to perform additional steps.</p>
 </blockquote>
-
-<p><img src="images/2022-09-09_12-58-50.png" alt="Relative"></p></li>
-<li><p>Under  <strong>Conditions</strong> (1) This is where you configure the conditions for DocIntel to process specific records (pick up an attachment from specific records that match that condition). </p>
-
+<p><img src="images/2022-09-09_12-58-50.png" alt="Relative"></p>
+</li>
+<li>
+<p>Under  <strong>Conditions</strong> (1) This is where you configure the conditions for DocIntel to process specific records (pick up an attachment from specific records that match that condition).</p>
 <p>Notice the option <strong>Create flow</strong> (2). If selected, DocIntel will automatically create the flows that will be used to create the DocIntel tasks and Process them.</p>
-
-<p><strong>Trigger</strong> (3) and <strong>Flow Conditions</strong> (4) are automatically created, this what you will see if you open the specifc Flow in Flow Designer, it correspond the the Flow trigger and flow condition in flow designer. </p>
-
-<p><img src="images/2022-09-09_13-07-55.png" alt="Relative"></p></li>
-<li><p>We have reviewed all the configurations that was done for that particular use case.  Lets review the outcome of that automated data extraction from DocIntel.</p>
-
+<p><strong>Trigger</strong> (3) and <strong>Flow Conditions</strong> (4) are automatically created, this what you will see if you open the specifc Flow in Flow Designer, it correspond the the Flow trigger and flow condition in flow designer.</p>
+<p><img src="images/2022-09-09_13-07-55.png" alt="Relative"></p>
+</li>
+<li>
+<p>We have reviewed all the configurations that was done for that particular use case.  Lets review the outcome of that automated data extraction from DocIntel.</p>
 <p>Click on <strong>Favorites</strong> (1) then <strong>bank account table</strong> (2)</p>
-
 <p><img src="images/2022-09-09_13-15-45.png" alt="Relative"></p>
-
 <p>When we origininally submitted the VOID Check as <strong>Abel Tuter</strong> a bank record was automatically created. Then based on the configuration of DocIntel, a DocIntel task was created automatically to process the attachment (VOID Check), extract the data then update the field Account Number, Bank Name, Routing Number, Account Holder.  In this Lab environment we cannot process documents since we do not have access to our shared ML Infrastructure from those instances but we are showing on this screen below the end result with data we have preloaded on the lab instance so you can see what it would look like in real life...</p>
-
 <p><img src="images/2022-09-09_13-20-03.png" alt="Relative"></p>
-
 <blockquote>
-<p>This is a lab exercise, in real life we would not show any sensitive information like those banking information. We have created a custom table just for that exercise and securing the data is not the focus of that lab. We have different encryptions capabilities on the platform if we wanted to secure that data :-) </p>
-</blockquote></li>
+<p>This is a lab exercise, in real life we would not show any sensitive information like those banking information. We have created a custom table just for that exercise and securing the data is not the focus of that lab. We have different encryptions capabilities on the platform if we wanted to secure that data &#x1F603;</p>
+</blockquote>
+</li>
 </ol>
-
 <p>In the following  exercice (IntegrationHub we see how to build a spoke to integrate ServiceNow to an external API that will use those extracted information from DocIntel.</p>
+<h2 class="mume-header" id="conclusion">Conclusion</h2>
 
-<h2 id="toc_3">Conclusion</h2>
+<p>In this <strong>Document Intelligence</strong> lab, we have covered how Document Intelligence can be configured to extract information from structured or semi-structed documents. We have seen how you can use those extracted values from within a workflow. In the following exercice, we are covering how to build a flow and integration using IntegrationHub to perform data validation (with the data extracted via DocIntel). You will learn how to build a spoke to integrate ServiceNow to an external system via API.</p>
 
-<p>In this <strong>Document Intelligence</strong> lab, we have covered how Document Intelligence can be configured to extract information from structured or semi-structed documents. We have seen how you can use those extracted values from within a workflow. In the following exercice, we are covering how to build a flow and integration using IntegrationHub to perform data validation (with the data extracted via DocIntel). You will learn how to build a spoke to integrate ServiceNow to an external system via API. </p>
-
-
-
-
-</body>
-
-</html>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

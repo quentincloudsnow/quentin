@@ -1,388 +1,312 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html><head>
+      <title>IntegrationHub</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
 
-<head>
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>IntegrationHub</title>
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
 
 
-<style type="text/css">
-body {
-  font-family: Helvetica, arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;
-  padding: 30px; }
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
 
-body > *:first-child {
-  margin-top: 0 !important; }
-body > *:last-child {
-  margin-bottom: 0 !important; }
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
 
-a {
-  color: #4183C4; }
-a.absent {
-  color: #cc0000; }
-a.anchor {
-  display: block;
-  padding-left: 30px;
-  margin-left: -30px;
-  cursor: pointer;
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0; }
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
-  padding: 0;
-  font-weight: bold;
-  -webkit-font-smoothing: antialiased;
-  cursor: text;
-  position: relative; }
-
-h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
-  text-decoration: none; }
-
-h1 tt, h1 code {
-  font-size: inherit; }
-
-h2 tt, h2 code {
-  font-size: inherit; }
-
-h3 tt, h3 code {
-  font-size: inherit; }
-
-h4 tt, h4 code {
-  font-size: inherit; }
-
-h5 tt, h5 code {
-  font-size: inherit; }
-
-h6 tt, h6 code {
-  font-size: inherit; }
-
-h1 {
-  font-size: 28px;
-  color: black; }
-
-h2 {
-  font-size: 24px;
-  border-bottom: 1px solid #cccccc;
-  color: black; }
-
-h3 {
-  font-size: 18px; }
-
-h4 {
-  font-size: 16px; }
-
-h5 {
-  font-size: 14px; }
-
-h6 {
-  color: #777777;
-  font-size: 14px; }
-
-p, blockquote, ul, ol, dl, li, table, pre {
-  margin: 15px 0; }
-
-hr {
-  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
-  border: 0 none;
-  color: #cccccc;
-  height: 4px;
-  padding: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
 }
 
-body > h2:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-body > h1:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-  body > h1:first-child + h2 {
-    margin-top: 0;
-    padding-top: 0; }
-body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-  margin-top: 0;
-  padding-top: 0; }
-
-h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
-  margin-top: 0; }
-
-li p.first {
-  display: inline-block; }
-li {
-  margin: 0; }
-ul, ol {
-  padding-left: 30px; }
-
-ul :first-child, ol :first-child {
-  margin-top: 0; }
-
-dl {
-  padding: 0; }
-  dl dt {
-    font-size: 14px;
-    font-weight: bold;
-    font-style: italic;
-    padding: 0;
-    margin: 15px 0 5px; }
-    dl dt:first-child {
-      padding: 0; }
-    dl dt > :first-child {
-      margin-top: 0; }
-    dl dt > :last-child {
-      margin-bottom: 0; }
-  dl dd {
-    margin: 0 0 15px;
-    padding: 0 15px; }
-    dl dd > :first-child {
-      margin-top: 0; }
-    dl dd > :last-child {
-      margin-bottom: 0; }
-
-blockquote {
-  border-left: 4px solid #dddddd;
-  padding: 0 15px;
-  color: #777777; }
-  blockquote > :first-child {
-    margin-top: 0; }
-  blockquote > :last-child {
-    margin-bottom: 0; }
-
-table {
-  padding: 0;border-collapse: collapse; }
-  table tr {
-    border-top: 1px solid #cccccc;
-    background-color: white;
-    margin: 0;
-    padding: 0; }
-    table tr:nth-child(2n) {
-      background-color: #f8f8f8; }
-    table tr th {
-      font-weight: bold;
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr td {
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr th :first-child, table tr td :first-child {
-      margin-top: 0; }
-    table tr th :last-child, table tr td :last-child {
-      margin-bottom: 0; }
-
-img {
-  max-width: 100%; }
-
-span.frame {
-  display: block;
-  overflow: hidden; }
-  span.frame > span {
-    border: 1px solid #dddddd;
-    display: block;
-    float: left;
-    overflow: hidden;
-    margin: 13px 0 0;
-    padding: 7px;
-    width: auto; }
-  span.frame span img {
-    display: block;
-    float: left; }
-  span.frame span span {
-    clear: both;
-    color: #333333;
-    display: block;
-    padding: 5px 0 0; }
-span.align-center {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-center > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: center; }
-  span.align-center span img {
-    margin: 0 auto;
-    text-align: center; }
-span.align-right {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px 0 0;
-    text-align: right; }
-  span.align-right span img {
-    margin: 0;
-    text-align: right; }
-span.float-left {
-  display: block;
-  margin-right: 13px;
-  overflow: hidden;
-  float: left; }
-  span.float-left span {
-    margin: 13px 0 0; }
-span.float-right {
-  display: block;
-  margin-left: 13px;
-  overflow: hidden;
-  float: right; }
-  span.float-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: right; }
-
-code, tt {
-  margin: 0 2px;
-  padding: 0 5px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px; }
-
-pre code {
-  margin: 0;
-  padding: 0;
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
   white-space: pre;
-  border: none;
-  background: transparent; }
-
-.highlight pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-
-pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-  pre code, pre tt {
-    background-color: transparent;
-    border: none; }
-
-sup {
-    font-size: 0.83em;
-    vertical-align: super;
-    line-height: 0;
 }
 
-kbd {
-  display: inline-block;
-  padding: 3px 5px;
-  font-size: 11px;
-  line-height: 10px;
-  color: #555;
-  vertical-align: middle;
-  background-color: #fcfcfc;
-  border: solid 1px #ccc;
-  border-bottom-color: #bbb;
-  border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #bbb
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
 }
 
-* {
-	-webkit-print-color-adjust: exact;
-}
-@media screen and (min-width: 914px) {
-    body {
-        width: 854px;
-        margin:0 auto;
-    }
-}
-@media print {
-	table, pre {
-		page-break-inside: avoid;
-	}
-	pre {
-		word-wrap: break-word;
-	}
-  body {
-    padding: 2cm; 
-  }
-}
-</style>
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p,html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <p><strong>Special note</strong>: Please do not use Google Chrome to do this lab. MAC users please use Safari, Windows users please use Firefox if possible (or Edge). Certain recent versions of Chrome cause unexpected behaviors due to unwanted characters that represent Byte order mark (BOM) in Flow Designer. This is a known issue and was fixed by a patch that is not installed on those lab instances, sorry for the inconvenience), for reference  <a href="https://support.servicenow.com/kb?id=kb_article_view&amp;sysparm_article=KB1182247">KB1182247</a></p>
+<h1 class="mume-header" id="integration-hub-exercise">Integration Hub exercise</h1>
 
-</head>
-
-<body>
-
-<p><strong>Special note</strong>: Please do not use Google Chrome to do this lab. MAC users please use Safari, Windows users please use Firefox if possible (or Edge). Certain recent versions of Chrome cause unexpected behaviors due to unwanted characters that represent Byte order mark (BOM) in Flow Designer. This is a known issue and was fixed by a patch that is not installed on those lab instances, sorry for the inconvenience), for reference  <a href="https://support.servicenow.com/kb?id=kb_article_view&amp;sysparm_article=KB1182247">KB1182247</a></p>
-
-<h1 id="toc_0">Integration Hub exercise</h1>
-
-<h2 id="toc_1">Introduction</h2>
+<h2 class="mume-header" id="introduction">Introduction</h2>
 
 <p>Integration Hub enables execution of third-party APIs as a part of a flow when a specific event occurs in ServiceNow. These integrations, referred to as spokes, are easy to configure and enable you to quickly add powerful actions without the need to write a script. For example, you can post a message and incident details in a Slack channel when a high priority incident is created.</p>
+<h2 class="mume-header" id="goal">Goal</h2>
 
-<h2 id="toc_2">Goal</h2>
-
-<p>In this exercise you will learn how to create a Spoke in Integration Hub. You will learn how to connect a ServiceNow Workflow to a remote API. For our use case we want to use Integration Hub to validate some data against an API. In the previous exercise we have seen how to extract data from document using our Intelligent Document Processing capability (<strong>Document Intelligence</strong>). In the previous exercise we see how we can extract Banking information from a VOID Check automatically using DocIntel. In this exercise we see how we validate the <strong>Routing Number</strong> extracted from a VOID Check by building an Integration Hub spoke action that is going to take this Routing Number information and pass it to an external API. This 3rd party API returns additional banking information that can be useful to setup the direct deposit for this new employee, or simply validate that the data extracted is correct.  This is just an example to show how easily you can connect ServiceNow to external system via API by creating your own Spoke. We see how to build an integration to an API with having to write a single line of code.</p>
-
-<h2 id="toc_3">Getting Familiar with an API</h2>
+<p>In this exercise you will learn how to create a Spoke in Integration Hub. You will learn how to connect a ServiceNow Workflow to a remote API. For our use case we want to use Integration Hub to validate some data against an API. In the previous exercise we have seen how to extract Banking information from documents using our Intelligent Document Processing capability (<strong>Document Intelligence</strong>).</p>
+<p>In this exercise we see how we validate the <strong>Routing Number</strong> extracted from a VOID Check by building an Integration Hub spoke action that is going to take this Routing Number information and pass it to an external API. This 3rd party API returns additional banking information that can be useful to setup the direct deposit for this new employee, or simply validate that the data extracted is correct. This is just an example to show how easily you can connect ServiceNow to external system via API by creating your own Spoke. We see how to build an integration to an API with having to write a single line of code.</p>
+<h2 class="mume-header" id="getting-familiar-with-an-api">Getting Familiar with an API</h2>
 
 <p>When you need to create an integration from ServiceNow to an external system via API, it is important to familiarize yourself with the API that you are going to call from ServiceNow first. In the following steps we are going to take a look at that API so we can understand how it works and create our own spoke for it:</p>
-
 <ol>
-<li><p>Inspect the Routing Number API.</p>
-
-<p>Open a browser and navigate to https://www.routingnumbers.info/api/data.html to test out the API and analyze what this API can return.  </p>
-
+<li>
+<p>Inspect the Routing Number API.</p>
+<p>Open a browser and navigate to <a href="https://www.routingnumbers.info/api/data.html.md">https://www.routingnumbers.info/api/data.html</a> to test out the API and analyze what this API can return.</p>
 <p>On the <strong>Routing Number</strong> Type 021000021 (1) then Click <strong>Get Bank Data</strong> (2)</p>
-
-<p><img src="images/2022-09-06_14-20-47.png" alt="Relative"> </p>
-
+<p><img src="images/2022-09-06_14-20-47.png" alt="Relative"></p>
 <blockquote>
-<p>The number we provide as input to the API must be a valid routing number, typically this routing number is found on a VOID Check </p>
+<p>The number we provide as input to the API must be a valid routing number, typically this routing number is found on a VOID Check</p>
 </blockquote>
-
 <p>Under Results you can see the information that this API returns</p>
-
 <blockquote>
 <p>From a workflow in ServiceNow, you might want to make a call to this API to collect additional information from the Routing Number. For this you can create your own spoke.</p>
 </blockquote>
-
-<p><img src="images/2022-09-06_14-27-17.png" alt="Relative"> </p>
-
-<p>In the next step of this exercise we will leverage that API from ServiceNow, custom IntegrationHub spoke action so we can make those API calls directly from a Workflow in ServiceNow and retrieve the API Response from this third party application.</p></li>
+<p><img src="images/2022-09-06_14-27-17.png" alt="Relative"></p>
+<p>In the next step of this exercise we will leverage that API from ServiceNow, custom IntegrationHub spoke action so we can make those API calls directly from a Workflow in ServiceNow and retrieve the API Response from this third party application.</p>
+</li>
 </ol>
-
-<h2 id="toc_4">Creating the spoke action for that Routing Number API</h2>
+<h2 class="mume-header" id="creating-the-spoke-action-for-that-routing-number-api">Creating the spoke action for that Routing Number API</h2>
 
 <ol>
-<li>Log in to your instance</li>
-<li><p>Click the <strong>All</strong> tab (1), then type <strong>Flow Designer</strong> (2), and finally click <strong>Flow Designer</strong> (3)</p>
-
-<p><img src="images/2022-09-06_13-16-37.png" alt="Relative"></p></li>
-<li><p>Click on <strong>New</strong> (1) then <strong>Action</strong> (2)</p>
-
-<p><img src="images/2022-09-06_13-22-19.png" alt="Relative"></p></li>
-<li><p>Fill in the <strong>Action properties</strong> form with those informations:</p>
-
+<li>
+<p>Log in to your instance</p>
+</li>
+<li>
+<p>Click the <strong>All</strong> tab (1), then type <strong>Flow Designer</strong> (2), and finally click <strong>Flow Designer</strong> (3)</p>
+<p><img src="images/2022-09-06_13-16-37.png" alt="Relative"></p>
+</li>
+<li>
+<p>Click on <strong>New</strong> (1) then <strong>Action</strong> (2)</p>
+<p><img src="images/2022-09-06_13-22-19.png" alt="Relative"></p>
+</li>
+<li>
+<p>Fill in the <strong>Action properties</strong> form with following information:</p>
 <table>
 <thead>
 <tr>
@@ -390,7 +314,6 @@ kbd {
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>ActionName</td>
@@ -422,66 +345,54 @@ kbd {
 </tr>
 </tbody>
 </table>
-
 <p><img src="images/2022-09-06_13-42-18.png" alt="Relative"></p>
-
-<p>Then click <strong>Submit</strong>.</p></li>
-<li><p>Add an <strong>Input</strong> to the action. </p>
-
+<p>Then click <strong>Submit</strong>.</p>
+</li>
+<li>
+<p>Add an <strong>Input</strong> to the action.</p>
 <p>Click <strong>Create Input</strong></p>
-
 <p><img src="images/2022-09-06_13-52-19.png" alt="Relative"></p>
-
 <p>Under <strong>Action Input</strong> You should see a new input line as shown in this screenshot below:</p>
-
 <p><img src="images/2022-09-06_13-58-47.png" alt="Relative"></p>
-
 <p>Under the <strong>Label</strong> column, double-click <strong>variable</strong> to rename the label and type the value <strong>Routing Number</strong> then click <strong>variable</strong> on the next column <strong>Name</strong>, the <strong>Name</strong> should be automatically filled in with <strong>routing_number</strong>.</p>
-
 <p>Make the input Mandatory (1) and click <strong>Save</strong> (2)</p>
-
 <p><img src="images/2022-09-06_14-03-23.png" alt="Relative"></p>
-
 <blockquote>
 <p>We have created an input for our custom action, when someone uses our action from a workflow they will have to pass a value in that input. This value is used as a parameter when we make the API call to the remote application.</p>
 </blockquote>
-
-<ol>
-<li>Under Inputs, click on the <strong>+</strong> sign to add a step to our action:</li>
-</ol>
-
-<p><img src="images/2022-09-06_14-07-50.png" alt="Relative"></p></li>
-<li><p>In the new window, type <strong>REST</strong> in the search box (1), then select the <strong>REST</strong> component (2):</p>
-
+</li>
+<li>
+<p>Under Inputs, click on the <strong>+</strong> sign to add a step to our action:</p>
+<p><img src="images/2022-09-06_14-07-50.png" alt="Relative"></p>
+</li>
+<li>
+<p>In the new window, type <strong>REST</strong> in the search box (1), then select the <strong>REST</strong> component (2):</p>
 <p><img src="images/2022-09-06_14-11-28.png" alt="Relative"></p>
-
 <blockquote>
 <p>Most of the spokes that ServiceNow customers or even ServiceNow build are using this REST Step. It is an easy way to configure ServiceNow to make REST API Calls to 3rd Party APIs without coding. ServiceNow provide Integration step for other protocols such as SSH, Powershell, Webservices etc.</p>
-</blockquote></li>
-<li><p>Under <strong>Connection Details</strong> On the <strong>Connection</strong> field, select <strong>Define Connection Inline</strong> (1) then on the <strong>Base URL</strong> field type the url  https://www.routingnumbers.info</p>
-
+</blockquote>
+</li>
+<li>
+<p>Under <strong>Connection Details</strong> On the <strong>Connection</strong> field, select <strong>Define Connection Inline</strong> (1) then on the <strong>Base URL</strong> field type the url  <a href="https://www.routingnumbers.info">https://www.routingnumbers.info</a></p>
 <p><img src="images/2022-09-06_14-32-45.png" alt="Relative"></p>
-
 <blockquote>
-<p>For this exercise we do not use any credentials, this third party API doe not require authentication but most 3rd party API would require credentials to authenticate with it.Credentials can be configured in ServiceNow, and you would select the right <strong>Credential Alia</strong> to use under the <strong>Connection Details</strong>
+<p>For this exercise we do not use any credentials, this third party API doe not require authentication but most 3rd party API would require credentials to authenticate with it.Credentials can be configured in ServiceNow, and you would select the right <strong>Credential Alias</strong> to use under the <strong>Connection Details</strong><br>
 In production scenario, information such as <strong>Base URL</strong> (End point)c and <strong>Credentials</strong> would be configured on the instance under <strong>Connections &amp; Credentials</strong>.</p>
-</blockquote></li>
-<li><p>Scroll down to show the <strong>Request Details</strong> form</p>
-
-<p>On the <strong>Resource Path</strong> field type <strong>/api/data.json?rn=</strong>
+</blockquote>
+</li>
+<li>
+<p>Scroll down to show the <strong>Request Details</strong> form</p>
+<p>On the <strong>Resource Path</strong> field type <strong>/api/data.json?rn=</strong><br>
 then drag and drop the Routing Number from the Data pill as shown below:</p>
-
 <p><img src="images/2022-09-06_14-39-01.gif" alt="Relative"></p>
-
 <blockquote>
 <p>In that step we are passing dynamically the value from the input we created earlier to the API.</p>
 </blockquote>
-
-<p>API Requests often time take specific Query Parameters and Headers, usually the information needed can be found in the API documentation of the third party application. For that particular example we need to pass two Headers parameters.</p></li>
-<li><p>Scroll down to show the Headers section, and click the <strong>+</strong> sign as shown below to add a new  Header Name and Value:</p>
-
+<p>API Requests often time take specific Query Parameters and Headers, usually the information needed can be found in the API documentation of the third party application. For that particular example we need to pass two Headers parameters.</p>
+</li>
+<li>
+<p>Scroll down to show the Headers section, and click the <strong>+</strong> sign as shown below to add a new  Header Name and Value:</p>
 <p><img src="images/2022-09-06_14-48-34.png" alt="Relative"></p>
-
 <table>
 <thead>
 <tr>
@@ -489,7 +400,6 @@ then drag and drop the Routing Number from the Data pill as shown below:</p>
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Content-Type</td>
@@ -497,9 +407,7 @@ then drag and drop the Routing Number from the Data pill as shown below:</p>
 </tr>
 </tbody>
 </table>
-
-<p>Repeat that step to add the folling <strong>Name</strong> and <strong>Value</strong></p>
-
+<p>Repeat that step to add the following <strong>Name</strong> and <strong>Value</strong></p>
 <table>
 <thead>
 <tr>
@@ -507,7 +415,6 @@ then drag and drop the Routing Number from the Data pill as shown below:</p>
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>User-Agent</td>
@@ -515,81 +422,87 @@ then drag and drop the Routing Number from the Data pill as shown below:</p>
 </tr>
 </tbody>
 </table>
-
 <p>It should looks as shown below:</p>
-
-<p><img src="images/2022-09-06_14-54-43.png" alt="Relative"></p></li>
-<li><p>On the upper right hand side, click <strong>Save</strong> (1) then <strong>test</strong> (2).</p>
-
-<p><img src="images/2022-09-06_15-51-28.png" alt="Relative"></p></li>
-<li><p>Enter the <strong>Routing Number</strong>: <strong>021000021</strong> (1) then Click <strong>Run test</strong> (2):</p>
-
+<p><img src="images/2022-09-06_14-54-43.png" alt="Relative"></p>
+</li>
+<li>
+<p>On the upper right hand side, click <strong>Save</strong> (1) then <strong>test</strong> (2).</p>
+<p><img src="images/2022-09-06_15-51-28.png" alt="Relative"></p>
+</li>
+<li>
+<p>Enter the <strong>Routing Number</strong>: <strong>021000021</strong> (1) then Click <strong>Run test</strong> (2):</p>
 <p><img src="images/2022-09-06_15-22-26.png" alt="Relative"></p>
-
 <p>After few second the test has finished running, click on the text <strong>Your Test has finished running. View the Action execution detail</strong>:</p>
-
 <p><img src="images/2022-09-06_15-24-53.png" alt="Relative"></p>
-
-<p>We can now inspect the response from the API</p></li>
-<li><p>Expand the <strong>Steps</strong> Section</p>
-
-<p><img src="images/2022-09-06_15-35-53.png" alt="Relative"></p></li>
-<li><p>Scroll down until you see the <strong>Response Body</strong> (1) under the <strong>Step Output Data</strong>, then click on the value (2)</p>
-
+<p>We can now inspect the response from the API</p>
+</li>
+<li>
+<p>Expand the <strong>Steps</strong> Section</p>
+<p><img src="images/2022-09-06_15-35-53.png" alt="Relative"></p>
+</li>
+<li>
+<p>Scroll down until you see the <strong>Response Body</strong> (1) under the <strong>Step Output Data</strong>, then click on the value (2)</p>
 <p><img src="images/2022-09-06_15-38-02.png" alt="Relative"></p>
-
-<p>This will open the content of the <strong>response_body</strong> output, this is the response coming from the API. Most APIs return a response in the same format (JSON Payload), it contains the information that we want to use from our Workflow. </p>
-
+<p>This will open the content of the <strong>response_body</strong> output, this is the response coming from the API. Most APIs return a response in the same format (JSON Payload), it contains the information that we want to use from our Workflow.</p>
 <blockquote>
-<p>The benefit of Flow Designer and Integration Hub is that we can parse a JSON Payload without having to script anything (most solutions on the market require some kind of codind to do this), before we had Integration Hub on the platform we had to use some json.parse function in Javascript to be able to extract information from a JSON Payload. We made it easy for anyone to build an integration with no code.</p>
-</blockquote></li>
-<li><p>Copy the code from the <strong>Viewing response_body</strong> window: </p>
-
-<blockquote>
-<p>Save in a text file or notepad or make sure to keep the content in your clipboard (Copy/paste) as we are going to need it when we configure the JSON Parse step, we will use this content.</p>
+<p>The benefit of Flow Designer and Integration Hub is that we can parse a JSON Payload without having to script anything (most solutions on the market require some kind of coding to do this), before we had Integration Hub on the platform we had to use some json.parse function in Javascript to be able to extract information from a JSON Payload. We made it easy for anyone to build an integration with no code.</p>
 </blockquote>
-
+</li>
+<li>
+<p>Copy the code from the <strong>Viewing response_body</strong> window:</p>
+<blockquote>
+<p>Save in a text file or notepad or make sure to keep the content in your clipboard (Copy/paste) as we are going to need it when we configure the JSON Parse step.</p>
+</blockquote>
 <p><img src="images/2022-09-06_15-40-15.png" alt="Relative"></p>
-
 <blockquote>
 <p>At this stage we have created the REST API Call to the 3rd Party Routing Number API, now we need to add a step to be able to parse the response from the API to retrieve the value we need.</p>
-</blockquote></li>
-<li><p>Under <strong>Rest Step</strong> click the <strong>+</strong> sign to add a new step:</p>
-
-<p><img src="images/2022-09-06_15-01-46.png" alt="Relative"></p></li>
-<li><p>In the search box, type <strong>JSON Parser</strong> (1), then select <strong>JSON Parser</strong> (2) to add that step to your action:</p>
-
+</blockquote>
+<p>After copying the JSON close the response window.</p>
+</li>
+<li>
+<p>Under <strong>Rest Step</strong> click the <strong>+</strong> sign to add a new step:</p>
+<p><img src="images/2022-09-06_15-01-46.png" alt="Relative"></p>
+</li>
+<li>
+<p>In the search box, type <strong>JSON Parser</strong> (1), then select <strong>JSON Parser</strong> (2) to add that step to your action:</p>
 <p><img src="images/2022-09-06_15-03-23.png" alt="Relative"></p>
-
 <p>You should have the <strong>JSON Parser step</strong> under the <strong>REST step</strong> as shown:</p>
-
 <p><img src="images/2022-09-06_15-06-08.png" alt="Relative"></p>
-
 <blockquote>
-<p>The first step (<strong>REST Step</strong>) makes the call to the remote REST API, then the second step (<strong>JSON Parser step</strong>) will parse the response from that API and extract the information we need. </p>
-</blockquote></li>
-<li><p>Drag and drop the <strong>Response Body</strong> from the Data pill to the <strong>Source data</strong> field on the <strong>JSON Parser step</strong> as shown below</p>
-
-<p><img src="images/2022-09-06_15-13-51.gif" alt="Relative"></p></li>
-<li><p>Past the JSON Payload (1) (from your clipboard or text file) , then click <strong>Generate Target</strong>:</p>
-
-<p><img src="images/2022-09-06_16-04-30.png" alt="Relative"></p></li>
-<li><p>The <strong>JSON Parser</strong> step generates for you the objects (instead of having to script like with most of solution out there) that have the information coming from the API Response. No need to code anything! 
+<p>The first step (<strong>REST Step</strong>) makes the call to the remote REST API, then the second step (<strong>JSON Parser step</strong>) will parse the response from that API and extract the information we need.</p>
+</blockquote>
+</li>
+<li>
+<p>Drag and drop the <strong>Response Body</strong> from the Data pill to the <strong>Source data</strong> field on the <strong>JSON Parser step</strong> as shown below</p>
+<p><img src="images/2022-09-06_15-13-51.gif" alt="Relative"></p>
+</li>
+<li>
+<p>Past the JSON Payload (1) (from your clipboard or text file) , then click <strong>Generate Target</strong>:</p>
+<p><img src="images/2022-09-06_16-04-30.png" alt="Relative"></p>
+</li>
+<li>
+<p>The <strong>JSON Parser</strong> step generates for you the objects (instead of having to script like with most of solution out there) that have the information coming from the API Response. No need to code anything!<br>
 Under <strong>Target</strong> (1) expand the <strong>root</strong> object</p>
-
-<p><img src="images/2022-09-06_16-11-31.png" alt="Relative"></p></li>
-<li><p>Now we are going create the output variable on our spoke action so anyone who use that spoke action oin their workflow can retrieve the different values from the API.
-We are going to map those Object from previous step to new Output variable. </p></li>
-<li><p>Click <strong>Outputs</strong>:</p>
-
-<p><img src="images/2022-09-06_17-13-13.png" alt="Relative"></p></li>
-<li><p>Then click <strong>Create Output</strong>:</p>
-
-<p><img src="images/2022-09-06_17-14-22.png" alt="Relative"></p></li>
-<li><p>On the Label column Double click <strong>variable</strong> (1) and type office_code then double click variable on the <strong>Name</strong> column and type office_code:
-<img src="images/2022-09-06_17-16-28.png" alt="Relative"></p></li>
-<li><p>Then continue to <strong>Create Output</strong> with the following <strong>Label</strong> and <strong>Name</strong>:</p>
-
+<p><img src="images/2022-09-06_16-11-31.png" alt="Relative"></p>
+</li>
+<li>
+<p>Now we are going create the output variable on our spoke action so anyone who use that spoke action oin their workflow can retrieve the different values from the API.<br>
+We are going to map those Object from previous step to new Output variable.</p>
+</li>
+<li>
+<p>Click <strong>Outputs</strong>:</p>
+<p><img src="images/2022-09-06_17-13-13.png" alt="Relative"></p>
+</li>
+<li>
+<p>Then click <strong>Create Output</strong>:</p>
+<p><img src="images/2022-09-06_17-14-22.png" alt="Relative"></p>
+</li>
+<li>
+<p>On the Label column Double click <strong>variable</strong> (1) and type office_code then double click variable on the <strong>Name</strong> column and type office_code:<br>
+<img src="images/2022-09-06_17-16-28.png" alt="Relative"></p>
+</li>
+<li>
+<p>Then continue to <strong>Create Output</strong> with the following <strong>Label</strong> and <strong>Name</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -597,7 +510,6 @@ We are going to map those Object from previous step to new Output variable. </p>
 <th>Name</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>zip</td>
@@ -628,23 +540,27 @@ We are going to map those Object from previous step to new Output variable. </p>
 <td>routing_number</td>
 </tr>
 </tbody>
-</table></li>
-<li><p>Verify that you have created the Ouputs as shown below:</p>
-
-<p><img src="images/2022-09-06_17-27-41.png" alt="Relative"></p></li>
-<li><p>Now that we have created the output we can map the Objects from the <strong>JSON Parser</strong> step to those <strong>Action Outputs</strong>. That way we are taking the data from the API response and assigning the values to our outputs (Variables) so anyone who use that action in a flow can use the data coming from the API in any steps of their flow.</p></li>
-<li><p>Click <strong>Exit Edit Mode</strong></p>
-
-<p><img src="images/2022-09-07_07-29-31.png" alt="Relative"></p></li>
-<li><p>Locate on the right hand side (Data pill) the <strong>Jason Parser Step</strong> section then under <strong>root</strong>, you see the objects coming from the API Response (JSON payload). We need to assign those variable to the <strong>Action Outputs</strong> we just created in the previous step.</p>
-
-<p><img src="images/2022-09-07_07-38-36.png" alt="Relative"></p></li>
-<li><p>Drag and Drop those variables from the <strong>JSON Parser step</strong> to the <strong>Action Output</strong> variable as shown:</p>
-
+</table>
+</li>
+<li>
+<p>Verify that you have created the Outputs as shown below:</p>
+<p><img src="images/2022-09-06_17-27-41.png" alt="Relative"></p>
+</li>
+<li>
+<p>Now that we have created the output we can map the Objects from the <strong>JSON Parser</strong> step to those <strong>Action Outputs</strong>. That way we are taking the data from the API response and assigning the values to our outputs (Variables) so anyone who use that action in a flow can use the data coming from the API in any steps of their flow.</p>
+</li>
+<li>
+<p>Click <strong>Exit Edit Mode</strong></p>
+<p><img src="images/2022-09-07_07-29-31.png" alt="Relative"></p>
+</li>
+<li>
+<p>Locate on the right hand side (Data pill) the <strong>Jason Parser Step</strong> section then under <strong>root</strong>, you see the objects coming from the API Response (JSON payload). We need to assign those variable to the <strong>Action Outputs</strong> we just created in the previous step.</p>
+<p><img src="images/2022-09-07_07-38-36.png" alt="Relative"></p>
+</li>
+<li>
+<p>Drag and Drop those variables from the <strong>JSON Parser step</strong> to the <strong>Action Output</strong> variable as shown:</p>
 <p><img src="images/2022-09-07_07-32-41.gif" alt="Relative"></p>
-
 <p>Repeat that step for the following objects:</p>
-
 <table>
 <thead>
 <tr>
@@ -652,7 +568,6 @@ We are going to map those Object from previous step to new Output variable. </p>
 <th>Action Output</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>zip</td>
@@ -683,121 +598,148 @@ We are going to map those Object from previous step to new Output variable. </p>
 <td>routing_number</td>
 </tr>
 </tbody>
-</table></li>
-<li><p>Once you are done mapping the variables from the <strong>JSON Parser Step</strong> to the Action Outputs, click <strong>Save</strong> and review the Action Output screen to make sure it looks the same as the picture below:</p>
-
-<p><img src="images/2022-09-07_07-47-57.png" alt="Relative"></p></li>
-<li><p>Now it&#39;s time to test our new Action again to make sure the value extracted from the API response are correctly passed to our newly created Action Output. Click <strong>Test</strong>:</p>
-
-<p><img src="images/2022-09-07_07-52-07.png" alt="Relative"></p></li>
-<li><p>Enter the Routing Number <strong>021000021</strong> (1) then click <strong>Test</strong> (2):</p>
-
+</table>
+</li>
+<li>
+<p>Once you are done mapping the variables from the <strong>JSON Parser Step</strong> to the Action Outputs, click <strong>Save</strong> and review the Action Output screen to make sure it looks the same as the picture below:</p>
+<p><img src="images/2022-09-07_07-47-57.png" alt="Relative"></p>
+</li>
+<li>
+<p>Now it&apos;s time to test our new Action again to make sure the value extracted from the API response are correctly passed to our newly created Action Output. Click <strong>Test</strong>:</p>
+<p><img src="images/2022-09-07_07-52-07.png" alt="Relative"></p>
+</li>
+<li>
+<p>Enter the Routing Number <strong>021000021</strong> (1) then click <strong>Test</strong> (2):</p>
 <p><img src="images/2022-09-07_07-53-49.png" alt="Relative"></p>
-
-<p>After few second you should see the text <strong>Your Test has finished running, View the Action execution details</strong>. click on that text to inspect the execution detail and see if our newly Action Ouputs contain values assigned to them:</p>
-
-<p><img src="images/2022-09-07_07-55-53.png" alt="Relative"></p></li>
-<li><p>The Execution Details screen opens, scroll down until you see the <strong>Output Data</strong> section. </p>
-
-<p>Congratulation! you have created a new API integration, you are capturing data from the API response and assigning those to variables that can be reused from within any workflows that use that new Action! </p>
-
-<p><img src="images/2022-09-07_07-59-39.png" alt="Relative"></p></li>
-<li><p>We have basically created a reusable building block (Spoke action). For builders to be able to use it from within their workflows, you need to publish it to make it available. 
+<p>After few second you should see the text <strong>Your Test has finished running, View the Action execution details</strong>. click on that text to inspect the execution detail and see if our newly Action Outputs contain values assigned to them:</p>
+<p><img src="images/2022-09-07_07-55-53.png" alt="Relative"></p>
+</li>
+<li>
+<p>The Execution Details screen opens, scroll down until you see the <strong>Output Data</strong> section.</p>
+<p>Congratulation! you have created a new API integration, you are capturing data from the API response and assigning those to variables that can be reused from within any workflows that use that new Action!</p>
+<p><img src="images/2022-09-07_07-59-39.png" alt="Relative"></p>
+</li>
+<li>
+<p>We have basically created a reusable building block (Spoke action). For builders to be able to use it from within their workflows, you need to publish it to make it available.<br>
 Close the Operation Execution Details tab(s):</p>
-
-<p><img src="images/2022-09-07_08-04-57.png" alt="Relative"></p></li>
-<li><p>Click the <strong>Publish</strong> button from your <strong>Validate Banking Information</strong> Action screen:</p>
-
-<p><img src="images/2022-09-07_08-06-37.png" alt="Relative"></p></li>
-<li><p>Click <strong>Publish</strong> again from this Validation screen:</p>
-
-<p><img src="images/2022-09-07_08-08-09.png" alt="Relative"></p></li>
+<p><img src="images/2022-09-07_08-04-57.png" alt="Relative"></p>
+</li>
+<li>
+<p>Click the <strong>Publish</strong> button from your <strong>Validate Banking Information</strong> Action screen:</p>
+<p><img src="images/2022-09-07_08-06-37.png" alt="Relative"></p>
+</li>
+<li>
+<p>Click <strong>Publish</strong> again from this Validation screen:</p>
+<p><img src="images/2022-09-07_08-08-09.png" alt="Relative"></p>
+</li>
 </ol>
-
-<h2 id="toc_5">Creating a subflow and adding the spoke action</h2>
+<h2 class="mume-header" id="creating-a-subflow-and-adding-the-spoke-action">Creating a subflow and adding the spoke action</h2>
 
 <ol>
-<li><p>Now we are going to create a simple subflow so you can see how builders can use your new spoke action</p>
-
+<li>
+<p>Now we are going to create a simple subflow so you can see how builders can use your new spoke action</p>
 <p>Click on the Home icon to return to the main screen of Flow Designer</p>
-
-<p><img src="images/2022-09-07_08-14-32.png" alt="Relative"></p></li>
-<li><p>Click <strong>New</strong> (1) then <strong>Subflow</strong> (2):</p>
-
-<p><img src="images/2022-09-07_08-17-32.png" alt="Relative"></p></li>
-<li><p>On the <strong>Subflow Properties</strong> screen enter the Subflow Name <strong>Verify Routing Number</strong> (1), then select the Application <strong>Direct Deposit</strong> and finally click <strong>Submit</strong> (3)</p>
-
-<p><img src="images/2022-09-07_08-19-32.png" alt="Relative"></p></li>
-<li><p>We need to create an input for our subflow so a routing number can be passed from a workflow that will use that subflow. Click on the  <strong>Select to create the inputs &amp; outputs of your subflow</strong>:</p>
-
-<p><img src="images/2022-09-07_08-23-07.png" alt="Relative"></p></li>
-<li><p>Under the <strong>Inputs</strong> section, click the <strong>+</strong> sign (1), then enter the label <strong>routingnumber</strong> (2) and name <strong>routing number</strong> (3), make the input <strong>Mandatory</strong> (4), and finally click the expand icon (5).</p>
-
-<p><img src="images/2022-09-07_08-26-03.png" alt="Relative"></p></li>
-<li><p>on the <strong>Default value</strong> field, type the number <strong>021000021</strong> (1) , then click Save (2)</p>
-
+<p><img src="images/2022-09-07_08-14-32.png" alt="Relative"></p>
+</li>
+<li>
+<p>Click <strong>New</strong> (1) then <strong>Subflow</strong> (2):</p>
+<p><img src="images/2022-09-07_08-17-32.png" alt="Relative"></p>
+</li>
+<li>
+<p>On the <strong>Subflow Properties</strong> screen enter the Subflow Name <strong>Verify Routing Number</strong> (1), then select the Application <strong>Direct Deposit</strong> and finally click <strong>Submit</strong> (3)</p>
+<p><img src="images/2022-09-07_08-19-32.png" alt="Relative"></p>
+</li>
+<li>
+<p>We need to create an input for our subflow so a routing number can be passed from a workflow that will use that subflow. Click on the  <strong>Select to create the inputs &amp; outputs of your subflow</strong>:</p>
+<p><img src="images/2022-09-07_08-23-07.png" alt="Relative"></p>
+</li>
+<li>
+<p>Under the <strong>Inputs</strong> section, click the <strong>+</strong> sign (1), then enter the label <strong>routingnumber</strong> (2) and name <strong>routing number</strong> (3), make the input <strong>Mandatory</strong> (4), and finally click the expand icon (5).</p>
+<p><img src="images/2022-09-07_08-26-03.png" alt="Relative"></p>
+</li>
+<li>
+<p>on the <strong>Default value</strong> field, type the number <strong>021000021</strong> (1) , then click Save (2)</p>
 <p><img src="images/2022-09-07_08-31-59.png" alt="Relative"></p>
-
 <blockquote>
 <p>We set a default value just so we do not have to type it again and again when we test the subflow.</p>
-</blockquote></li>
-<li><p>Scroll down to the <strong>Outputs</strong> section, then click the <strong>+</strong> sign twice (1) to add two new output variables, and replace the variable value (2) and (3) with the value <strong>message</strong>, and the variable (4) and (5) with the value <strong>bankname</strong>, and finally click <strong>Done</strong> (6)</p>
-
-<p><img src="images/2022-09-07_08-34-26.png" alt="Relative"></p></li>
-<li><p>Now we can add our new spoke action to the subflow. Under Actions click <strong>+ Add an Action, Flow Logic, or Subflow</strong></p>
-
-<p><img src="images/2022-09-07_08-39-38.png" alt="Relative"></p></li>
-<li><p>Then click Action</p>
-
-<p><img src="images/2022-09-07_08-41-05.png" alt="Relative"></p></li>
-<li><p>in the search box type <strong>Direct Deposit</strong> (1) then under <strong>Installed Spokes</strong> click  <strong>Direct Deposit</strong>  (2) then click the action <strong>Validate banking Information</strong> (3) to add it to your subflow:</p>
-
-<p><img src="images/2022-10-07_08-39-39.png" alt="Relative"></p></li>
-<li><p>From the Data Pill, under <strong>Subflow Inputs</strong>, grab the <strong>routingnumber</strong> variable and drop it to the <strong>Routing Number</strong> field on our <strong>Validate Banking Information</strong> action and click <strong>Done</strong>:</p>
-
+</blockquote>
+</li>
+<li>
+<p>Scroll down to the <strong>Outputs</strong> section, then click the <strong>+</strong> sign twice (1) to add two new output variables, and replace the variable value (2) and (3) with the value <strong>message</strong>, and the variable (4) and (5) with the value <strong>bankname</strong>, and finally click <strong>Done</strong> (6)</p>
+<p><img src="images/2022-09-07_08-34-26.png" alt="Relative"></p>
+</li>
+<li>
+<p>Now we can add our new spoke action to the subflow. Under Actions click <strong>+ Add an Action, Flow Logic, or Subflow</strong></p>
+<p><img src="images/2022-09-07_08-39-38.png" alt="Relative"></p>
+</li>
+<li>
+<p>Then click Action</p>
+<p><img src="images/2022-09-07_08-41-05.png" alt="Relative"></p>
+</li>
+<li>
+<p>in the search box type <strong>Direct Deposit</strong> (1) then under <strong>Installed Spokes</strong> click  <strong>Direct Deposit</strong>  (2) then click the action <strong>Validate banking Information</strong> (3) to add it to your subflow:</p>
+<p><img src="images/2022-10-07_08-39-39.png" alt="Relative"></p>
+</li>
+<li>
+<p>From the Data Pill, under <strong>Subflow Inputs</strong>, grab the <strong>routingnumber</strong> variable and drop it to the <strong>Routing Number</strong> field on our <strong>Validate Banking Information</strong> action and click <strong>Done</strong>:</p>
 <p><img src="images/2022-09-07_08-46-32.gif" alt="Relative"></p>
-
 <blockquote>
 <p>This is just a simple example on how to add a custom spoke action to a subflow, under that step you could add any logic you want based on your use case.</p>
-</blockquote></li>
-<li><p>Notice in the data pill on the right hand side, the variable that we have available to use in our subflow, those are the output variable we have created earlier when we built the Spoke Action. Now we are going to map those to our Subflow Outputs. For this we use a <strong>Flow logic step</strong> that is available to us.</p></li>
-<li><p>Under Under the <strong>Validate Banking Information</strong> action, click <strong>+ Add an Action, Flow Logic, or Subflow</strong>:</p>
-
-<p><img src="images/2022-09-07_08-57-20.png" alt="Relative"></p></li>
-<li><p>Click <strong>Flow Logic</strong> (1) then <strong>Assign Subflow Outputs</strong> (2):</p>
-
-<p><img src="images/2022-09-07_08-54-52.png" alt="Relative"></p></li>
-<li><p>Click the <strong>+</strong> sign (1) twice to add two Subflow output assignments, then expand the list (2) on the first line of the table, and select  <strong>message</strong> (3):</p>
-
-<p><img src="images/2022-09-07_09-00-21.png" alt="Relative"></p></li>
-<li><p>Drag from the Data Pill the <strong>Message</strong> variable and drop it to the <strong>Data field</strong> under the <strong>Assign Subflow outputs</strong> steps. For the second field under <strong>Assign Subflow Outputs</strong>, select the Name <strong>bankname</strong>, then drag the variable <strong>customer_name</strong> from the Data pill and drop it under the Data field and click <strong>Done</strong>as shown:</p>
-
+</blockquote>
+</li>
+<li>
+<p>Notice in the data pill on the right hand side, the variable that we have available to use in our subflow, those are the output variable we have created earlier when we built the Spoke Action. Now we are going to map those to our Subflow Outputs. For this we use a <strong>Flow logic step</strong> that is available to us.</p>
+</li>
+<li>
+<p>Under the <strong>Validate Banking Information</strong> action, click <strong>+ Add an Action, Flow Logic, or Subflow</strong>:</p>
+<p><img src="images/2022-09-07_08-57-20.png" alt="Relative"></p>
+</li>
+<li>
+<p>Click <strong>Flow Logic</strong> (1) then <strong>Assign Subflow Outputs</strong> (2):</p>
+<p><img src="images/2022-09-07_08-54-52.png" alt="Relative"></p>
+</li>
+<li>
+<p>Click the <strong>+</strong> sign (1) twice to add two Subflow output assignments, then expand the list (2) on the first line of the table, and select  <strong>message</strong> (3):</p>
+<p><img src="images/2022-09-07_09-00-21.png" alt="Relative"></p>
+</li>
+<li>
+<p>Drag from the Data Pill the <strong>Message</strong> variable and drop it to the <strong>Data field</strong> under the <strong>Assign Subflow outputs</strong> steps. For the second field under <strong>Assign Subflow Outputs</strong>, select the Name <strong>bankname</strong>, then drag the variable <strong>customer_name</strong> from the Data pill and drop it under the Data field and click <strong>Done</strong> as shown:</p>
 <p><img src="images/2022-09-07_09-05-26.gif" alt="Relative"></p>
-
-<p>Congratulation, you have now created a reusable Subflow that leverage your custom action, this Subflow returns two values. The Message coming from the API response (return code) and the Bank Name associated to the routing number provided as an input. This example shows how you can use your custom action in a subflow and how you can select only the information you need from that action and expose the retrieved values as Subflow outputs. This makes those values available for any buiders who will use this subflow in their own Flow.</p></li>
-<li><p>Click <strong>Save</strong> and then click <strong>Test</strong>.</p></li>
-<li><p>Click <strong>Run Test</strong></p>
-
+<p>Congratulation, you have now created a reusable Subflow that leverage your custom action, this Subflow returns two values. The Message coming from the API response (return code) and the Bank Name associated to the routing number provided as an input. This example shows how you can use your custom action in a subflow and how you can select only the information you need from that action and expose the retrieved values as Subflow outputs. This makes those values available for any builders who will use this subflow in their own Flow.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong> and then click <strong>Test</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Run Test</strong></p>
 <blockquote>
 <p>Do no put any value in the Routing Number field, remember, we have set a default value, so the Subflow will use the default value.</p>
 </blockquote>
-
-<p><img src="images/2022-09-07_09-13-20.png" alt="Relative"></p></li>
-<li><p>When the flow has finished runing, click on <strong>Your test has finiesh running. View the Subflow execution details.</strong>:</p>
-
-<p><img src="images/2022-09-07_09-15-17.png" alt="Relative"></p></li>
-<li><p>On the execution detail screen, expand the <strong>Subflow Inputs &amp; Outputs</strong> section (1) and inspect the subflow input <strong>routingnumber</strong> (2) and Subflow outputs <strong>bankname</strong> and <strong>message</strong> (3)</p>
-
-<p><img src="images/2022-09-07_09-19-53.png" alt="Relative"></p></li>
+<p><img src="images/2022-09-07_09-13-20.png" alt="Relative"></p>
+</li>
+<li>
+<p>When the flow has finished running, click on <strong>Your test has finished running. View the Subflow execution details.</strong>:</p>
+<p><img src="images/2022-09-07_09-15-17.png" alt="Relative"></p>
+</li>
+<li>
+<p>On the execution detail screen, expand the <strong>Subflow Inputs &amp; Outputs</strong> section (1) and inspect the subflow input <strong>routingnumber</strong> (2) and Subflow outputs <strong>bankname</strong> and <strong>message</strong> (3)</p>
+<p><img src="images/2022-09-07_09-19-53.png" alt="Relative"></p>
+</li>
 </ol>
-
-<h1 id="toc_6">Conclusion</h1>
+<h1 class="mume-header" id="conclusion">Conclusion</h1>
 
 <p>You have now completed the Integration Hub exercise. We have seen how to create a new API integration by creating a new Spoke Action and using the REST and JSON Parser steps, then how to publish that spoke action to be able to use it in a subflow.</p>
 
-
-
-
-</body>
-
-</html>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
