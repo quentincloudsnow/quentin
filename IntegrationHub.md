@@ -9,7 +9,9 @@ Integration Hub enables execution of third-party APIs as a part of a flow when a
 
 ## Goal
 
-In this exercise you will learn how to create a Spoke in Integration Hub. You will learn how to connect a ServiceNow Workflow to a remote API. For our use case we want to use Integration Hub to validate some data against an API. In the previous exercise we have seen how to extract data from document using our Intelligent Document Processing capability (**Document Intelligence**). In the previous exercise we see how we can extract Banking information from a VOID Check automatically using DocIntel. In this exercise we see how we validate the **Routing Number** extracted from a VOID Check by building an Integration Hub spoke action that is going to take this Routing Number information and pass it to an external API. This 3rd party API returns additional banking information that can be useful to setup the direct deposit for this new employee, or simply validate that the data extracted is correct.  This is just an example to show how easily you can connect ServiceNow to external system via API by creating your own Spoke. We see how to build an integration to an API with having to write a single line of code.
+In this exercise you will learn how to create a Spoke in Integration Hub. You will learn how to connect a ServiceNow Workflow to a remote API. For our use case we want to use Integration Hub to validate some data against an API. In the previous exercise we have seen how to extract Banking information from documents using our Intelligent Document Processing capability (**Document Intelligence**). 
+
+In this exercise we see how we validate the **Routing Number** extracted from a VOID Check by building an Integration Hub spoke action that is going to take this Routing Number information and pass it to an external API. This 3rd party API returns additional banking information that can be useful to setup the direct deposit for this new employee, or simply validate that the data extracted is correct. This is just an example to show how easily you can connect ServiceNow to external system via API by creating your own Spoke. We see how to build an integration to an API with having to write a single line of code.
 
 
 
@@ -19,7 +21,7 @@ When you need to create an integration from ServiceNow to an external system via
 
 1. Inspect the Routing Number API.
 
-    Open a browser and navigate to https://www.routingnumbers.info/api/data.html to test out the API and analyze what this API can return.  
+    Open a browser and navigate to [[https://www.routingnumbers.info/api/data.html]] to test out the API and analyze what this API can return.  
 
     On the **Routing Number** Type 021000021 (1) then Click **Get Bank Data** (2)
 
@@ -48,7 +50,7 @@ When you need to create an integration from ServiceNow to an external system via
 
      ![Relative](images/2022-09-06_13-22-19.png)
 
-1. Fill in the **Action properties** form with those informations:
+1. Fill in the **Action properties** form with following information:
 
    | Field | Value |
    |-------|-------|
@@ -96,7 +98,7 @@ When you need to create an integration from ServiceNow to an external system via
 
     ![Relative](images/2022-09-06_14-32-45.png)
 
-    > For this exercise we do not use any credentials, this third party API doe not require authentication but most 3rd party API would require credentials to authenticate with it.Credentials can be configured in ServiceNow, and you would select the right **Credential Alia** to use under the **Connection Details**
+    > For this exercise we do not use any credentials, this third party API doe not require authentication but most 3rd party API would require credentials to authenticate with it.Credentials can be configured in ServiceNow, and you would select the right **Credential Alias** to use under the **Connection Details**
     In production scenario, information such as **Base URL** (End point)c and **Credentials** would be configured on the instance under **Connections & Credentials**.
 
 1. Scroll down to show the **Request Details** form
@@ -120,7 +122,7 @@ When you need to create an integration from ServiceNow to an external system via
    |-------|-------|
    | Content-Type | application/json |
 
-    Repeat that step to add the folling **Name** and **Value**
+    Repeat that step to add the following **Name** and **Value**
 
     | Name| Value |
    |-------|-------|
@@ -159,15 +161,16 @@ When you need to create an integration from ServiceNow to an external system via
 
     This will open the content of the **response_body** output, this is the response coming from the API. Most APIs return a response in the same format (JSON Payload), it contains the information that we want to use from our Workflow. 
     
-    > The benefit of Flow Designer and Integration Hub is that we can parse a JSON Payload without having to script anything (most solutions on the market require some kind of codind to do this), before we had Integration Hub on the platform we had to use some json.parse function in Javascript to be able to extract information from a JSON Payload. We made it easy for anyone to build an integration with no code.
+    > The benefit of Flow Designer and Integration Hub is that we can parse a JSON Payload without having to script anything (most solutions on the market require some kind of coding to do this), before we had Integration Hub on the platform we had to use some json.parse function in Javascript to be able to extract information from a JSON Payload. We made it easy for anyone to build an integration with no code.
 
 1. Copy the code from the **Viewing response_body** window: 
-    > Save in a text file or notepad or make sure to keep the content in your clipboard (Copy/paste) as we are going to need it when we configure the JSON Parse step, we will use this content.
+    > Save in a text file or notepad or make sure to keep the content in your clipboard (Copy/paste) as we are going to need it when we configure the JSON Parse step.
 
    ![Relative](images/2022-09-06_15-40-15.png)
 
     > At this stage we have created the REST API Call to the 3rd Party Routing Number API, now we need to add a step to be able to parse the response from the API to retrieve the value we need.
 
+    After copying the JSON close the response window.
 
 1. Under **Rest Step** click the **+** sign to add a new step:
 
@@ -223,7 +226,7 @@ When you need to create an integration from ServiceNow to an external system via
    | address | address |
    | routing_number | routing_number |
 
-1. Verify that you have created the Ouputs as shown below:
+1. Verify that you have created the Outputs as shown below:
 
     ![Relative](images/2022-09-06_17-27-41.png)
 
@@ -266,7 +269,7 @@ When you need to create an integration from ServiceNow to an external system via
 
     ![Relative](images/2022-09-07_07-53-49.png)
 
-    After few second you should see the text **Your Test has finished running, View the Action execution details**. click on that text to inspect the execution detail and see if our newly Action Ouputs contain values assigned to them:
+    After few second you should see the text **Your Test has finished running, View the Action execution details**. click on that text to inspect the execution detail and see if our newly Action Outputs contain values assigned to them:
 
     ![Relative](images/2022-09-07_07-55-53.png)
 
@@ -344,7 +347,7 @@ Close the Operation Execution Details tab(s):
 
 1. Notice in the data pill on the right hand side, the variable that we have available to use in our subflow, those are the output variable we have created earlier when we built the Spoke Action. Now we are going to map those to our Subflow Outputs. For this we use a **Flow logic step** that is available to us.
 
-1. Under Under the **Validate Banking Information** action, click **+ Add an Action, Flow Logic, or Subflow**:
+1. Under the **Validate Banking Information** action, click **+ Add an Action, Flow Logic, or Subflow**:
 
     ![Relative](images/2022-09-07_08-57-20.png)
 
@@ -355,11 +358,11 @@ Close the Operation Execution Details tab(s):
 
     ![Relative](images/2022-09-07_09-00-21.png)
 
-1. Drag from the Data Pill the **Message** variable and drop it to the **Data field** under the **Assign Subflow outputs** steps. For the second field under **Assign Subflow Outputs**, select the Name **bankname**, then drag the variable **customer_name** from the Data pill and drop it under the Data field and click **Done**as shown:
+1. Drag from the Data Pill the **Message** variable and drop it to the **Data field** under the **Assign Subflow outputs** steps. For the second field under **Assign Subflow Outputs**, select the Name **bankname**, then drag the variable **customer_name** from the Data pill and drop it under the Data field and click **Done** as shown:
 
     ![Relative](images/2022-09-07_09-05-26.gif)
 
-    Congratulation, you have now created a reusable Subflow that leverage your custom action, this Subflow returns two values. The Message coming from the API response (return code) and the Bank Name associated to the routing number provided as an input. This example shows how you can use your custom action in a subflow and how you can select only the information you need from that action and expose the retrieved values as Subflow outputs. This makes those values available for any buiders who will use this subflow in their own Flow.
+    Congratulation, you have now created a reusable Subflow that leverage your custom action, this Subflow returns two values. The Message coming from the API response (return code) and the Bank Name associated to the routing number provided as an input. This example shows how you can use your custom action in a subflow and how you can select only the information you need from that action and expose the retrieved values as Subflow outputs. This makes those values available for any builders who will use this subflow in their own Flow.
 
 1. Click **Save** and then click **Test**.
 
@@ -368,7 +371,7 @@ Close the Operation Execution Details tab(s):
 
    ![Relative](images/2022-09-07_09-13-20.png)
 
-1. When the flow has finished runing, click on **Your test has finiesh running. View the Subflow execution details.**:
+1. When the flow has finished running, click on **Your test has finished running. View the Subflow execution details.**:
 
     ![Relative](images/2022-09-07_09-15-17.png)
 
