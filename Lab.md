@@ -1,5 +1,5 @@
 # Lab Instances
-## https://clabs.link/aew-may-7875
+## https://clabs.link/aew-may-4307
 ## Reservation code: see slides.
 
 # Automation Engine - Workshop in a box
